@@ -1,0 +1,523 @@
+{
+ "affected_vars": [],
+ "archetype": "customer_success_team",
+ "artifacts": [
+  {
+   "event_date": "2026-05-04",
+   "id": "art-d123096a",
+   "ingest_date": "2026-05-04",
+   "spans": [
+    {
+     "id": "sp-4779dbfd5e",
+     "text": "Team member Sam Okoye: role ae."
+    },
+    {
+     "id": "sp-9a3b4e0ba2",
+     "text": "Team member Ben Carter: role account_manager."
+    },
+    {
+     "id": "sp-ce1de0980d",
+     "text": "Team member Pedro Alves: role cro."
+    },
+    {
+     "id": "sp-87c59c7cec",
+     "text": "Team member Mei Tanaka: role cs_head."
+    },
+    {
+     "id": "sp-da2509e5e8",
+     "text": "Team member Noor Ali: role csm."
+    },
+    {
+     "id": "sp-cc6071c493",
+     "text": "Team member Iris Novak: role legal."
+    },
+    {
+     "id": "sp-c6454d7d8d",
+     "text": "Authority in account terms: account_manager=2; cro=4; cs_head=3."
+    },
+    {
+     "id": "sp-88a6d4a9c8",
+     "text": "Authority in legal review: legal=3."
+    },
+    {
+     "id": "sp-0aea618a4f",
+     "text": "Authority in renewal strategy: account_manager=2; cro=3; csm=1."
+    },
+    {
+     "id": "sp-27d7ee78a6",
+     "text": "Governance: \"Atlas renewal discount\" is governed by account terms, renewal strategy."
+    },
+    {
+     "id": "sp-7ba3c1f42b",
+     "text": "Governance: \"Atlas data processing addendum\" is governed by legal review."
+    },
+    {
+     "id": "sp-507f753500",
+     "text": "Governance: \"Atlas executive sponsor\" is governed by renewal strategy."
+    },
+    {
+     "id": "sp-364a602765",
+     "text": "Governance: \"Atlas support SLA\" is governed by account terms."
+    }
+   ],
+   "status": "success",
+   "title": "Organization chart and governance",
+   "type": "org_chart"
+  },
+  {
+   "event_date": "2026-05-04",
+   "id": "art-fbecb370",
+   "ingest_date": "2026-05-04",
+   "spans": [
+    {
+     "id": "sp-d94845c0c7",
+     "text": "On 2026-05-04, Ben Carter (account_manager) decided in account terms: \"Atlas support SLA: 4 hour response.\""
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-05-04",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-05-10",
+   "id": "art-925ef873",
+   "ingest_date": "2026-05-10",
+   "spans": [
+    {
+     "id": "sp-d1184447bf",
+     "text": "On 2026-05-10, Noor Ali (csm) decided in renewal strategy: \"Atlas executive sponsor: Ben Carter.\""
+    }
+   ],
+   "status": "success",
+   "title": "Meeting 2026-05-10",
+   "type": "meeting"
+  },
+  {
+   "event_date": "2026-05-20",
+   "id": "art-ca9feaa3",
+   "ingest_date": "2026-05-20",
+   "spans": [
+    {
+     "id": "sp-3f16690b92",
+     "text": "On 2026-05-20, Noor Ali (csm) said in account terms: \"I think we should probably go with Atlas support SLA: 2 hour response, at this point.\""
+    }
+   ],
+   "status": "success",
+   "title": "Meeting 2026-05-20",
+   "type": "meeting"
+  },
+  {
+   "event_date": "2026-06-02",
+   "id": "art-334d3dab",
+   "ingest_date": "2026-06-02",
+   "spans": [
+    {
+     "id": "sp-da0a8f9ae4",
+     "text": "On 2026-06-02, Mei Tanaka (cs_head) decided in account terms: \"Atlas support SLA: 4 hour response with weekend cover.\" [discussed in 2026-05-04 \"Atlas support SLA\" by Ben Carter]"
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-06-02",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-06-05",
+   "id": "art-5ba74d0a",
+   "ingest_date": "2026-06-05",
+   "spans": [
+    {
+     "id": "sp-29fa9c3c45",
+     "text": "On 2026-06-05, Ben Carter (account_manager) decided in account terms: \"Atlas renewal discount: 10 percent.\""
+    }
+   ],
+   "status": "success",
+   "title": "Ticket 2026-06-05",
+   "type": "ticket"
+  },
+  {
+   "event_date": "2026-06-10",
+   "id": "art-c7a8b852",
+   "ingest_date": "2026-06-10",
+   "spans": [
+    {
+     "id": "sp-f7407026ea",
+     "text": "On 2026-06-10, Iris Novak (legal) decided in legal review: \"Atlas data processing addendum: standard DPA v3.\""
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-06-10",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-06-18",
+   "id": "art-4f96af4d",
+   "ingest_date": "2026-06-18",
+   "spans": [
+    {
+     "id": "sp-8cce1c51b9",
+     "text": "On 2026-06-18, Pedro Alves (cro) decided in renewal strategy: \"Atlas renewal discount: 15 percent.\" [see 2026-06-05 \"Atlas renewal discount\" by Ben Carter]"
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-06-18",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-06-20",
+   "id": "art-613fbbfc",
+   "ingest_date": "2026-06-20",
+   "spans": [
+    {
+     "id": "sp-0696bf748e",
+     "text": "On 2026-06-20, Mei Tanaka (cs_head) noted in account terms: \"Plan updated, Atlas renewal discount now reads 12 percent.\""
+    }
+   ],
+   "status": "success",
+   "title": "Ticket 2026-06-20",
+   "type": "ticket"
+  },
+  {
+   "event_date": "2026-06-25",
+   "id": "art-bd408c57",
+   "ingest_date": "2026-06-25",
+   "spans": [
+    {
+     "id": "sp-37395e4e4c",
+     "text": "On 2026-06-25, Pedro Alves (cro) decided in renewal strategy: \"Atlas executive sponsor: Mei Tanaka.\" [see 2026-05-10 \"Atlas executive sponsor\" by Noor Ali]"
+    }
+   ],
+   "status": "success",
+   "title": "Meeting 2026-06-25",
+   "type": "meeting"
+  },
+  {
+   "event_date": "2026-06-27",
+   "id": "art-74b966bb",
+   "ingest_date": "2026-06-27",
+   "spans": [
+    {
+     "id": "sp-ef40061bb0",
+     "text": "On 2026-06-27, Pedro Alves (cro) withdrew in renewal strategy the 2026-06-25 decision on \"Atlas executive sponsor\"."
+    }
+   ],
+   "status": "success",
+   "title": "Meeting 2026-06-27",
+   "type": "meeting"
+  },
+  {
+   "event_date": "2026-07-01",
+   "id": "art-3114888d",
+   "ingest_date": "2026-07-01",
+   "spans": [
+    {
+     "id": "sp-e00fc43409",
+     "text": "On 2026-07-01, Sam Okoye (ae) asked in renewal strategy: \"Atlas data processing addendum? can Atlas use their own DPA template\""
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-07-01",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-07-18",
+   "id": "art-30273333",
+   "ingest_date": "2026-07-18",
+   "spans": [
+    {
+     "id": "sp-dab402ff6f",
+     "text": "On 2026-07-18, Noor Ali (csm) reported in renewal strategy: \"Atlas renewal discount: customer_asked_for_20_percent.\""
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-07-18",
+   "type": "chat"
+  }
+ ],
+ "checkpoints": [
+  "2026-05-20",
+  "2026-06-05",
+  "2026-06-20",
+  "2026-06-27",
+  "2026-07-18"
+ ],
+ "domain_labels": {
+  "account_terms": "account terms",
+  "legal_review": "legal review",
+  "renewal": "renewal strategy"
+ },
+ "explicitness": {
+  "c1": "explicit",
+  "c10": "explicit",
+  "c11": "explicit",
+  "c2": "hedged",
+  "c3": "explicit",
+  "c4": "explicit",
+  "c5": "explicit",
+  "c6": "diffuse",
+  "c7": "explicit",
+  "c8": "explicit",
+  "c9": "explicit",
+  "q1": "explicit"
+ },
+ "labels": {
+  "atlas.discount": "Atlas renewal discount",
+  "atlas.dpa": "Atlas data processing addendum",
+  "atlas.owner": "Atlas executive sponsor",
+  "atlas.sla": "Atlas support SLA"
+ },
+ "operator": {
+  "name": "clean"
+ },
+ "panel": null,
+ "people": {
+  "ae": "Sam Okoye",
+  "am": "Ben Carter",
+  "cro": "Pedro Alves",
+  "cs_head": "Mei Tanaka",
+  "csm": "Noor Ali",
+  "legal": "Iris Novak"
+ },
+ "query_time": "2026-07-25",
+ "renderer": {
+  "name": "template"
+ },
+ "scenario_id": "cs-atlas-01-s0",
+ "seed": 0,
+ "span_map": {
+  "sp-0696bf748e": "c6",
+  "sp-0aea618a4f": null,
+  "sp-27d7ee78a6": null,
+  "sp-29fa9c3c45": "c4",
+  "sp-364a602765": null,
+  "sp-37395e4e4c": "c8",
+  "sp-3f16690b92": "c2",
+  "sp-4779dbfd5e": null,
+  "sp-507f753500": null,
+  "sp-7ba3c1f42b": null,
+  "sp-87c59c7cec": null,
+  "sp-88a6d4a9c8": null,
+  "sp-8cce1c51b9": "c5",
+  "sp-9a3b4e0ba2": null,
+  "sp-c6454d7d8d": null,
+  "sp-cc6071c493": null,
+  "sp-ce1de0980d": null,
+  "sp-d1184447bf": "c7",
+  "sp-d94845c0c7": "c1",
+  "sp-da0a8f9ae4": "c3",
+  "sp-da2509e5e8": null,
+  "sp-dab402ff6f": "c11",
+  "sp-e00fc43409": "q1",
+  "sp-ef40061bb0": "c9",
+  "sp-f7407026ea": "c10"
+ },
+ "template_id": "cs-atlas-01",
+ "unanswerable": [
+  "Atlas multi-year renewal signature"
+ ],
+ "world": {
+  "assertions": [
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "account_terms",
+    "id": "c1",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "am",
+    "t": "2026-05-04",
+    "trigger": [],
+    "value": "4 hour response",
+    "var": "atlas.sla"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "account_terms",
+    "id": "c2",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "csm",
+    "t": "2026-05-20",
+    "trigger": [],
+    "value": "2 hour response",
+    "var": "atlas.sla"
+   },
+   {
+    "complete": true,
+    "discussion": [
+     "c1"
+    ],
+    "domain": "account_terms",
+    "id": "c3",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "cs_head",
+    "t": "2026-06-02",
+    "trigger": [],
+    "value": "4 hour response with weekend cover",
+    "var": "atlas.sla"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "account_terms",
+    "id": "c4",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "am",
+    "t": "2026-06-05",
+    "trigger": [],
+    "value": "10 percent",
+    "var": "atlas.discount"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "renewal",
+    "id": "c5",
+    "kind": "decide",
+    "ref": [
+     "c4"
+    ],
+    "speaker": "cro",
+    "t": "2026-06-18",
+    "trigger": [],
+    "value": "15 percent",
+    "var": "atlas.discount"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "account_terms",
+    "id": "c6",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "cs_head",
+    "t": "2026-06-20",
+    "trigger": [],
+    "value": "12 percent",
+    "var": "atlas.discount"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "renewal",
+    "id": "c7",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "csm",
+    "t": "2026-05-10",
+    "trigger": [],
+    "value": "Ben Carter",
+    "var": "atlas.owner"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "renewal",
+    "id": "c8",
+    "kind": "decide",
+    "ref": [
+     "c7"
+    ],
+    "speaker": "cro",
+    "t": "2026-06-25",
+    "trigger": [],
+    "value": "Mei Tanaka",
+    "var": "atlas.owner"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "renewal",
+    "id": "c9",
+    "kind": "revoke",
+    "ref": [
+     "c8"
+    ],
+    "speaker": "cro",
+    "t": "2026-06-27",
+    "trigger": [],
+    "value": null,
+    "var": "atlas.owner"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "legal_review",
+    "id": "c10",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "legal",
+    "t": "2026-06-10",
+    "trigger": [],
+    "value": "standard DPA v3",
+    "var": "atlas.dpa"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "renewal",
+    "id": "q1",
+    "kind": "ask",
+    "ref": [],
+    "speaker": "ae",
+    "t": "2026-07-01",
+    "trigger": [],
+    "value": "can Atlas use their own DPA template",
+    "var": "atlas.dpa"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "renewal",
+    "id": "c11",
+    "kind": "report",
+    "ref": [],
+    "speaker": "csm",
+    "t": "2026-07-18",
+    "trigger": [],
+    "value": "customer_asked_for_20_percent",
+    "var": "atlas.discount"
+   }
+  ],
+  "authority": {
+   "account_terms": {
+    "account_manager": 2,
+    "cro": 4,
+    "cs_head": 3
+   },
+   "legal_review": {
+    "legal": 3
+   },
+   "renewal": {
+    "account_manager": 2,
+    "cro": 3,
+    "csm": 1
+   }
+  },
+  "governance": {
+   "atlas.discount": [
+    "account_terms",
+    "renewal"
+   ],
+   "atlas.dpa": [
+    "legal_review"
+   ],
+   "atlas.owner": [
+    "renewal"
+   ],
+   "atlas.sla": [
+    "account_terms"
+   ]
+  },
+  "roles": {
+   "ae": "ae",
+   "am": "account_manager",
+   "cro": "cro",
+   "cs_head": "cs_head",
+   "csm": "csm",
+   "legal": "legal"
+  }
+ }
+}

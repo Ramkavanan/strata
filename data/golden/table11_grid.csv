@@ -1,0 +1,11 @@
+Sources,S1,S2,D1,S3,S4,D2,S5,S6
+Source type,Kick-off meeting,Sprint planning,Design doc v1,Architecture review,Steering review,Platform standards doc,Engineering sync,Sprint planning
+Date,2026-08-01,2026-08-03,2026-08-04,2026-08-05,2026-08-06,2026-06-30,2026-08-07,2026-08-08
+Ingested,2026-08-01,2026-08-03,2026-08-04,2026-08-05,2026-08-06,2026-08-06,2026-08-07,2026-08-08
+Processing status,Success,Success,Success,Success,Partial,Partial,Success,Success
+Primary datastore,,Redis,MongoDB,MySQL,PostgreSQL,,MySQL,
+Service architecture,Microservices,,,,Modular monolith,,,
+Release target,30 Sep,15 Oct,,31 Oct,15 Nov,,,15 Oct
+Payment gateway,,,,,Stripe,,,
+On-call owner,,,,,Platform team,,,Payments team
+Data residency,,,,,EU only,US and EU,,

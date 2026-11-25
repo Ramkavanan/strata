@@ -1,0 +1,654 @@
+id: b2b-02
+archetype: b2b_product_team
+generator:
+  version: '1'
+  attempt: 15
+query_time: 2026-10-20
+people:
+  engineer_1: Amara Obi
+  engineer_2: Elena Petrova
+  product_manager_1: Arjun Mehta
+  product_manager_2: Priya Nair
+  cto_1: Sofia Lindqvist
+  sales_head_1: Victor Hugo Lima
+  tech_lead_1: Noor Ali
+  tech_lead_2: Anya Sokolova
+  principal_engineer_1: Caleb Stone
+  support_lead_1: Emma Lund
+  customer_1: Yuki Sato
+  customer_2: Jonas Weber
+roles:
+  engineer_1: engineer
+  engineer_2: engineer
+  product_manager_1: product_manager
+  product_manager_2: product_manager
+  cto_1: cto
+  sales_head_1: sales_head
+  tech_lead_1: tech_lead
+  tech_lead_2: tech_lead
+  principal_engineer_1: principal_engineer
+  support_lead_1: support_lead
+  customer_1: customer
+  customer_2: customer
+domains:
+  product_scope:
+    label: product scope
+    authority:
+      engineer: 1
+      product_manager: 2
+      cto: 3
+  commercial:
+    label: commercial terms
+    authority:
+      support_lead: 1
+      sales_head: 2
+  architecture:
+    label: architecture
+    authority:
+      engineer: 1
+      tech_lead: 2
+      principal_engineer: 3
+  requirements:
+    label: requirements
+    authority:
+      customer: 1
+      support_lead: 2
+      product_manager: 3
+variables:
+  e1.priority:
+    label: HubSpot integration priority
+    governed_by:
+    - product_scope
+  e1.target:
+    label: HubSpot integration release target
+    governed_by:
+    - product_scope
+  e1.owner:
+    label: HubSpot integration owning team
+    governed_by:
+    - product_scope
+  e1.spec:
+    label: HubSpot integration specification
+    governed_by:
+    - requirements
+  e1.retention:
+    label: HubSpot integration data retention requirement
+    governed_by:
+    - requirements
+  e2.target:
+    label: webhooks release target
+    governed_by:
+    - product_scope
+  e2.rollout:
+    label: webhooks rollout plan
+    governed_by:
+    - product_scope
+  e2.arch:
+    label: webhooks architecture rule
+    governed_by:
+    - architecture
+  e2.retention:
+    label: webhooks data retention requirement
+    governed_by:
+    - requirements
+  e3.target:
+    label: data residency option release target
+    governed_by:
+    - product_scope
+  e3.priority:
+    label: data residency option priority
+    governed_by:
+    - product_scope
+  e3.rollout:
+    label: data residency option rollout plan
+    governed_by:
+    - product_scope
+    - commercial
+  e3.spec:
+    label: data residency option specification
+    governed_by:
+    - requirements
+  e4.tier:
+    label: API gateway pricing tier
+    governed_by:
+    - commercial
+  e4.owner:
+    label: API gateway owning team
+    governed_by:
+    - product_scope
+  e4.arch:
+    label: API gateway architecture rule
+    governed_by:
+    - architecture
+  e4.retention:
+    label: API gateway data retention requirement
+    governed_by:
+    - requirements
+  e5.rollout:
+    label: billing portal rollout plan
+    governed_by:
+    - product_scope
+  e5.tier:
+    label: billing portal pricing tier
+    governed_by:
+    - commercial
+    - product_scope
+  e5.retention:
+    label: billing portal data retention requirement
+    governed_by:
+    - requirements
+  e5.spec:
+    label: billing portal specification
+    governed_by:
+    - requirements
+entities:
+- HubSpot integration
+- webhooks
+- data residency option
+- API gateway
+- billing portal
+unanswerable:
+- webhooks security audit sign-off
+- billing portal general availability approval
+- API gateway legal clearance
+planted_drift:
+- e4.retention
+- e5.retention
+planted_contested:
+- e3.rollout
+- e5.tier
+planted_low_authority: []
+planted_open:
+- a048
+- a050
+- a052
+assertions:
+- id: a002
+  t: 2026-01-26
+  speaker: product_manager_1
+  domain: product_scope
+  kind: decide
+  var: e1.target
+  value: Q3
+- id: a026
+  t: 2026-01-31
+  speaker: customer_1
+  domain: requirements
+  kind: request
+  var: e1.spec
+  value: all records as CSV
+- id: a050
+  t: 2026-02-01
+  speaker: support_lead_1
+  domain: product_scope
+  kind: ask
+  var: e1.priority
+  value: who is the escalation contact
+- id: a051
+  t: 2026-02-08
+  speaker: sales_head_1
+  domain: product_scope
+  kind: answer
+  var: e1.priority
+  value: will confirm next week
+  ref:
+  - a050
+  complete: false
+- id: a027
+  t: 2026-02-15
+  speaker: product_manager_1
+  domain: requirements
+  kind: decide
+  var: e1.spec
+  value: all records as CSV
+  ref:
+  - a026
+- id: a011
+  t: 2026-02-17
+  speaker: tech_lead_2
+  domain: architecture
+  kind: decide
+  var: e2.arch
+  value: event bus only
+- id: a008
+  t: 2026-02-23
+  speaker: cto_1
+  domain: product_scope
+  kind: decide
+  var: e2.rollout
+  value: general availability
+- id: a058
+  t: 2026-02-28
+  speaker: product_manager_1
+  domain: architecture
+  kind: ask
+  var: e2.arch
+  value: which customers are affected
+- id: a028
+  t: 2026-03-07
+  speaker: engineer_2
+  domain: null
+  kind: implement
+  var: e1.spec
+  value: all records as CSV
+  ref:
+  - a027
+- id: a059
+  t: 2026-03-13
+  speaker: engineer_2
+  domain: architecture
+  kind: answer
+  var: e2.arch
+  value: the contract is unchanged
+  ref:
+  - a058
+  complete: true
+- id: a012
+  t: 2026-03-19
+  speaker: principal_engineer_1
+  domain: architecture
+  kind: decide
+  var: e2.arch
+  value: async job service only
+  discussion:
+  - a011
+- id: a019
+  t: 2026-03-19
+  speaker: cto_1
+  domain: product_scope
+  kind: decide
+  var: e4.owner
+  value: platform team
+- id: a052
+  t: 2026-03-22
+  speaker: engineer_1
+  domain: requirements
+  kind: ask
+  var: e4.retention
+  value: which customers are affected
+- id: a022
+  t: 2026-03-25
+  speaker: product_manager_1
+  domain: product_scope
+  kind: decide
+  var: e5.rollout
+  value: staged by region
+- id: a053
+  t: 2026-03-26
+  speaker: product_manager_1
+  domain: requirements
+  kind: answer
+  var: e4.retention
+  value: will confirm next week
+  ref:
+  - a052
+  complete: false
+- id: a009
+  t: 2026-03-27
+  speaker: engineer_1
+  domain: product_scope
+  kind: report
+  var: e2.rollout
+  value: a slipped dependency
+- id: a029
+  t: 2026-04-06
+  speaker: customer_1
+  domain: requirements
+  kind: request
+  var: e1.retention
+  value: keep 24 months
+- id: a016
+  t: 2026-04-09
+  speaker: cto_1
+  domain: product_scope
+  kind: decide
+  var: e3.rollout
+  value: staged by region
+- id: a056
+  t: 2026-04-09
+  speaker: principal_engineer_1
+  domain: product_scope
+  kind: ask
+  var: e2.target
+  value: is legal aware of this
+- id: a054
+  t: 2026-04-10
+  speaker: principal_engineer_1
+  domain: product_scope
+  kind: ask
+  var: e1.target
+  value: is the date firm
+- id: a010
+  t: 2026-04-14
+  speaker: cto_1
+  domain: product_scope
+  kind: decide
+  var: e2.rollout
+  value: internal only
+  ref:
+  - a009
+  trigger:
+  - a009
+- id: a042
+  t: 2026-04-14
+  speaker: customer_1
+  domain: requirements
+  kind: request
+  var: e5.retention
+  value: keep 24 months
+- id: a030
+  t: 2026-04-18
+  speaker: product_manager_2
+  domain: requirements
+  kind: decide
+  var: e1.retention
+  value: keep 12 months
+  ref:
+  - a029
+- id: a023
+  t: 2026-04-19
+  speaker: cto_1
+  domain: product_scope
+  kind: decide
+  var: e5.rollout
+  value: internal only
+  discussion:
+  - a022
+- id: a055
+  t: 2026-04-20
+  speaker: principal_engineer_1
+  domain: product_scope
+  kind: answer
+  var: e1.target
+  value: the platform migration is the only dependency
+  ref:
+  - a054
+  complete: true
+- id: a057
+  t: 2026-04-20
+  speaker: customer_1
+  domain: product_scope
+  kind: answer
+  var: e2.target
+  value: only the enterprise plans are in scope
+  ref:
+  - a056
+  complete: true
+- id: a043
+  t: 2026-04-21
+  speaker: product_manager_2
+  domain: requirements
+  kind: decide
+  var: e5.retention
+  value: keep 12 months
+  ref:
+  - a042
+- id: a044
+  t: 2026-04-26
+  speaker: engineer_2
+  domain: null
+  kind: implement
+  var: e5.retention
+  value: keep 12 months
+  ref:
+  - a043
+- id: a031
+  t: 2026-04-29
+  speaker: engineer_1
+  domain: null
+  kind: implement
+  var: e1.retention
+  value: keep 12 months
+  ref:
+  - a030
+- id: a003
+  t: 2026-04-30
+  speaker: cto_1
+  domain: product_scope
+  kind: decide
+  var: e1.owner
+  value: growth team
+- id: a017
+  t: 2026-05-03
+  speaker: sales_head_1
+  domain: commercial
+  kind: decide
+  var: e3.rollout
+  value: general availability
+- id: a004
+  t: 2026-05-10
+  speaker: engineer_2
+  domain: product_scope
+  kind: report
+  var: e1.owner
+  value: new usage data
+- id: a006
+  t: 2026-05-13
+  speaker: product_manager_2
+  domain: product_scope
+  kind: decide
+  var: e2.target
+  value: Q2
+- id: a045
+  t: 2026-05-14
+  speaker: product_manager_1
+  domain: requirements
+  kind: decide
+  var: e5.retention
+  value: keep 6 months
+  ref:
+  - a043
+- id: a005
+  t: 2026-05-23
+  speaker: cto_1
+  domain: product_scope
+  kind: decide
+  var: e1.owner
+  value: integrations team
+  ref:
+  - a004
+  trigger:
+  - a004
+- id: a007
+  t: 2026-05-28
+  speaker: cto_1
+  domain: product_scope
+  kind: decide
+  var: e2.target
+  value: Q1
+  discussion:
+  - a006
+- id: a038
+  t: 2026-06-02
+  speaker: customer_2
+  domain: requirements
+  kind: request
+  var: e4.retention
+  value: keep 24 months
+- id: a035
+  t: 2026-06-06
+  speaker: customer_2
+  domain: requirements
+  kind: request
+  var: e3.spec
+  value: all records as CSV
+- id: a032
+  t: 2026-06-13
+  speaker: customer_1
+  domain: requirements
+  kind: request
+  var: e2.retention
+  value: keep 24 months
+- id: a036
+  t: 2026-06-13
+  speaker: product_manager_1
+  domain: requirements
+  kind: decide
+  var: e3.spec
+  value: all records as CSV
+  ref:
+  - a035
+- id: a039
+  t: 2026-06-13
+  speaker: product_manager_2
+  domain: requirements
+  kind: decide
+  var: e4.retention
+  value: keep 12 months
+  ref:
+  - a038
+- id: a024
+  t: 2026-06-18
+  speaker: sales_head_1
+  domain: commercial
+  kind: decide
+  var: e5.tier
+  value: enterprise only
+- id: a040
+  t: 2026-06-20
+  speaker: engineer_1
+  domain: null
+  kind: implement
+  var: e4.retention
+  value: keep 12 months
+  ref:
+  - a039
+- id: a025
+  t: 2026-06-29
+  speaker: cto_1
+  domain: product_scope
+  kind: decide
+  var: e5.tier
+  value: paid add-on
+- id: a037
+  t: 2026-06-30
+  speaker: engineer_1
+  domain: null
+  kind: implement
+  var: e3.spec
+  value: all records as CSV
+  ref:
+  - a036
+- id: a020
+  t: 2026-07-04
+  speaker: engineer_1
+  domain: architecture
+  kind: decide
+  var: e4.arch
+  value: async job service only
+- id: a033
+  t: 2026-07-04
+  speaker: product_manager_1
+  domain: requirements
+  kind: decide
+  var: e2.retention
+  value: keep 12 months
+  ref:
+  - a032
+- id: a041
+  t: 2026-07-04
+  speaker: product_manager_2
+  domain: requirements
+  kind: decide
+  var: e4.retention
+  value: keep 6 months
+  ref:
+  - a039
+- id: a013
+  t: 2026-07-17
+  speaker: cto_1
+  domain: product_scope
+  kind: decide
+  var: e3.target
+  value: Q4
+- id: a021
+  t: 2026-07-19
+  speaker: principal_engineer_1
+  domain: architecture
+  kind: decide
+  var: e4.arch
+  value: direct database access forbidden
+  discussion:
+  - a020
+- id: a034
+  t: 2026-07-25
+  speaker: engineer_2
+  domain: null
+  kind: implement
+  var: e2.retention
+  value: keep 12 months
+  ref:
+  - a033
+- id: a014
+  t: 2026-08-01
+  speaker: product_manager_2
+  domain: product_scope
+  kind: decide
+  var: e3.priority
+  value: P1
+- id: a015
+  t: 2026-08-29
+  speaker: cto_1
+  domain: product_scope
+  kind: revoke
+  var: e3.priority
+  ref:
+  - a014
+- id: a018
+  t: 2026-09-06
+  speaker: sales_head_1
+  domain: commercial
+  kind: decide
+  var: e4.tier
+  value: included in all plans
+- id: a046
+  t: 2026-09-18
+  speaker: customer_1
+  domain: requirements
+  kind: request
+  var: e5.spec
+  value: all records as CSV
+- id: a001
+  t: 2026-09-21
+  speaker: cto_1
+  domain: product_scope
+  kind: decide
+  var: e1.priority
+  value: P1
+- id: a048
+  t: 2026-09-24
+  speaker: support_lead_1
+  domain: requirements
+  kind: ask
+  var: e3.spec
+  value: who signs off on this
+- id: a047
+  t: 2026-09-28
+  speaker: product_manager_1
+  domain: requirements
+  kind: decide
+  var: e5.spec
+  value: CSV with a 50k row cap
+  ref:
+  - a046
+- id: a049
+  t: 2026-09-30
+  speaker: support_lead_1
+  domain: requirements
+  kind: answer
+  var: e3.spec
+  value: still checking with the team
+  ref:
+  - a048
+  complete: false
+- id: a060
+  t: 2026-10-11
+  speaker: engineer_2
+  domain: product_scope
+  kind: report
+  var: e2.target
+  value: a vendor delay
+render:
+  chatter: 10
+  filler_sessions: 25
+panel_size: 30

@@ -1,0 +1,523 @@
+{
+ "affected_vars": [],
+ "archetype": "engineering_incident",
+ "artifacts": [
+  {
+   "event_date": "2026-08-18",
+   "id": "art-50805e34",
+   "ingest_date": "2026-08-18",
+   "spans": [
+    {
+     "id": "sp-745d12a393",
+     "text": "Team member Hannah Ward: role tech_lead."
+    },
+    {
+     "id": "sp-8c89ed782f",
+     "text": "Team member Priya Nair: role pm."
+    },
+    {
+     "id": "sp-8a9cf46c71",
+     "text": "Team member Ravi Menon: role principal."
+    },
+    {
+     "id": "sp-77290833b2",
+     "text": "Team member Kofi Mensah: role sre."
+    },
+    {
+     "id": "sp-27f5cdc5ee",
+     "text": "Team member Ana Costa: role support_lead."
+    },
+    {
+     "id": "sp-3627d7e64c",
+     "text": "Team member Elena Petrova: role vp_eng."
+    },
+    {
+     "id": "sp-5f997b39ee",
+     "text": "Authority in architecture: principal=3; sre=1; tech_lead=2."
+    },
+    {
+     "id": "sp-46179dd3de",
+     "text": "Authority in customer communications: pm=2; support_lead=2; vp_eng=3."
+    },
+    {
+     "id": "sp-5b4937e205",
+     "text": "Authority in operations: sre=2; tech_lead=2; vp_eng=3."
+    },
+    {
+     "id": "sp-a961664612",
+     "text": "Governance: \"deploy freeze\" is governed by customer communications, operations."
+    },
+    {
+     "id": "sp-29f4f52b00",
+     "text": "Governance: \"payment retry policy\" is governed by architecture."
+    },
+    {
+     "id": "sp-003c77b9fd",
+     "text": "Governance: \"payments rollback plan\" is governed by operations."
+    },
+    {
+     "id": "sp-4b54dffa9b",
+     "text": "Governance: \"status page wording\" is governed by customer communications."
+    }
+   ],
+   "status": "success",
+   "title": "Organization chart and governance",
+   "type": "org_chart"
+  },
+  {
+   "event_date": "2026-08-18",
+   "id": "art-69a73683",
+   "ingest_date": "2026-08-18",
+   "spans": [
+    {
+     "id": "sp-ab4dd91bd6",
+     "text": "On 2026-08-18, Kofi Mensah (sre) reported in operations: \"payments rollback plan: elevated_error_rate.\""
+    }
+   ],
+   "status": "success",
+   "title": "Meeting 2026-08-18",
+   "type": "meeting"
+  },
+  {
+   "event_date": "2026-08-18",
+   "id": "art-a099e64f",
+   "ingest_date": "2026-08-18",
+   "spans": [
+    {
+     "id": "sp-24b80dd44e",
+     "text": "On 2026-08-18, Hannah Ward (tech_lead) decided in operations: \"payments rollback plan: roll back release 41.\" [triggered by 2026-08-18 \"payments rollback plan\" by Kofi Mensah]"
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-08-18",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-08-19",
+   "id": "art-387c97dd",
+   "ingest_date": "2026-08-19",
+   "spans": [
+    {
+     "id": "sp-9224722c3f",
+     "text": "On 2026-08-19, Kofi Mensah (sre) said in operations: \"I think we should probably go with payments rollback plan: roll back release 41, at this point.\""
+    }
+   ],
+   "status": "success",
+   "title": "Meeting 2026-08-19",
+   "type": "meeting"
+  },
+  {
+   "event_date": "2026-08-19",
+   "id": "art-f9bc2da0",
+   "ingest_date": "2026-08-19",
+   "spans": [
+    {
+     "id": "sp-6d6ab31b70",
+     "text": "On 2026-08-19, Elena Petrova (vp_eng) decided in operations: \"payments rollback plan: roll forward with hotfix.\" [discussed in 2026-08-18 \"payments rollback plan\" by Hannah Ward]"
+    }
+   ],
+   "status": "success",
+   "title": "Ticket 2026-08-19",
+   "type": "ticket"
+  },
+  {
+   "event_date": "2026-08-22",
+   "id": "art-a10c5b76",
+   "ingest_date": "2026-08-22",
+   "spans": [
+    {
+     "id": "sp-1e29ee7fcb",
+     "text": "On 2026-08-22, Ravi Menon (principal) decided in architecture: \"payment retry policy: exponential backoff, max 3 retries.\" [see 2026-08-18 \"payments rollback plan\" by Kofi Mensah]"
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-08-22",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-08-25",
+   "id": "art-003d0b3b",
+   "ingest_date": "2026-08-25",
+   "spans": [
+    {
+     "id": "sp-4eefc81c35",
+     "text": "On 2026-08-25, Hannah Ward (tech_lead) said in architecture: \"I think we should probably go with payment retry policy: linear retry, max 5 retries, at this point.\""
+    }
+   ],
+   "status": "success",
+   "title": "Ticket 2026-08-25",
+   "type": "ticket"
+  },
+  {
+   "event_date": "2026-08-26",
+   "id": "art-b898ac5c",
+   "ingest_date": "2026-08-26",
+   "spans": [
+    {
+     "id": "sp-c7e7b0d9c3",
+     "text": "On 2026-08-26, Ana Costa (support_lead) decided in customer communications: \"status page wording: investigating.\""
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-08-26",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-08-30",
+   "id": "art-6a1ad36b",
+   "ingest_date": "2026-08-30",
+   "spans": [
+    {
+     "id": "sp-8f85e72f28",
+     "text": "On 2026-08-30, Elena Petrova (vp_eng) decided in customer communications: \"status page wording: resolved.\""
+    }
+   ],
+   "status": "success",
+   "title": "Meeting 2026-08-30",
+   "type": "meeting"
+  },
+  {
+   "event_date": "2026-09-02",
+   "id": "art-685e35c5",
+   "ingest_date": "2026-09-02",
+   "spans": [
+    {
+     "id": "sp-4c5a1a3410",
+     "text": "On 2026-09-02, Elena Petrova (vp_eng) decided in operations: \"deploy freeze: freeze until 2026-09-30.\""
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-09-02",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-09-04",
+   "id": "art-d0a2236f",
+   "ingest_date": "2026-09-04",
+   "spans": [
+    {
+     "id": "sp-eb59885d2f",
+     "text": "On 2026-09-04, Priya Nair (pm) noted in customer communications: \"Plan updated, deploy freeze now reads lift freeze for launch.\""
+    }
+   ],
+   "status": "success",
+   "title": "Ticket 2026-09-04",
+   "type": "ticket"
+  },
+  {
+   "event_date": "2026-09-08",
+   "id": "art-335a6f78",
+   "ingest_date": "2026-09-08",
+   "spans": [
+    {
+     "id": "sp-e00fc43409",
+     "text": "On 2026-09-08, Ana Costa (support_lead) asked in customer communications: \"status page wording? do affected customers get credits\""
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-09-08",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-09-15",
+   "id": "art-8ac663a3",
+   "ingest_date": "2026-09-15",
+   "spans": [
+    {
+     "id": "sp-f1394c36de",
+     "text": "On 2026-09-15, Kofi Mensah (sre) reported in operations: \"payments rollback plan: error_rate_normal.\""
+    }
+   ],
+   "status": "success",
+   "title": "Meeting 2026-09-15",
+   "type": "meeting"
+  }
+ ],
+ "checkpoints": [
+  "2026-08-19",
+  "2026-08-25",
+  "2026-08-30",
+  "2026-09-04",
+  "2026-09-15"
+ ],
+ "domain_labels": {
+  "architecture": "architecture",
+  "customer_comms": "customer communications",
+  "operations": "operations"
+ },
+ "explicitness": {
+  "i1": "explicit",
+  "i10": "diffuse",
+  "i11": "explicit",
+  "i2": "explicit",
+  "i3": "explicit",
+  "i4": "hedged",
+  "i5": "explicit",
+  "i6": "hedged",
+  "i7": "explicit",
+  "i8": "explicit",
+  "i9": "explicit",
+  "q1": "explicit"
+ },
+ "labels": {
+  "freeze": "deploy freeze",
+  "retry.policy": "payment retry policy",
+  "rollback.plan": "payments rollback plan",
+  "status.page": "status page wording"
+ },
+ "operator": {
+  "name": "clean"
+ },
+ "panel": null,
+ "people": {
+  "lead": "Hannah Ward",
+  "pm": "Priya Nair",
+  "principal": "Ravi Menon",
+  "sre": "Kofi Mensah",
+  "support": "Ana Costa",
+  "vp": "Elena Petrova"
+ },
+ "query_time": "2026-09-20",
+ "renderer": {
+  "name": "template"
+ },
+ "scenario_id": "incident-payments-01-s0",
+ "seed": 0,
+ "span_map": {
+  "sp-003c77b9fd": null,
+  "sp-1e29ee7fcb": "i5",
+  "sp-24b80dd44e": "i2",
+  "sp-27f5cdc5ee": null,
+  "sp-29f4f52b00": null,
+  "sp-3627d7e64c": null,
+  "sp-46179dd3de": null,
+  "sp-4b54dffa9b": null,
+  "sp-4c5a1a3410": "i9",
+  "sp-4eefc81c35": "i6",
+  "sp-5b4937e205": null,
+  "sp-5f997b39ee": null,
+  "sp-6d6ab31b70": "i3",
+  "sp-745d12a393": null,
+  "sp-77290833b2": null,
+  "sp-8a9cf46c71": null,
+  "sp-8c89ed782f": null,
+  "sp-8f85e72f28": "i8",
+  "sp-9224722c3f": "i4",
+  "sp-a961664612": null,
+  "sp-ab4dd91bd6": "i1",
+  "sp-c7e7b0d9c3": "i7",
+  "sp-e00fc43409": "q1",
+  "sp-eb59885d2f": "i10",
+  "sp-f1394c36de": "i11"
+ },
+ "template_id": "incident-payments-01",
+ "unanswerable": [
+  "incident root cause sign-off"
+ ],
+ "world": {
+  "assertions": [
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "operations",
+    "id": "i1",
+    "kind": "report",
+    "ref": [],
+    "speaker": "sre",
+    "t": "2026-08-18",
+    "trigger": [],
+    "value": "elevated_error_rate",
+    "var": "rollback.plan"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "operations",
+    "id": "i2",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "lead",
+    "t": "2026-08-18",
+    "trigger": [
+     "i1"
+    ],
+    "value": "roll back release 41",
+    "var": "rollback.plan"
+   },
+   {
+    "complete": true,
+    "discussion": [
+     "i2"
+    ],
+    "domain": "operations",
+    "id": "i3",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "vp",
+    "t": "2026-08-19",
+    "trigger": [],
+    "value": "roll forward with hotfix",
+    "var": "rollback.plan"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "operations",
+    "id": "i4",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "sre",
+    "t": "2026-08-19",
+    "trigger": [],
+    "value": "roll back release 41",
+    "var": "rollback.plan"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "architecture",
+    "id": "i5",
+    "kind": "decide",
+    "ref": [
+     "i1"
+    ],
+    "speaker": "principal",
+    "t": "2026-08-22",
+    "trigger": [],
+    "value": "exponential backoff, max 3 retries",
+    "var": "retry.policy"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "architecture",
+    "id": "i6",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "lead",
+    "t": "2026-08-25",
+    "trigger": [],
+    "value": "linear retry, max 5 retries",
+    "var": "retry.policy"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "customer_comms",
+    "id": "i7",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "support",
+    "t": "2026-08-26",
+    "trigger": [],
+    "value": "investigating",
+    "var": "status.page"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "customer_comms",
+    "id": "i8",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "vp",
+    "t": "2026-08-30",
+    "trigger": [],
+    "value": "resolved",
+    "var": "status.page"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "operations",
+    "id": "i9",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "vp",
+    "t": "2026-09-02",
+    "trigger": [],
+    "value": "freeze until 2026-09-30",
+    "var": "freeze"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "customer_comms",
+    "id": "i10",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "pm",
+    "t": "2026-09-04",
+    "trigger": [],
+    "value": "lift freeze for launch",
+    "var": "freeze"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "customer_comms",
+    "id": "q1",
+    "kind": "ask",
+    "ref": [],
+    "speaker": "support",
+    "t": "2026-09-08",
+    "trigger": [],
+    "value": "do affected customers get credits",
+    "var": "status.page"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "operations",
+    "id": "i11",
+    "kind": "report",
+    "ref": [],
+    "speaker": "sre",
+    "t": "2026-09-15",
+    "trigger": [],
+    "value": "error_rate_normal",
+    "var": "rollback.plan"
+   }
+  ],
+  "authority": {
+   "architecture": {
+    "principal": 3,
+    "sre": 1,
+    "tech_lead": 2
+   },
+   "customer_comms": {
+    "pm": 2,
+    "support_lead": 2,
+    "vp_eng": 3
+   },
+   "operations": {
+    "sre": 2,
+    "tech_lead": 2,
+    "vp_eng": 3
+   }
+  },
+  "governance": {
+   "freeze": [
+    "customer_comms",
+    "operations"
+   ],
+   "retry.policy": [
+    "architecture"
+   ],
+   "rollback.plan": [
+    "operations"
+   ],
+   "status.page": [
+    "customer_comms"
+   ]
+  },
+  "roles": {
+   "lead": "tech_lead",
+   "pm": "pm",
+   "principal": "principal",
+   "sre": "sre",
+   "support": "support_lead",
+   "vp": "vp_eng"
+  }
+ }
+}

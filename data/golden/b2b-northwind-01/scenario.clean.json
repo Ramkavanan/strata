@@ -1,0 +1,973 @@
+{
+ "affected_vars": [],
+ "archetype": "b2b_product_team",
+ "artifacts": [
+  {
+   "event_date": "2026-01-12",
+   "id": "art-fd49971f",
+   "ingest_date": "2026-01-12",
+   "spans": [
+    {
+     "id": "sp-f9fe0e213a",
+     "text": "Team member Sofia Lindqvist: role ceo."
+    },
+    {
+     "id": "sp-71119ca76b",
+     "text": "Team member Dev Rao: role cto."
+    },
+    {
+     "id": "sp-b8c8d01805",
+     "text": "Team member Omar Haddad: role customer."
+    },
+    {
+     "id": "sp-a346833f52",
+     "text": "Team member Arjun Mehta: role eng."
+    },
+    {
+     "id": "sp-8c89ed782f",
+     "text": "Team member Priya Nair: role pm."
+    },
+    {
+     "id": "sp-8a9cf46c71",
+     "text": "Team member Ravi Menon: role principal."
+    },
+    {
+     "id": "sp-cdb6cf2a56",
+     "text": "Team member Release Bot: role release."
+    },
+    {
+     "id": "sp-03eb8175c5",
+     "text": "Team member Maya Iyer: role sales_head."
+    },
+    {
+     "id": "sp-9ca6059ad1",
+     "text": "Team member Ana Costa: role support_lead."
+    },
+    {
+     "id": "sp-7cfdec1ade",
+     "text": "Team member Lena Fischer: role tech_lead."
+    },
+    {
+     "id": "sp-5f997b39ee",
+     "text": "Authority in architecture: eng=1; principal=3; tech_lead=2."
+    },
+    {
+     "id": "sp-2b3eb363fc",
+     "text": "Authority in commercial terms: ceo=3; sales_head=2."
+    },
+    {
+     "id": "sp-2f8b207e16",
+     "text": "Authority in product scope: cto=3; eng=1; pm=2."
+    },
+    {
+     "id": "sp-0681980415",
+     "text": "Authority in requirements: customer=1; pm=3; support_lead=2."
+    },
+    {
+     "id": "sp-0736b96a17",
+     "text": "Governance: \"export architecture rule\" is governed by architecture."
+    },
+    {
+     "id": "sp-4334c9d697",
+     "text": "Governance: \"bulk export specification\" is governed by requirements."
+    },
+    {
+     "id": "sp-c37e3bccc5",
+     "text": "Governance: \"HubSpot integration release target\" is governed by product scope."
+    },
+    {
+     "id": "sp-9bb3a7c1f2",
+     "text": "Governance: \"pricing tiers\" is governed by commercial terms."
+    },
+    {
+     "id": "sp-827ecc55aa",
+     "text": "Governance: \"Salesforce integration priority\" is governed by commercial terms, product scope."
+    },
+    {
+     "id": "sp-5da505ca96",
+     "text": "Governance: \"Salesforce integration release target\" is governed by product scope."
+    },
+    {
+     "id": "sp-035a0a65fc",
+     "text": "Governance: \"Salesforce API rate limit\" is governed by architecture."
+    },
+    {
+     "id": "sp-86f0394285",
+     "text": "Governance: \"SSO scope\" is governed by product scope."
+    }
+   ],
+   "status": "success",
+   "title": "Organization chart and governance",
+   "type": "org_chart"
+  },
+  {
+   "event_date": "2026-01-12",
+   "id": "art-c086fe41",
+   "ingest_date": "2026-01-12",
+   "spans": [
+    {
+     "id": "sp-7751136e45",
+     "text": "On 2026-01-12, Priya Nair (pm) decided in product scope: \"Salesforce integration release target: Q3.\""
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-01-12",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-02-03",
+   "id": "art-f8139056",
+   "ingest_date": "2026-02-03",
+   "spans": [
+    {
+     "id": "sp-fc920ede20",
+     "text": "On 2026-02-03, Arjun Mehta (eng) reported in architecture: \"Salesforce API rate limit: rate_limited.\""
+    }
+   ],
+   "status": "success",
+   "title": "Meeting 2026-02-03",
+   "type": "meeting"
+  },
+  {
+   "event_date": "2026-02-04",
+   "id": "art-a6603d49",
+   "ingest_date": "2026-02-04",
+   "spans": [
+    {
+     "id": "sp-1d59450865",
+     "text": "On 2026-02-04, Omar Haddad (customer) requested in requirements: \"bulk export specification: bulk export of all records, CSV.\""
+    }
+   ],
+   "status": "success",
+   "title": "Customer Call 2026-02-04",
+   "type": "customer_call"
+  },
+  {
+   "event_date": "2026-02-11",
+   "id": "art-6b4b5fe7",
+   "ingest_date": "2026-02-11",
+   "spans": [
+    {
+     "id": "sp-de56878fed",
+     "text": "On 2026-02-11, Priya Nair (pm) decided in requirements: \"bulk export specification: bulk export, CSV, max 50k rows per job.\" [see 2026-02-04 \"bulk export specification\" by Omar Haddad]"
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-02-11",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-02-20",
+   "id": "art-0c4a600b",
+   "ingest_date": "2026-02-20",
+   "spans": [
+    {
+     "id": "sp-a146d7e13e",
+     "text": "On 2026-02-20, Priya Nair (pm) decided in product scope: \"HubSpot integration release target: Q2.\""
+    }
+   ],
+   "status": "success",
+   "title": "Meeting 2026-02-20",
+   "type": "meeting"
+  },
+  {
+   "event_date": "2026-03-01",
+   "id": "art-138bc716",
+   "ingest_date": "2026-03-01",
+   "spans": [
+    {
+     "id": "sp-77a25f3a0a",
+     "text": "On 2026-03-01, Priya Nair (pm) decided in product scope: \"SSO scope: SAML only.\""
+    }
+   ],
+   "status": "success",
+   "title": "Meeting 2026-03-01",
+   "type": "meeting"
+  },
+  {
+   "event_date": "2026-03-02",
+   "id": "art-5298beb0",
+   "ingest_date": "2026-03-02",
+   "spans": [
+    {
+     "id": "sp-0f31941bb2",
+     "text": "On 2026-03-02, Ravi Menon (principal) decided in architecture: \"export architecture rule: exports run only through the async job service.\""
+    }
+   ],
+   "status": "success",
+   "title": "Ticket 2026-03-02",
+   "type": "ticket"
+  },
+  {
+   "event_date": "2026-03-10",
+   "id": "art-22ba86b0",
+   "ingest_date": "2026-03-10",
+   "spans": [
+    {
+     "id": "sp-4c9d2d7b8d",
+     "text": "On 2026-03-10, Maya Iyer (sales_head) decided in commercial terms: \"pricing tiers: two tiers.\""
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-03-10",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-03-18",
+   "id": "art-4d6ee058",
+   "ingest_date": "2026-03-18",
+   "spans": [
+    {
+     "id": "sp-aab1c2d815",
+     "text": "On 2026-03-18, Priya Nair (pm) decided in product scope: \"Salesforce integration release target: Q4.\" [see 2026-02-03 \"Salesforce API rate limit\" by Arjun Mehta] [triggered by 2026-02-03 \"Salesforce API rate limit\" by Arjun Mehta]"
+    }
+   ],
+   "status": "success",
+   "title": "Ticket 2026-03-18",
+   "type": "ticket"
+  },
+  {
+   "event_date": "2026-03-20",
+   "id": "art-ee714499",
+   "ingest_date": "2026-03-20",
+   "spans": [
+    {
+     "id": "sp-c8a51e0eef",
+     "text": "On 2026-03-20, Arjun Mehta (eng) said in architecture: \"I think we should probably go with export architecture rule: synchronous export is fine for small jobs, at this point.\""
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-03-20",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-03-25",
+   "id": "art-b75b6691",
+   "ingest_date": "2026-03-25",
+   "spans": [
+    {
+     "id": "sp-e00fc43409",
+     "text": "On 2026-03-25, Maya Iyer (sales_head) asked in commercial terms: \"Salesforce integration priority? which customer commitment applies\""
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-03-25",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-04-02",
+   "id": "art-43084c21",
+   "ingest_date": "2026-04-02",
+   "spans": [
+    {
+     "id": "sp-7691096bf9",
+     "text": "On 2026-04-02, Sofia Lindqvist (ceo) answered in commercial terms (complete) the 2026-03-25 question on \"Salesforce integration priority\": \"customer X renewal\""
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-04-02",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-04-05",
+   "id": "art-ed127ddb",
+   "ingest_date": "2026-04-05",
+   "spans": [
+    {
+     "id": "sp-4e10adb346",
+     "text": "On 2026-04-05, Dev Rao (cto) decided in product scope: \"HubSpot integration release target: Q3.\" [discussed in 2026-02-20 \"HubSpot integration release target\" by Priya Nair]"
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-04-05",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-04-08",
+   "id": "art-8dd9b23d",
+   "ingest_date": "2026-04-08",
+   "spans": [
+    {
+     "id": "sp-8b9758b94e",
+     "text": "# bulk export specification\n# shipped 2026-04-08 by Release Bot\nBULK_EXPORT_SPECIFICATION = \"bulk export, CSV, max 100k rows per job\"\n"
+    }
+   ],
+   "status": "success",
+   "title": "src/config/bulk_export_specification.py",
+   "type": "source_code"
+  },
+  {
+   "event_date": "2026-04-08",
+   "id": "art-f389e129",
+   "ingest_date": "2026-04-08",
+   "spans": [
+    {
+     "id": "sp-8f9136e41e",
+     "text": "On 2026-04-08, Release Bot (release) shipped in release: \"bulk export specification: bulk export, CSV, max 100k rows per job.\" [see 2026-02-11 \"bulk export specification\" by Priya Nair]"
+    }
+   ],
+   "status": "success",
+   "title": "Release Note 2026-04-08",
+   "type": "release_note"
+  },
+  {
+   "event_date": "2026-04-10",
+   "id": "art-8a08d600",
+   "ingest_date": "2026-04-10",
+   "spans": [
+    {
+     "id": "sp-fee3ae9d8d",
+     "text": "On 2026-04-10, Arjun Mehta (eng) said in product scope: \"I think we should probably go with Salesforce integration release target: Q2, at this point.\""
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-04-10",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-04-15",
+   "id": "art-2125e61a",
+   "ingest_date": "2026-04-15",
+   "spans": [
+    {
+     "id": "sp-2a5899b211",
+     "text": "On 2026-04-15, Dev Rao (cto) withdrew in product scope the 2026-03-01 decision on \"SSO scope\"."
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-04-15",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-04-22",
+   "id": "art-df43cffb",
+   "ingest_date": "2026-04-22",
+   "spans": [
+    {
+     "id": "sp-270cbe0e3b",
+     "text": "On 2026-04-22, Dev Rao (cto) decided in product scope: \"Salesforce integration priority: below_hubspot.\""
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-04-22",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-05-02",
+   "id": "art-d2258440",
+   "ingest_date": "2026-05-02",
+   "spans": [
+    {
+     "id": "sp-5b3b27baeb",
+     "text": "On 2026-05-02, Priya Nair (pm) said in product scope: \"I think we should probably go with HubSpot integration release target: Q2, at this point.\""
+    }
+   ],
+   "status": "success",
+   "title": "Ticket 2026-05-02",
+   "type": "ticket"
+  },
+  {
+   "event_date": "2026-05-12",
+   "id": "art-ce9f5aa4",
+   "ingest_date": "2026-05-12",
+   "spans": [
+    {
+     "id": "sp-4a8be7ff26",
+     "text": "On 2026-05-12, Maya Iyer (sales_head) said in commercial terms: \"I think we should probably go with pricing tiers: three tiers, at this point.\" [see 2026-03-10 \"pricing tiers\" by Maya Iyer]"
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-05-12",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-05-14",
+   "id": "art-2d18433c",
+   "ingest_date": "2026-05-14",
+   "spans": [
+    {
+     "id": "sp-898eb5353c",
+     "text": "On 2026-05-14, Ana Costa (support_lead) asked in requirements: \"bulk export specification? does the 50k cap apply to enterprise plans\""
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-05-14",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-05-20",
+   "id": "art-da66b5e8",
+   "ingest_date": "2026-05-20",
+   "spans": [
+    {
+     "id": "sp-4807bfbf72",
+     "text": "On 2026-05-20, Priya Nair (pm) asked in product scope: \"HubSpot integration release target? is the HubSpot launch date firm\""
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-05-20",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-05-22",
+   "id": "art-1a8c4688",
+   "ingest_date": "2026-05-22",
+   "spans": [
+    {
+     "id": "sp-d94ea3dd3f",
+     "text": "On 2026-05-22, Dev Rao (cto) answered in product scope (partial) the 2026-05-20 question on \"HubSpot integration release target\": \"depends on vendor review\""
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-05-22",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-05-30",
+   "id": "art-2016a8f8",
+   "ingest_date": "2026-05-30",
+   "spans": [
+    {
+     "id": "sp-778c5f52a1",
+     "text": "On 2026-05-30, Maya Iyer (sales_head) noted in commercial terms: \"Plan updated, Salesforce integration priority now reads committed_customer_x.\""
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-05-30",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-07-20",
+   "id": "art-ad42d2b0",
+   "ingest_date": "2026-07-20",
+   "spans": [
+    {
+     "id": "sp-fc625fb88e",
+     "text": "On 2026-07-20, Arjun Mehta (eng) reported in architecture: \"Salesforce API rate limit: still_rate_limited.\""
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-07-20",
+   "type": "chat"
+  }
+ ],
+ "checkpoints": [
+  "2026-02-20",
+  "2026-03-20",
+  "2026-04-10",
+  "2026-05-14",
+  "2026-07-20"
+ ],
+ "domain_labels": {
+  "architecture": "architecture",
+  "commercial": "commercial terms",
+  "product_scope": "product scope",
+  "requirements": "requirements"
+ },
+ "explicitness": {
+  "a1": "explicit",
+  "a10": "explicit",
+  "a11": "explicit",
+  "a12": "explicit",
+  "a13": "hedged",
+  "a2": "explicit",
+  "a3": "explicit",
+  "a4": "hedged",
+  "a5": "explicit",
+  "a6": "diffuse",
+  "a7": "explicit",
+  "a8": "explicit",
+  "a9": "hedged",
+  "b1": "explicit",
+  "b2": "explicit",
+  "b3": "explicit",
+  "b4": "hedged",
+  "b5": "explicit",
+  "q1": "explicit",
+  "q1a": "explicit",
+  "q3": "explicit",
+  "q4": "explicit",
+  "q4a": "explicit",
+  "r1": "explicit"
+ },
+ "labels": {
+  "export.arch_rule": "export architecture rule",
+  "export.spec": "bulk export specification",
+  "hub.target": "HubSpot integration release target",
+  "pricing.tiers": "pricing tiers",
+  "sf.priority": "Salesforce integration priority",
+  "sf.target": "Salesforce integration release target",
+  "sf_api.limit": "Salesforce API rate limit",
+  "sso.scope": "SSO scope"
+ },
+ "operator": {
+  "name": "clean"
+ },
+ "panel": null,
+ "people": {
+  "ceo": "Sofia Lindqvist",
+  "cto": "Dev Rao",
+  "customer_x": "Omar Haddad",
+  "eng": "Arjun Mehta",
+  "pm": "Priya Nair",
+  "principal": "Ravi Menon",
+  "release": "Release Bot",
+  "sales_head": "Maya Iyer",
+  "support_lead": "Ana Costa",
+  "tech_lead": "Lena Fischer"
+ },
+ "query_time": "2026-07-31",
+ "renderer": {
+  "name": "template"
+ },
+ "scenario_id": "b2b-northwind-01-s0",
+ "seed": 0,
+ "span_map": {
+  "sp-035a0a65fc": null,
+  "sp-03eb8175c5": null,
+  "sp-0681980415": null,
+  "sp-0736b96a17": null,
+  "sp-0f31941bb2": "b3",
+  "sp-1d59450865": "b1",
+  "sp-270cbe0e3b": "a5",
+  "sp-2a5899b211": "a11",
+  "sp-2b3eb363fc": null,
+  "sp-2f8b207e16": null,
+  "sp-4334c9d697": null,
+  "sp-4807bfbf72": "q4",
+  "sp-4a8be7ff26": "a13",
+  "sp-4c9d2d7b8d": "a12",
+  "sp-4e10adb346": "a8",
+  "sp-5b3b27baeb": "a9",
+  "sp-5da505ca96": null,
+  "sp-5f997b39ee": null,
+  "sp-71119ca76b": null,
+  "sp-7691096bf9": "q1a",
+  "sp-7751136e45": "a1",
+  "sp-778c5f52a1": "a6",
+  "sp-77a25f3a0a": "a10",
+  "sp-7cfdec1ade": null,
+  "sp-827ecc55aa": null,
+  "sp-86f0394285": null,
+  "sp-898eb5353c": "q3",
+  "sp-8a9cf46c71": null,
+  "sp-8b9758b94e": "b5",
+  "sp-8c89ed782f": null,
+  "sp-8f9136e41e": "b5",
+  "sp-9bb3a7c1f2": null,
+  "sp-9ca6059ad1": null,
+  "sp-a146d7e13e": "a7",
+  "sp-a346833f52": null,
+  "sp-aab1c2d815": "a3",
+  "sp-b8c8d01805": null,
+  "sp-c37e3bccc5": null,
+  "sp-c8a51e0eef": "b4",
+  "sp-cdb6cf2a56": null,
+  "sp-d94ea3dd3f": "q4a",
+  "sp-de56878fed": "b2",
+  "sp-e00fc43409": "q1",
+  "sp-f9fe0e213a": null,
+  "sp-fc625fb88e": "r1",
+  "sp-fc920ede20": "a2",
+  "sp-fee3ae9d8d": "a4"
+ },
+ "template_id": "b2b-northwind-01",
+ "unanswerable": [
+  "Salesforce GA release approval",
+  "HubSpot security audit sign-off"
+ ],
+ "world": {
+  "assertions": [
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "product_scope",
+    "id": "a1",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "pm",
+    "t": "2026-01-12",
+    "trigger": [],
+    "value": "Q3",
+    "var": "sf.target"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "architecture",
+    "id": "a2",
+    "kind": "report",
+    "ref": [],
+    "speaker": "eng",
+    "t": "2026-02-03",
+    "trigger": [],
+    "value": "rate_limited",
+    "var": "sf_api.limit"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "product_scope",
+    "id": "a3",
+    "kind": "decide",
+    "ref": [
+     "a2"
+    ],
+    "speaker": "pm",
+    "t": "2026-03-18",
+    "trigger": [
+     "a2"
+    ],
+    "value": "Q4",
+    "var": "sf.target"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "product_scope",
+    "id": "a4",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "eng",
+    "t": "2026-04-10",
+    "trigger": [],
+    "value": "Q2",
+    "var": "sf.target"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "product_scope",
+    "id": "a5",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "cto",
+    "t": "2026-04-22",
+    "trigger": [],
+    "value": "below_hubspot",
+    "var": "sf.priority"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "commercial",
+    "id": "a6",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "sales_head",
+    "t": "2026-05-30",
+    "trigger": [],
+    "value": "committed_customer_x",
+    "var": "sf.priority"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "product_scope",
+    "id": "a7",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "pm",
+    "t": "2026-02-20",
+    "trigger": [],
+    "value": "Q2",
+    "var": "hub.target"
+   },
+   {
+    "complete": true,
+    "discussion": [
+     "a7"
+    ],
+    "domain": "product_scope",
+    "id": "a8",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "cto",
+    "t": "2026-04-05",
+    "trigger": [],
+    "value": "Q3",
+    "var": "hub.target"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "product_scope",
+    "id": "a9",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "pm",
+    "t": "2026-05-02",
+    "trigger": [],
+    "value": "Q2",
+    "var": "hub.target"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "product_scope",
+    "id": "a10",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "pm",
+    "t": "2026-03-01",
+    "trigger": [],
+    "value": "SAML only",
+    "var": "sso.scope"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "product_scope",
+    "id": "a11",
+    "kind": "revoke",
+    "ref": [
+     "a10"
+    ],
+    "speaker": "cto",
+    "t": "2026-04-15",
+    "trigger": [],
+    "value": null,
+    "var": "sso.scope"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "commercial",
+    "id": "a12",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "sales_head",
+    "t": "2026-03-10",
+    "trigger": [],
+    "value": "two tiers",
+    "var": "pricing.tiers"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "commercial",
+    "id": "a13",
+    "kind": "decide",
+    "ref": [
+     "a12"
+    ],
+    "speaker": "sales_head",
+    "t": "2026-05-12",
+    "trigger": [],
+    "value": "three tiers",
+    "var": "pricing.tiers"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "requirements",
+    "id": "b1",
+    "kind": "request",
+    "ref": [],
+    "speaker": "customer_x",
+    "t": "2026-02-04",
+    "trigger": [],
+    "value": "bulk export of all records, CSV",
+    "var": "export.spec"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "requirements",
+    "id": "b2",
+    "kind": "decide",
+    "ref": [
+     "b1"
+    ],
+    "speaker": "pm",
+    "t": "2026-02-11",
+    "trigger": [],
+    "value": "bulk export, CSV, max 50k rows per job",
+    "var": "export.spec"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "architecture",
+    "id": "b3",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "principal",
+    "t": "2026-03-02",
+    "trigger": [],
+    "value": "exports run only through the async job service",
+    "var": "export.arch_rule"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "architecture",
+    "id": "b4",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "eng",
+    "t": "2026-03-20",
+    "trigger": [],
+    "value": "synchronous export is fine for small jobs",
+    "var": "export.arch_rule"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": null,
+    "id": "b5",
+    "kind": "implement",
+    "ref": [
+     "b2"
+    ],
+    "speaker": "release",
+    "t": "2026-04-08",
+    "trigger": [],
+    "value": "bulk export, CSV, max 100k rows per job",
+    "var": "export.spec"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "commercial",
+    "id": "q1",
+    "kind": "ask",
+    "ref": [],
+    "speaker": "sales_head",
+    "t": "2026-03-25",
+    "trigger": [],
+    "value": "which customer commitment applies",
+    "var": "sf.priority"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "commercial",
+    "id": "q1a",
+    "kind": "answer",
+    "ref": [
+     "q1"
+    ],
+    "speaker": "ceo",
+    "t": "2026-04-02",
+    "trigger": [],
+    "value": "customer X renewal",
+    "var": "sf.priority"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "requirements",
+    "id": "q3",
+    "kind": "ask",
+    "ref": [],
+    "speaker": "support_lead",
+    "t": "2026-05-14",
+    "trigger": [],
+    "value": "does the 50k cap apply to enterprise plans",
+    "var": "export.spec"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "product_scope",
+    "id": "q4",
+    "kind": "ask",
+    "ref": [],
+    "speaker": "pm",
+    "t": "2026-05-20",
+    "trigger": [],
+    "value": "is the HubSpot launch date firm",
+    "var": "hub.target"
+   },
+   {
+    "complete": false,
+    "discussion": [],
+    "domain": "product_scope",
+    "id": "q4a",
+    "kind": "answer",
+    "ref": [
+     "q4"
+    ],
+    "speaker": "cto",
+    "t": "2026-05-22",
+    "trigger": [],
+    "value": "depends on vendor review",
+    "var": "hub.target"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "architecture",
+    "id": "r1",
+    "kind": "report",
+    "ref": [],
+    "speaker": "eng",
+    "t": "2026-07-20",
+    "trigger": [],
+    "value": "still_rate_limited",
+    "var": "sf_api.limit"
+   }
+  ],
+  "authority": {
+   "architecture": {
+    "eng": 1,
+    "principal": 3,
+    "tech_lead": 2
+   },
+   "commercial": {
+    "ceo": 3,
+    "sales_head": 2
+   },
+   "product_scope": {
+    "cto": 3,
+    "eng": 1,
+    "pm": 2
+   },
+   "requirements": {
+    "customer": 1,
+    "pm": 3,
+    "support_lead": 2
+   }
+  },
+  "governance": {
+   "export.arch_rule": [
+    "architecture"
+   ],
+   "export.spec": [
+    "requirements"
+   ],
+   "hub.target": [
+    "product_scope"
+   ],
+   "pricing.tiers": [
+    "commercial"
+   ],
+   "sf.priority": [
+    "commercial",
+    "product_scope"
+   ],
+   "sf.target": [
+    "product_scope"
+   ],
+   "sf_api.limit": [
+    "architecture"
+   ],
+   "sso.scope": [
+    "product_scope"
+   ]
+  },
+  "roles": {
+   "ceo": "ceo",
+   "cto": "cto",
+   "customer_x": "customer",
+   "eng": "eng",
+   "pm": "pm",
+   "principal": "principal",
+   "release": "release",
+   "sales_head": "sales_head",
+   "support_lead": "support_lead",
+   "tech_lead": "tech_lead"
+  }
+ }
+}

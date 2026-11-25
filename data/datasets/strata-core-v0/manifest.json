@@ -1,0 +1,1456 @@
+{
+ "generator_version": "1",
+ "harness_version": "0.2.0",
+ "name": "strata-core-v0",
+ "spec": {
+  "dev_indices": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "instantiation_seed": 0,
+  "name": "strata-core-v0",
+  "panel_size": 30,
+  "public_seed": 20261019,
+  "render": {
+   "chatter": 10,
+   "filler_sessions": 25
+  },
+  "templates_per_archetype": 10,
+  "validation_indices": [
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "version": "0.1.0"
+ },
+ "splits": {
+  "dev": {
+   "counts": {
+    "clean": {
+     "by_family": {
+      "T1": 14,
+      "T10": 14,
+      "T11": 12,
+      "T12": 12,
+      "T13": 12,
+      "T2": 78,
+      "T3": 140,
+      "T4": 12,
+      "T5": 6,
+      "T5b": 12,
+      "T6": 12,
+      "T7": 12,
+      "T8": 12,
+      "T9": 12
+     },
+     "goldens": 360
+    },
+    "contradict_cross": {
+     "by_family": {
+      "T1": 30,
+      "T10": 14,
+      "T11": 12,
+      "T12": 12,
+      "T13": 12,
+      "T2": 99,
+      "T3": 140,
+      "T4": 9,
+      "T5": 6,
+      "T5b": 33,
+      "T6": 12,
+      "T7": 12,
+      "T8": 12,
+      "T9": 12
+     },
+     "goldens": 415
+    },
+    "contradict_low": {
+     "by_family": {
+      "T1": 25,
+      "T10": 14,
+      "T11": 12,
+      "T12": 12,
+      "T13": 12,
+      "T2": 78,
+      "T3": 140,
+      "T4": 12,
+      "T5": 55,
+      "T5b": 12,
+      "T6": 12,
+      "T7": 12,
+      "T8": 12,
+      "T9": 12
+     },
+     "goldens": 420
+    },
+    "incomplete": {
+     "by_family": {
+      "T1": 13,
+      "T10": 14,
+      "T11": 12,
+      "T12": 12,
+      "T13": 12,
+      "T2": 53,
+      "T3": 140,
+      "T4": 7,
+      "T5": 3,
+      "T5b": 8,
+      "T6": 9,
+      "T7": 12,
+      "T8": 10,
+      "T9": 12
+     },
+     "goldens": 317
+    },
+    "late": {
+     "by_family": {
+      "T1": 14,
+      "T10": 14,
+      "T11": 12,
+      "T12": 12,
+      "T13": 12,
+      "T2": 78,
+      "T3": 140,
+      "T4": 12,
+      "T5": 6,
+      "T5b": 12,
+      "T6": 12,
+      "T7": 12,
+      "T8": 12,
+      "T9": 12
+     },
+     "goldens": 360
+    },
+    "noisy": {
+     "by_family": {
+      "T1": 14,
+      "T10": 14,
+      "T11": 12,
+      "T12": 12,
+      "T13": 12,
+      "T2": 78,
+      "T3": 140,
+      "T4": 12,
+      "T5": 6,
+      "T5b": 12,
+      "T6": 12,
+      "T7": 12,
+      "T8": 12,
+      "T9": 12
+     },
+     "goldens": 360
+    },
+    "stale": {
+     "by_family": {
+      "T1": 6,
+      "T10": 13,
+      "T11": 12,
+      "T12": 12,
+      "T13": 12,
+      "T2": 29,
+      "T3": 65,
+      "T4": 4,
+      "T5": 1,
+      "T5b": 7,
+      "T6": 5,
+      "T7": 12,
+      "T8": 6,
+      "T9": 4
+     },
+     "goldens": 188
+    }
+   },
+   "hidden": false,
+   "stats": {
+    "assertions": {
+     "max": 61,
+     "median": 54.5,
+     "min": 45
+    },
+    "authority_conflicts": {
+     "max": 4,
+     "median": 2.5,
+     "min": 2
+    },
+    "corpus_tokens": {
+     "max": 34477,
+     "median": 30872,
+     "min": 28815
+    },
+    "cross_domain_conflicts": {
+     "max": 2,
+     "median": 2.0,
+     "min": 1
+    },
+    "decisions": {
+     "max": 31,
+     "median": 27.0,
+     "min": 17
+    },
+    "drifted_requirements": {
+     "max": 3,
+     "median": 3.0,
+     "min": 1
+    },
+    "entities": {
+     "max": 5,
+     "median": 4.0,
+     "min": 3
+    },
+    "history_days": {
+     "max": 258,
+     "median": 210.0,
+     "min": 191
+    },
+    "open_share": {
+     "max": 0.6,
+     "median": 0.5,
+     "min": 0.429
+    },
+    "people": {
+     "max": 13,
+     "median": 12.0,
+     "min": 10
+    },
+    "questions": {
+     "max": 10,
+     "median": 6.5,
+     "min": 5
+    },
+    "requirements": {
+     "max": 8,
+     "median": 6.0,
+     "min": 5
+    },
+    "roles": {
+     "max": 8,
+     "median": 8.0,
+     "min": 8
+    },
+    "sessions": {
+     "max": 92,
+     "median": 85.0,
+     "min": 75
+    },
+    "share_superseded_or_revoked": {
+     "max": 0.296,
+     "median": 0.25,
+     "min": 0.207
+    },
+    "variables": {
+     "max": 22,
+     "median": 19.0,
+     "min": 11
+    },
+    "variables_per_entity": {
+     "max": 5,
+     "median": 5.0,
+     "min": 4
+    }
+   },
+   "templates": {
+    "b2b-00": {
+     "archetype": "b2b_product_team",
+     "operators": {
+      "clean": {
+       "items": "1b444f522d68fcda",
+       "render": "f896270260892c15",
+       "world": "91ce68e75306bfb7"
+      },
+      "contradict_cross": {
+       "items": "78bf30318f8530d1",
+       "render": "9030edb77719ea63",
+       "world": "1913bc240fd1b6a5"
+      },
+      "contradict_low": {
+       "items": "f146dd42d1012cdf",
+       "render": "19c1562f2931d7d7",
+       "world": "85d9503e6fe56ea3"
+      },
+      "incomplete": {
+       "items": "07ca84f2badb088e",
+       "render": "4e22ee9e7c39504f",
+       "world": "003ee54ff5ad1a0d"
+      },
+      "late": {
+       "items": "8b14d57e740a0a53",
+       "render": "f57e7c3068a068ef",
+       "world": "91ce68e75306bfb7"
+      },
+      "noisy": {
+       "items": "73f673442026393d",
+       "render": "3e5eff4f8ccd3cd6",
+       "world": "91ce68e75306bfb7"
+      },
+      "stale": {
+       "items": "10812f9947fb3b5b",
+       "render": "85b80bc557fe274f",
+       "world": "62a644a18a1d6998"
+      }
+     },
+     "scenario_id": "b2b-00-s0",
+     "template": "b10377baee1a628d"
+    },
+    "b2b-01": {
+     "archetype": "b2b_product_team",
+     "operators": {
+      "clean": {
+       "items": "f5301ae8f524be9a",
+       "render": "ef57241b84c756ce",
+       "world": "9f5ff5d3b403f9f2"
+      },
+      "contradict_cross": {
+       "items": "a12cc00f741c69bc",
+       "render": "7014cb19f410a7ac",
+       "world": "3ae9dc7fec0cc686"
+      },
+      "contradict_low": {
+       "items": "41302208bdb66ee7",
+       "render": "1c5b54d0082a4822",
+       "world": "1a72e989bf40b8f1"
+      },
+      "incomplete": {
+       "items": "fa5380f9dfa057be",
+       "render": "d6616499220bc9f5",
+       "world": "75205a7ff06789e6"
+      },
+      "late": {
+       "items": "7d498d52686c3aaf",
+       "render": "311ad7d461f69280",
+       "world": "9f5ff5d3b403f9f2"
+      },
+      "noisy": {
+       "items": "62985a2a48f74479",
+       "render": "c59fbef800fc298e",
+       "world": "9f5ff5d3b403f9f2"
+      },
+      "stale": {
+       "items": "cc21cd3a4fa59a58",
+       "render": "259a5e2e4725f02d",
+       "world": "27db3322b302b796"
+      }
+     },
+     "scenario_id": "b2b-01-s0",
+     "template": "8ee901b907a2f83d"
+    },
+    "b2b-02": {
+     "archetype": "b2b_product_team",
+     "operators": {
+      "clean": {
+       "items": "756afe2e3150d054",
+       "render": "5ae8a12a20209aac",
+       "world": "741d99b9f88a6b4e"
+      },
+      "contradict_cross": {
+       "items": "bd06c6f8bc88914d",
+       "render": "9d1d592f2cfb5c28",
+       "world": "c6b17f813205f129"
+      },
+      "contradict_low": {
+       "items": "dc01ef7558c57d59",
+       "render": "29a09588e725727b",
+       "world": "5709f284ddff6917"
+      },
+      "incomplete": {
+       "items": "3bc59dbfb066a24a",
+       "render": "bc1f437b8a9c472b",
+       "world": "46d5e28ea311fe2f"
+      },
+      "late": {
+       "items": "2281e6e7893f44b2",
+       "render": "d79cffa208508dbf",
+       "world": "741d99b9f88a6b4e"
+      },
+      "noisy": {
+       "items": "65f96585559f2299",
+       "render": "289e80bf0f50fa54",
+       "world": "741d99b9f88a6b4e"
+      },
+      "stale": {
+       "items": "3a2ba8f961f8e514",
+       "render": "646c0006cb0f37fc",
+       "world": "28b1d05a04a46f35"
+      }
+     },
+     "scenario_id": "b2b-02-s0",
+     "template": "2eeb6c966ee2ac32"
+    },
+    "b2b-03": {
+     "archetype": "b2b_product_team",
+     "operators": {
+      "clean": {
+       "items": "c725c960c244221b",
+       "render": "8acdc16098f0158d",
+       "world": "615e04ac266580df"
+      },
+      "contradict_cross": {
+       "items": "9e2857b183e23c3f",
+       "render": "19002b00c48276f0",
+       "world": "2dd7afb8f3cccdab"
+      },
+      "contradict_low": {
+       "items": "fda28df1a803ee51",
+       "render": "4c13d267c10442d5",
+       "world": "4ec04fa5c2b3391a"
+      },
+      "incomplete": {
+       "items": "64e4eeb446c1daa5",
+       "render": "a242e0a99ba2bbd9",
+       "world": "52dd4e54bc724b32"
+      },
+      "late": {
+       "items": "8a4fc2c66670b637",
+       "render": "155ffb638ed735e4",
+       "world": "615e04ac266580df"
+      },
+      "noisy": {
+       "items": "6bd61b18d58ed3d0",
+       "render": "bf37b82f22d02811",
+       "world": "615e04ac266580df"
+      },
+      "stale": {
+       "items": "a8c763c17dacc36c",
+       "render": "0b6ceaadf794070d",
+       "world": "f9ffb4e5ed75f04d"
+      }
+     },
+     "scenario_id": "b2b-03-s0",
+     "template": "9064c65f5fe8b3b9"
+    },
+    "cs-00": {
+     "archetype": "customer_success_team",
+     "operators": {
+      "clean": {
+       "items": "9a8252751108f975",
+       "render": "f1dd10d0aaf0900c",
+       "world": "851ecfd1582f400d"
+      },
+      "contradict_cross": {
+       "items": "1cd877b53be930ed",
+       "render": "4add5fea2e08bc41",
+       "world": "3c8dde8db2ea453d"
+      },
+      "contradict_low": {
+       "items": "920dcb30ca90769a",
+       "render": "315839a61f3f066c",
+       "world": "344a5b5ac8c3d953"
+      },
+      "incomplete": {
+       "items": "8655edd9dab3a0b1",
+       "render": "50e6493ec4bf5bda",
+       "world": "d4dd1ed5cd85e51b"
+      },
+      "late": {
+       "items": "b97c8b13726d1588",
+       "render": "59455bf7c96bbccc",
+       "world": "851ecfd1582f400d"
+      },
+      "noisy": {
+       "items": "2fba3cdf9c92fa89",
+       "render": "b040ad00cddcce70",
+       "world": "851ecfd1582f400d"
+      },
+      "stale": {
+       "items": "b36a95eaa2e504f6",
+       "render": "3214942235e3fc99",
+       "world": "e7d1c3bbc465dfce"
+      }
+     },
+     "scenario_id": "cs-00-s0",
+     "template": "dc9501eb49f38378"
+    },
+    "cs-01": {
+     "archetype": "customer_success_team",
+     "operators": {
+      "clean": {
+       "items": "a445fdcadd060c68",
+       "render": "3cc88eeeef5c4fb8",
+       "world": "a075cfdf91f38185"
+      },
+      "contradict_cross": {
+       "items": "124b79d44f682cd1",
+       "render": "75aade5132cabd86",
+       "world": "2efa11f488f38555"
+      },
+      "contradict_low": {
+       "items": "0eed49e4d4b6486a",
+       "render": "783d2248609e38bb",
+       "world": "6a9bbc110d6a4a2f"
+      },
+      "incomplete": {
+       "items": "21db77938d64bed9",
+       "render": "83a1afab9698d38c",
+       "world": "87299cbd3c9e1925"
+      },
+      "late": {
+       "items": "a03492ed59306218",
+       "render": "d5ae59668acbfcd8",
+       "world": "a075cfdf91f38185"
+      },
+      "noisy": {
+       "items": "81d7cd724a15e2a1",
+       "render": "e5c236080736793d",
+       "world": "a075cfdf91f38185"
+      },
+      "stale": {
+       "items": "667243d3ffe141ec",
+       "render": "f526344d418f8d9c",
+       "world": "722741c0d76f1bea"
+      }
+     },
+     "scenario_id": "cs-01-s0",
+     "template": "c3f526c2830002ea"
+    },
+    "cs-02": {
+     "archetype": "customer_success_team",
+     "operators": {
+      "clean": {
+       "items": "9e778fbef9acfede",
+       "render": "ed00a1239db71b92",
+       "world": "8b2eaa88355506b6"
+      },
+      "contradict_cross": {
+       "items": "e1f83a18598069cc",
+       "render": "bcec8133e4bf9767",
+       "world": "0aa29441df2d0152"
+      },
+      "contradict_low": {
+       "items": "8c5aeac9bf4c738b",
+       "render": "20fbc7ce3ea27b7c",
+       "world": "05bcf9f245636ce0"
+      },
+      "incomplete": {
+       "items": "c9fbfc3b5bf450a4",
+       "render": "d93c77a41ce87938",
+       "world": "1a9b4a66d5a87286"
+      },
+      "late": {
+       "items": "10dd73db9b299b7e",
+       "render": "e04e569ab351a936",
+       "world": "8b2eaa88355506b6"
+      },
+      "noisy": {
+       "items": "24ee3bef29332f1d",
+       "render": "7d90f7c418f7295b",
+       "world": "8b2eaa88355506b6"
+      },
+      "stale": {
+       "items": "54dc9f1db36b7851",
+       "render": "20e56941e5201512",
+       "world": "04979b935737c81f"
+      }
+     },
+     "scenario_id": "cs-02-s0",
+     "template": "fc8432aa6e011093"
+    },
+    "cs-03": {
+     "archetype": "customer_success_team",
+     "operators": {
+      "clean": {
+       "items": "e804c9e67ff07c79",
+       "render": "b049fdb85b281c14",
+       "world": "569d2be1f52743b6"
+      },
+      "contradict_cross": {
+       "items": "8014da246b1c215c",
+       "render": "61cdb8361cc4328f",
+       "world": "c8b06510edf92cfb"
+      },
+      "contradict_low": {
+       "items": "bf25dc5208ede934",
+       "render": "08ac1fe165cd0465",
+       "world": "52f11c21a34ce207"
+      },
+      "incomplete": {
+       "items": "0cc5f4bc5bf5f680",
+       "render": "3e03574521aa71d8",
+       "world": "9259f336ea081377"
+      },
+      "late": {
+       "items": "f89da31b03a7e1e5",
+       "render": "8820adb5b650778d",
+       "world": "569d2be1f52743b6"
+      },
+      "noisy": {
+       "items": "d7a60d5be01cf5b7",
+       "render": "62624fbfcdbb96a0",
+       "world": "569d2be1f52743b6"
+      },
+      "stale": {
+       "items": "3f4a8b3d6360973c",
+       "render": "fa453a3a68cb6cd0",
+       "world": "aa4a0ac4ea3ff357"
+      }
+     },
+     "scenario_id": "cs-03-s0",
+     "template": "76a4026dd3308b22"
+    },
+    "inc-00": {
+     "archetype": "engineering_incident",
+     "operators": {
+      "clean": {
+       "items": "cb6d6b82d9f76133",
+       "render": "8932cf9a72087efb",
+       "world": "4011c1e1c8dd77a9"
+      },
+      "contradict_cross": {
+       "items": "9db0ac23c04cfaa8",
+       "render": "38e45d013864b178",
+       "world": "2dc9d874bc85b607"
+      },
+      "contradict_low": {
+       "items": "df2dfc03929f18f7",
+       "render": "75188b8014611744",
+       "world": "cd4fddecb9530da3"
+      },
+      "incomplete": {
+       "items": "68662912b97401d4",
+       "render": "3bd3391bc074348d",
+       "world": "43545cf529e1733c"
+      },
+      "late": {
+       "items": "83db81ac4e214fb6",
+       "render": "60dbceece43d5606",
+       "world": "4011c1e1c8dd77a9"
+      },
+      "noisy": {
+       "items": "fd23867d6a7aac62",
+       "render": "5d8aa1bf94444d64",
+       "world": "4011c1e1c8dd77a9"
+      },
+      "stale": {
+       "items": "d198bb51082ee266",
+       "render": "633092ab144e16be",
+       "world": "357fa26b536372a5"
+      }
+     },
+     "scenario_id": "inc-00-s0",
+     "template": "f6b97243d8278f33"
+    },
+    "inc-01": {
+     "archetype": "engineering_incident",
+     "operators": {
+      "clean": {
+       "items": "6f9699b901221249",
+       "render": "ca99bd68e563f89f",
+       "world": "cba3829534f55ce9"
+      },
+      "contradict_cross": {
+       "items": "7d42aaa48c9b3d7b",
+       "render": "1f5b0c2e54bafe96",
+       "world": "a6bef701113c5273"
+      },
+      "contradict_low": {
+       "items": "db3d1f08af273974",
+       "render": "b8e88f8204018b76",
+       "world": "6f416761b408fe4c"
+      },
+      "incomplete": {
+       "items": "928641300ee88619",
+       "render": "196d5c466792ebf4",
+       "world": "c7c74ef0546474bb"
+      },
+      "late": {
+       "items": "6a9c7340c38183c7",
+       "render": "f6005c33a92dd512",
+       "world": "cba3829534f55ce9"
+      },
+      "noisy": {
+       "items": "7bb24338bada22e8",
+       "render": "7a81756200098fec",
+       "world": "cba3829534f55ce9"
+      },
+      "stale": {
+       "items": "2f30d9e1792b1be1",
+       "render": "26493611c89757c7",
+       "world": "fa8ca94f040d8518"
+      }
+     },
+     "scenario_id": "inc-01-s0",
+     "template": "6a2f347af1c94970"
+    },
+    "inc-02": {
+     "archetype": "engineering_incident",
+     "operators": {
+      "clean": {
+       "items": "6eea315be5670b5c",
+       "render": "be517523abc94b29",
+       "world": "2dbf209bc55ecc23"
+      },
+      "contradict_cross": {
+       "items": "21d4595c25b536cd",
+       "render": "86f213d5599c3e61",
+       "world": "853af873fb6c06a3"
+      },
+      "contradict_low": {
+       "items": "1fc06949af511fe3",
+       "render": "416a2f00e66fbf6d",
+       "world": "49eb57ff3051a08e"
+      },
+      "incomplete": {
+       "items": "e1300d4547ed04e4",
+       "render": "e4ca6b2b3967600d",
+       "world": "6d0029275d692c2d"
+      },
+      "late": {
+       "items": "f86933a608b133bc",
+       "render": "24785a95daf9ac4e",
+       "world": "2dbf209bc55ecc23"
+      },
+      "noisy": {
+       "items": "786c2c76f4412c23",
+       "render": "89c286167c9d9530",
+       "world": "2dbf209bc55ecc23"
+      },
+      "stale": {
+       "items": "a0b473be5803b738",
+       "render": "5fdc280e00b26601",
+       "world": "9a1a84183ce40b40"
+      }
+     },
+     "scenario_id": "inc-02-s0",
+     "template": "68282c50b5449e42"
+    },
+    "inc-03": {
+     "archetype": "engineering_incident",
+     "operators": {
+      "clean": {
+       "items": "656491d7e5695880",
+       "render": "9d09aa7e8aeffb8a",
+       "world": "addb7b98c8ee52e9"
+      },
+      "contradict_cross": {
+       "items": "ebd4c63f71590009",
+       "render": "ad9f807373813487",
+       "world": "2f76ca8f559fa2d7"
+      },
+      "contradict_low": {
+       "items": "568643fdb581da6c",
+       "render": "36db84e95a95f765",
+       "world": "ec4790efc0fbb8f3"
+      },
+      "incomplete": {
+       "items": "5f10fddb2bfe2761",
+       "render": "77aa8e133f43d4c6",
+       "world": "499b4bc5bbce5257"
+      },
+      "late": {
+       "items": "10e89ff4f190f870",
+       "render": "1d870ff697e79370",
+       "world": "addb7b98c8ee52e9"
+      },
+      "noisy": {
+       "items": "412788090518317d",
+       "render": "e6613ee35205e5a8",
+       "world": "addb7b98c8ee52e9"
+      },
+      "stale": {
+       "items": "5bcea90cf8cabe95",
+       "render": "8c967be4be597ba7",
+       "world": "e0509e19ebd00720"
+      }
+     },
+     "scenario_id": "inc-03-s0",
+     "template": "30f76d96e9844603"
+    }
+   }
+  },
+  "validation": {
+   "counts": {
+    "scenarios": 18,
+    "tasks": 3645
+   },
+   "hidden": true,
+   "scenarios": {
+    "val-01": {
+     "archetype": "b2b_product_team",
+     "conditions": {
+      "c-0fcf7e": {
+       "render": "e543770451c45533",
+       "tasks": 30
+      },
+      "c-28ffaa": {
+       "render": "80f811bdc1305c0a",
+       "tasks": 35
+      },
+      "c-3267fe": {
+       "render": "8b4a1df1839247db",
+       "tasks": 30
+      },
+      "c-453bd7": {
+       "render": "840a8871ee3c16c3",
+       "tasks": 27
+      },
+      "c-6c049a": {
+       "render": "04e9b3c0df9e172f",
+       "tasks": 24
+      },
+      "c-c09859": {
+       "render": "077792651b24c8cb",
+       "tasks": 30
+      },
+      "c-dc7079": {
+       "render": "60bffe199219a567",
+       "tasks": 30
+      }
+     }
+    },
+    "val-02": {
+     "archetype": "b2b_product_team",
+     "conditions": {
+      "c-1eb895": {
+       "render": "c95df53c7c1b7977",
+       "tasks": 30
+      },
+      "c-3a0cbf": {
+       "render": "6303bc055a4625a4",
+       "tasks": 17
+      },
+      "c-4202d7": {
+       "render": "eb24293fa05f187b",
+       "tasks": 35
+      },
+      "c-6e9651": {
+       "render": "05b8adb88800e300",
+       "tasks": 29
+      },
+      "c-d60b5b": {
+       "render": "ce7170bbf98c161a",
+       "tasks": 38
+      },
+      "c-ebaa21": {
+       "render": "c63062019db31a0d",
+       "tasks": 30
+      },
+      "c-f31b41": {
+       "render": "37de387b7bf8a69b",
+       "tasks": 30
+      }
+     }
+    },
+    "val-03": {
+     "archetype": "b2b_product_team",
+     "conditions": {
+      "c-1549a8": {
+       "render": "62ddb70959e13a72",
+       "tasks": 26
+      },
+      "c-429430": {
+       "render": "0ff9444f99f591a6",
+       "tasks": 30
+      },
+      "c-75100a": {
+       "render": "0f0a5dd9152e5afc",
+       "tasks": 29
+      },
+      "c-7d47a6": {
+       "render": "997f7eae4d660fd7",
+       "tasks": 14
+      },
+      "c-a8b296": {
+       "render": "732d6f162187d3c3",
+       "tasks": 30
+      },
+      "c-c45a6a": {
+       "render": "43ce97e1426501f8",
+       "tasks": 35
+      },
+      "c-e4bfd7": {
+       "render": "31023c5d3673120b",
+       "tasks": 30
+      }
+     }
+    },
+    "val-04": {
+     "archetype": "b2b_product_team",
+     "conditions": {
+      "c-01ca71": {
+       "render": "d75724a32f6af46d",
+       "tasks": 13
+      },
+      "c-408d8c": {
+       "render": "94d2699328009bad",
+       "tasks": 29
+      },
+      "c-4db3da": {
+       "render": "534ae9417afb667d",
+       "tasks": 34
+      },
+      "c-4f9d75": {
+       "render": "f0f8138bb001dc14",
+       "tasks": 34
+      },
+      "c-532a14": {
+       "render": "9fceb40eaff59e51",
+       "tasks": 30
+      },
+      "c-6e27fa": {
+       "render": "930768570b21a99d",
+       "tasks": 30
+      },
+      "c-78ffd5": {
+       "render": "caa464bcbaa68671",
+       "tasks": 30
+      }
+     }
+    },
+    "val-05": {
+     "archetype": "b2b_product_team",
+     "conditions": {
+      "c-443479": {
+       "render": "c62cec2d291c13aa",
+       "tasks": 30
+      },
+      "c-4ff3da": {
+       "render": "9ccce6c952c74a78",
+       "tasks": 36
+      },
+      "c-57da24": {
+       "render": "b2cdf141d71c8791",
+       "tasks": 16
+      },
+      "c-5b1e6f": {
+       "render": "8374897cde2f7432",
+       "tasks": 30
+      },
+      "c-610c27": {
+       "render": "edfadf4e6d0ca6cd",
+       "tasks": 35
+      },
+      "c-92a0cd": {
+       "render": "abb9005f28143872",
+       "tasks": 30
+      },
+      "c-a3a901": {
+       "render": "f78b29f0014ba05c",
+       "tasks": 27
+      }
+     }
+    },
+    "val-06": {
+     "archetype": "b2b_product_team",
+     "conditions": {
+      "c-35a972": {
+       "render": "96b74a97dbca960d",
+       "tasks": 37
+      },
+      "c-59c3bb": {
+       "render": "dae5b44de09c404f",
+       "tasks": 26
+      },
+      "c-695505": {
+       "render": "d3d0d2f4f3a60bde",
+       "tasks": 30
+      },
+      "c-696695": {
+       "render": "9c58c80b249261c6",
+       "tasks": 35
+      },
+      "c-892507": {
+       "render": "c232b93ce4c2c2d9",
+       "tasks": 23
+      },
+      "c-8bfb25": {
+       "render": "291db322d4699940",
+       "tasks": 30
+      },
+      "c-d828a5": {
+       "render": "615dc3555cce720e",
+       "tasks": 30
+      }
+     }
+    },
+    "val-07": {
+     "archetype": "engineering_incident",
+     "conditions": {
+      "c-24f217": {
+       "render": "b43725298c54cf45",
+       "tasks": 37
+      },
+      "c-552358": {
+       "render": "c317a3064f9dfd9c",
+       "tasks": 27
+      },
+      "c-57eda0": {
+       "render": "bc33905689efa20b",
+       "tasks": 30
+      },
+      "c-7b1441": {
+       "render": "e592be8be72130da",
+       "tasks": 35
+      },
+      "c-829bc2": {
+       "render": "aefd1db623ea9f33",
+       "tasks": 30
+      },
+      "c-930fc7": {
+       "render": "ae7bcee7688959ee",
+       "tasks": 16
+      },
+      "c-a19285": {
+       "render": "d914469153840f43",
+       "tasks": 30
+      }
+     }
+    },
+    "val-08": {
+     "archetype": "engineering_incident",
+     "conditions": {
+      "c-4babac": {
+       "render": "bc7a0546bcb0ca18",
+       "tasks": 35
+      },
+      "c-62083c": {
+       "render": "df1399d167ada87a",
+       "tasks": 30
+      },
+      "c-636f52": {
+       "render": "5fe2ff00dcf20e08",
+       "tasks": 28
+      },
+      "c-7c00cb": {
+       "render": "7c57b7927c652397",
+       "tasks": 11
+      },
+      "c-aa1458": {
+       "render": "b61bbfac05288eaf",
+       "tasks": 35
+      },
+      "c-c83343": {
+       "render": "c090c1d396057964",
+       "tasks": 30
+      },
+      "c-d18a9f": {
+       "render": "14bca29ba39a8b86",
+       "tasks": 30
+      }
+     }
+    },
+    "val-09": {
+     "archetype": "engineering_incident",
+     "conditions": {
+      "c-235001": {
+       "render": "05ea99a9ca8e664b",
+       "tasks": 17
+      },
+      "c-63d09b": {
+       "render": "4540d085567f23b2",
+       "tasks": 30
+      },
+      "c-788960": {
+       "render": "4ebde7ea4b41ca3e",
+       "tasks": 30
+      },
+      "c-9cc065": {
+       "render": "9254df2fa41e4912",
+       "tasks": 26
+      },
+      "c-c1141b": {
+       "render": "8d6bf63d0895124d",
+       "tasks": 38
+      },
+      "c-f42df9": {
+       "render": "b1b97b8c447bc5ec",
+       "tasks": 38
+      },
+      "c-f44bbf": {
+       "render": "85267413c5f1bf2b",
+       "tasks": 30
+      }
+     }
+    },
+    "val-10": {
+     "archetype": "engineering_incident",
+     "conditions": {
+      "c-456254": {
+       "render": "b7e9f825b369989b",
+       "tasks": 30
+      },
+      "c-679584": {
+       "render": "3a52debf3ecc2f30",
+       "tasks": 28
+      },
+      "c-88b6ee": {
+       "render": "c100514438a1d62c",
+       "tasks": 35
+      },
+      "c-c19f6d": {
+       "render": "e5abfd6c18482e94",
+       "tasks": 30
+      },
+      "c-cb8ebc": {
+       "render": "e5822b9781a2213e",
+       "tasks": 36
+      },
+      "c-d0317e": {
+       "render": "db8379843115a61d",
+       "tasks": 30
+      },
+      "c-d83590": {
+       "render": "f414e247cb951d8b",
+       "tasks": 11
+      }
+     }
+    },
+    "val-11": {
+     "archetype": "engineering_incident",
+     "conditions": {
+      "c-3e91a5": {
+       "render": "2453ba0b9f9165df",
+       "tasks": 15
+      },
+      "c-4366d0": {
+       "render": "d5eb8f3f15221c45",
+       "tasks": 24
+      },
+      "c-510236": {
+       "render": "662a6ae261eb0d08",
+       "tasks": 30
+      },
+      "c-895093": {
+       "render": "4fdce4bb55f0cc35",
+       "tasks": 30
+      },
+      "c-a90cdc": {
+       "render": "67bff0ebb85a166c",
+       "tasks": 37
+      },
+      "c-e1388a": {
+       "render": "4230c24bb88447a0",
+       "tasks": 33
+      },
+      "c-ff0d6e": {
+       "render": "8cb8b3e0998e0347",
+       "tasks": 30
+      }
+     }
+    },
+    "val-12": {
+     "archetype": "engineering_incident",
+     "conditions": {
+      "c-10d176": {
+       "render": "ba94473a965fefa8",
+       "tasks": 30
+      },
+      "c-15f0bd": {
+       "render": "3b25c6398b3a3944",
+       "tasks": 32
+      },
+      "c-22c89e": {
+       "render": "c574c24c44aafd5a",
+       "tasks": 30
+      },
+      "c-527228": {
+       "render": "c6c81758f4fb1f4f",
+       "tasks": 35
+      },
+      "c-6beb80": {
+       "render": "8fb1f0bfdb7b5f8c",
+       "tasks": 30
+      },
+      "c-7a4c47": {
+       "render": "cee8da2f0217858a",
+       "tasks": 26
+      },
+      "c-9cbe0c": {
+       "render": "d7ef13c54f4bdf09",
+       "tasks": 21
+      }
+     }
+    },
+    "val-13": {
+     "archetype": "customer_success_team",
+     "conditions": {
+      "c-03b6c1": {
+       "render": "386fcbf081299a67",
+       "tasks": 30
+      },
+      "c-26408c": {
+       "render": "4d03ba28b3fedc53",
+       "tasks": 30
+      },
+      "c-386348": {
+       "render": "02d333967108704a",
+       "tasks": 35
+      },
+      "c-4b16b8": {
+       "render": "835cd4a5faa60684",
+       "tasks": 30
+      },
+      "c-6e7edc": {
+       "render": "cef5409d8dd4001b",
+       "tasks": 20
+      },
+      "c-a689d7": {
+       "render": "a0c3f46040a6e868",
+       "tasks": 36
+      },
+      "c-e163c8": {
+       "render": "ed1690642dfcece1",
+       "tasks": 25
+      }
+     }
+    },
+    "val-14": {
+     "archetype": "customer_success_team",
+     "conditions": {
+      "c-22d5b0": {
+       "render": "1fdaebbb934a528e",
+       "tasks": 10
+      },
+      "c-259d75": {
+       "render": "abda21f1092bfc67",
+       "tasks": 30
+      },
+      "c-5a9481": {
+       "render": "4380331323808edd",
+       "tasks": 34
+      },
+      "c-810e62": {
+       "render": "67927866353c3671",
+       "tasks": 30
+      },
+      "c-91c5f2": {
+       "render": "77d3dd1f371e74a4",
+       "tasks": 28
+      },
+      "c-c51429": {
+       "render": "64ea36496b75286d",
+       "tasks": 35
+      },
+      "c-d702fa": {
+       "render": "33dc957aa8598f06",
+       "tasks": 30
+      }
+     }
+    },
+    "val-15": {
+     "archetype": "customer_success_team",
+     "conditions": {
+      "c-2a4fc0": {
+       "render": "80b6d26ce31ea15d",
+       "tasks": 30
+      },
+      "c-2a7f20": {
+       "render": "bd07c07fe68fab97",
+       "tasks": 32
+      },
+      "c-3af97d": {
+       "render": "dd6068502762e7de",
+       "tasks": 37
+      },
+      "c-8b6d9a": {
+       "render": "a70c7f1b7ca7a1f3",
+       "tasks": 30
+      },
+      "c-c08755": {
+       "render": "08c58c70e130b2cf",
+       "tasks": 27
+      },
+      "c-cdb410": {
+       "render": "63f3b8628f49775c",
+       "tasks": 16
+      },
+      "c-d62b2d": {
+       "render": "13521da149e98793",
+       "tasks": 30
+      }
+     }
+    },
+    "val-16": {
+     "archetype": "customer_success_team",
+     "conditions": {
+      "c-28f59b": {
+       "render": "210deac1c1167de7",
+       "tasks": 26
+      },
+      "c-37c63a": {
+       "render": "e1cc0a788b320550",
+       "tasks": 30
+      },
+      "c-42bacc": {
+       "render": "5ae32edc287c311b",
+       "tasks": 30
+      },
+      "c-aad6e9": {
+       "render": "86a7c0a429339447",
+       "tasks": 21
+      },
+      "c-b266e5": {
+       "render": "48dc606e7cdc7c6c",
+       "tasks": 30
+      },
+      "c-c55211": {
+       "render": "83ef4764978aec84",
+       "tasks": 35
+      },
+      "c-d0f38a": {
+       "render": "91e1db9ac8b27648",
+       "tasks": 36
+      }
+     }
+    },
+    "val-17": {
+     "archetype": "customer_success_team",
+     "conditions": {
+      "c-132227": {
+       "render": "7e7031586ab9cb4d",
+       "tasks": 29
+      },
+      "c-20201a": {
+       "render": "3dd54b97d5fce128",
+       "tasks": 35
+      },
+      "c-64610d": {
+       "render": "8eda773a0b5aad9b",
+       "tasks": 30
+      },
+      "c-6918ec": {
+       "render": "e564b28c77f7d2eb",
+       "tasks": 30
+      },
+      "c-6b0b23": {
+       "render": "940a2d077fbca54a",
+       "tasks": 30
+      },
+      "c-7ed15e": {
+       "render": "f7645711834c78e9",
+       "tasks": 11
+      },
+      "c-c30c06": {
+       "render": "4ac4d5bf82b79fba",
+       "tasks": 30
+      }
+     }
+    },
+    "val-18": {
+     "archetype": "customer_success_team",
+     "conditions": {
+      "c-1b26dd": {
+       "render": "de9c2983b482a7d3",
+       "tasks": 37
+      },
+      "c-3a6b57": {
+       "render": "db302766139afff4",
+       "tasks": 24
+      },
+      "c-687920": {
+       "render": "dc4499aad6fdb4e3",
+       "tasks": 30
+      },
+      "c-820955": {
+       "render": "657b551725b20b38",
+       "tasks": 30
+      },
+      "c-962389": {
+       "render": "d0b02302820e1b2e",
+       "tasks": 30
+      },
+      "c-e7ca3f": {
+       "render": "121457ed4868e6aa",
+       "tasks": 34
+      },
+      "c-f23e81": {
+       "render": "77910c2947124a6c",
+       "tasks": 12
+      }
+     }
+    }
+   },
+   "seed_commitment": "f3b9b524ef92bd65f10bfa164a365c7fb167d02f96e129205b8d848c3defe846",
+   "stats": {
+    "assertions": {
+     "max": 68,
+     "median": 55.5,
+     "min": 46
+    },
+    "authority_conflicts": {
+     "max": 4,
+     "median": 3.0,
+     "min": 2
+    },
+    "corpus_tokens": {
+     "max": 37390,
+     "median": 31812,
+     "min": 27406
+    },
+    "cross_domain_conflicts": {
+     "max": 2,
+     "median": 1.0,
+     "min": 1
+    },
+    "decisions": {
+     "max": 32,
+     "median": 27.0,
+     "min": 18
+    },
+    "drifted_requirements": {
+     "max": 3,
+     "median": 2.0,
+     "min": 1
+    },
+    "entities": {
+     "max": 5,
+     "median": 4.5,
+     "min": 3
+    },
+    "history_days": {
+     "max": 266,
+     "median": 225.5,
+     "min": 180
+    },
+    "open_share": {
+     "max": 0.571,
+     "median": 0.5,
+     "min": 0.4
+    },
+    "people": {
+     "max": 14,
+     "median": 12.5,
+     "min": 10
+    },
+    "questions": {
+     "max": 10,
+     "median": 7.5,
+     "min": 5
+    },
+    "requirements": {
+     "max": 9,
+     "median": 7.0,
+     "min": 5
+    },
+    "roles": {
+     "max": 8,
+     "median": 8.0,
+     "min": 8
+    },
+    "sessions": {
+     "max": 101,
+     "median": 86.5,
+     "min": 75
+    },
+    "share_superseded_or_revoked": {
+     "max": 0.281,
+     "median": 0.23,
+     "min": 0.2
+    },
+    "variables": {
+     "max": 22,
+     "median": 18.5,
+     "min": 13
+    },
+    "variables_per_entity": {
+     "max": 5,
+     "median": 5.0,
+     "min": 4
+    }
+   }
+  }
+ },
+ "version": "0.1.0"
+}

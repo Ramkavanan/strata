@@ -1,0 +1,22 @@
+# Appendix A, Example 1: the Salesforce scenario (assertions identical to the paper; query time moved
+# to 2026-06-15 so the clean corpus extends to within 30 days of the query, as the staleness floor test requires).
+id: paper-a1
+archetype: b2b_product_team
+query_time: 2026-06-15
+people: {pm: Priya Nair, eng: Arjun Mehta, cto: Dev Rao, sales_head: Maya Iyer}
+roles: {pm: pm, eng: eng, cto: cto, sales_head: sales_head}
+domains:
+  product_scope: {label: product scope, authority: {eng: 1, pm: 2, cto: 3}}
+  commercial: {label: commercial terms, authority: {sales_head: 2}}
+  architecture: {label: architecture, authority: {eng: 1}}
+variables:
+  sf.target: {label: Salesforce integration release target, governed_by: [product_scope]}
+  sf.priority: {label: Salesforce integration priority, governed_by: [product_scope, commercial]}
+  sf_api.limit: {label: Salesforce API rate limit, governed_by: [architecture]}
+unanswerable: [Salesforce GA release approval]
+assertions:
+  - {id: a1, t: 2026-01-12, speaker: pm, domain: product_scope, kind: decide, var: sf.target, value: Q3, explicit: explicit}
+  - {id: a2, t: 2026-02-03, speaker: eng, domain: architecture, kind: report, var: sf_api.limit, value: rate_limited}
+  - {id: a3, t: 2026-03-18, speaker: pm, domain: product_scope, kind: decide, var: sf.target, value: Q4, ref: [a2], explicit: hedged}
+  - {id: a4, t: 2026-04-22, speaker: cto, domain: product_scope, kind: decide, var: sf.priority, value: below_hubspot, explicit: explicit}
+  - {id: a5, t: 2026-05-30, speaker: sales_head, domain: commercial, kind: decide, var: sf.priority, value: committed_customer_x, explicit: diffuse}

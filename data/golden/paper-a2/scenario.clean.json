@@ -1,0 +1,334 @@
+{
+ "affected_vars": [],
+ "archetype": "engineering_incident",
+ "artifacts": [
+  {
+   "event_date": "2026-02-04",
+   "id": "art-3509e2a2",
+   "ingest_date": "2026-02-04",
+   "spans": [
+    {
+     "id": "sp-4fb15016d1",
+     "text": "Team member Omar Haddad: role customer."
+    },
+    {
+     "id": "sp-52f84ccacb",
+     "text": "Team member Tom Becker: role engineer."
+    },
+    {
+     "id": "sp-8a9cf46c71",
+     "text": "Team member Ravi Menon: role principal."
+    },
+    {
+     "id": "sp-cdb6cf2a56",
+     "text": "Team member Release Bot: role release."
+    },
+    {
+     "id": "sp-9ca6059ad1",
+     "text": "Team member Ana Costa: role support_lead."
+    },
+    {
+     "id": "sp-7cfdec1ade",
+     "text": "Team member Lena Fischer: role tech_lead."
+    },
+    {
+     "id": "sp-5f997b39ee",
+     "text": "Authority in architecture: engineer=1; principal=3; tech_lead=2."
+    },
+    {
+     "id": "sp-0681980415",
+     "text": "Authority in requirements: customer=1; support_lead=2; tech_lead=3."
+    },
+    {
+     "id": "sp-0736b96a17",
+     "text": "Governance: \"export architecture rule\" is governed by architecture."
+    },
+    {
+     "id": "sp-4334c9d697",
+     "text": "Governance: \"bulk export specification\" is governed by requirements."
+    }
+   ],
+   "status": "success",
+   "title": "Organization chart and governance",
+   "type": "org_chart"
+  },
+  {
+   "event_date": "2026-02-04",
+   "id": "art-d112bd2a",
+   "ingest_date": "2026-02-04",
+   "spans": [
+    {
+     "id": "sp-1d59450865",
+     "text": "On 2026-02-04, Omar Haddad (customer) requested in requirements: \"bulk export specification: bulk export of all records, CSV.\""
+    }
+   ],
+   "status": "success",
+   "title": "Customer Call 2026-02-04",
+   "type": "customer_call"
+  },
+  {
+   "event_date": "2026-02-11",
+   "id": "art-6ab5ef2c",
+   "ingest_date": "2026-02-11",
+   "spans": [
+    {
+     "id": "sp-de56878fed",
+     "text": "On 2026-02-11, Lena Fischer (tech_lead) decided in requirements: \"bulk export specification: bulk export, CSV, max 50k rows per job.\" [see 2026-02-04 \"bulk export specification\" by Omar Haddad]"
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-02-11",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-03-02",
+   "id": "art-5298beb0",
+   "ingest_date": "2026-03-02",
+   "spans": [
+    {
+     "id": "sp-0f31941bb2",
+     "text": "On 2026-03-02, Ravi Menon (principal) decided in architecture: \"export architecture rule: exports run only through the async job service.\""
+    }
+   ],
+   "status": "success",
+   "title": "Ticket 2026-03-02",
+   "type": "ticket"
+  },
+  {
+   "event_date": "2026-03-20",
+   "id": "art-f5fce5ae",
+   "ingest_date": "2026-03-20",
+   "spans": [
+    {
+     "id": "sp-c8a51e0eef",
+     "text": "On 2026-03-20, Tom Becker (engineer) said in architecture: \"I think we should probably go with export architecture rule: synchronous export is fine for small jobs, at this point.\""
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-03-20",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-04-08",
+   "id": "art-8dd9b23d",
+   "ingest_date": "2026-04-08",
+   "spans": [
+    {
+     "id": "sp-8b9758b94e",
+     "text": "# bulk export specification\n# shipped 2026-04-08 by Release Bot\nBULK_EXPORT_SPECIFICATION = \"bulk export, CSV, max 50k rows per job\"\n"
+    }
+   ],
+   "status": "success",
+   "title": "src/config/bulk_export_specification.py",
+   "type": "source_code"
+  },
+  {
+   "event_date": "2026-04-08",
+   "id": "art-f389e129",
+   "ingest_date": "2026-04-08",
+   "spans": [
+    {
+     "id": "sp-8f9136e41e",
+     "text": "On 2026-04-08, Release Bot (release) shipped in release: \"bulk export specification: bulk export, CSV, max 50k rows per job.\" [see 2026-02-11 \"bulk export specification\" by Lena Fischer]"
+    }
+   ],
+   "status": "success",
+   "title": "Release Note 2026-04-08",
+   "type": "release_note"
+  },
+  {
+   "event_date": "2026-05-14",
+   "id": "art-2d18433c",
+   "ingest_date": "2026-05-14",
+   "spans": [
+    {
+     "id": "sp-5d3258251a",
+     "text": "On 2026-05-14, Ana Costa (support_lead) asked in requirements: \"bulk export specification? does the 50k cap apply to customer Y's enterprise plan\""
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-05-14",
+   "type": "chat"
+  }
+ ],
+ "checkpoints": [
+  "2026-02-11",
+  "2026-03-02",
+  "2026-03-20",
+  "2026-04-08",
+  "2026-05-14"
+ ],
+ "domain_labels": {
+  "architecture": "architecture",
+  "requirements": "requirements"
+ },
+ "explicitness": {
+  "b1": "explicit",
+  "b2": "explicit",
+  "b3": "explicit",
+  "b4": "hedged",
+  "b5": "explicit",
+  "b6": "explicit"
+ },
+ "labels": {
+  "export.arch_rule": "export architecture rule",
+  "export.spec": "bulk export specification"
+ },
+ "operator": {
+  "name": "clean"
+ },
+ "panel": null,
+ "people": {
+  "customer_y": "Omar Haddad",
+  "engineer": "Tom Becker",
+  "principal": "Ravi Menon",
+  "release": "Release Bot",
+  "support_lead": "Ana Costa",
+  "tech_lead": "Lena Fischer"
+ },
+ "query_time": "2026-06-12",
+ "renderer": {
+  "name": "template"
+ },
+ "scenario_id": "paper-a2-s0",
+ "seed": 0,
+ "span_map": {
+  "sp-0681980415": null,
+  "sp-0736b96a17": null,
+  "sp-0f31941bb2": "b3",
+  "sp-1d59450865": "b1",
+  "sp-4334c9d697": null,
+  "sp-4fb15016d1": null,
+  "sp-52f84ccacb": null,
+  "sp-5d3258251a": "b6",
+  "sp-5f997b39ee": null,
+  "sp-7cfdec1ade": null,
+  "sp-8a9cf46c71": null,
+  "sp-8b9758b94e": "b5",
+  "sp-8f9136e41e": "b5",
+  "sp-9ca6059ad1": null,
+  "sp-c8a51e0eef": "b4",
+  "sp-cdb6cf2a56": null,
+  "sp-de56878fed": "b2"
+ },
+ "template_id": "paper-a2",
+ "unanswerable": [
+  "bulk export GA approval"
+ ],
+ "world": {
+  "assertions": [
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "requirements",
+    "id": "b1",
+    "kind": "request",
+    "ref": [],
+    "speaker": "customer_y",
+    "t": "2026-02-04",
+    "trigger": [],
+    "value": "bulk export of all records, CSV",
+    "var": "export.spec"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "requirements",
+    "id": "b2",
+    "kind": "decide",
+    "ref": [
+     "b1"
+    ],
+    "speaker": "tech_lead",
+    "t": "2026-02-11",
+    "trigger": [],
+    "value": "bulk export, CSV, max 50k rows per job",
+    "var": "export.spec"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "architecture",
+    "id": "b3",
+    "kind": "decide",
+    "ref": [
+     "incident-17"
+    ],
+    "speaker": "principal",
+    "t": "2026-03-02",
+    "trigger": [],
+    "value": "exports run only through the async job service",
+    "var": "export.arch_rule"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "architecture",
+    "id": "b4",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "engineer",
+    "t": "2026-03-20",
+    "trigger": [],
+    "value": "synchronous export is fine for small jobs",
+    "var": "export.arch_rule"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": null,
+    "id": "b5",
+    "kind": "implement",
+    "ref": [
+     "b2"
+    ],
+    "speaker": "release",
+    "t": "2026-04-08",
+    "trigger": [],
+    "value": "bulk export, CSV, max 50k rows per job",
+    "var": "export.spec"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "requirements",
+    "id": "b6",
+    "kind": "ask",
+    "ref": [],
+    "speaker": "support_lead",
+    "t": "2026-05-14",
+    "trigger": [],
+    "value": "does the 50k cap apply to customer Y's enterprise plan",
+    "var": "export.spec"
+   }
+  ],
+  "authority": {
+   "architecture": {
+    "engineer": 1,
+    "principal": 3,
+    "tech_lead": 2
+   },
+   "requirements": {
+    "customer": 1,
+    "support_lead": 2,
+    "tech_lead": 3
+   }
+  },
+  "governance": {
+   "export.arch_rule": [
+    "architecture"
+   ],
+   "export.spec": [
+    "requirements"
+   ]
+  },
+  "roles": {
+   "customer_y": "customer",
+   "engineer": "engineer",
+   "principal": "principal",
+   "release": "release",
+   "support_lead": "support_lead",
+   "tech_lead": "tech_lead"
+  }
+ }
+}

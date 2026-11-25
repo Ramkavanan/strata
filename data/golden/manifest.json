@@ -1,0 +1,275 @@
+{
+  "seed": 0,
+  "templates": {
+    "b2b-northwind-01": {
+      "operators": {
+        "clean": {
+          "artifacts": 26,
+          "items": "5106384178029e5b",
+          "n_items": 47,
+          "render": "ea719b3f40c48f4a",
+          "world": "b013c9415770a569"
+        },
+        "contradict_cross": {
+          "artifacts": 28,
+          "items": "fb9afc3ca369bc0f",
+          "n_items": 44,
+          "render": "c10c3824ebdc4bef",
+          "world": "fdd49c297d8eb5d2"
+        },
+        "contradict_low": {
+          "artifacts": 28,
+          "items": "d9bc0658d1883c6f",
+          "n_items": 50,
+          "render": "d368836046292728",
+          "world": "be781b16674a72a1"
+        },
+        "incomplete": {
+          "artifacts": 23,
+          "items": "b7a34355e1274c8b",
+          "n_items": 35,
+          "render": "5b2636f8bce3da04",
+          "world": "77bf575f28834b9b"
+        },
+        "late": {
+          "artifacts": 26,
+          "items": "8fe58988830e53a4",
+          "n_items": 47,
+          "render": "3fa702ab2931de4d",
+          "world": "b013c9415770a569"
+        },
+        "noisy": {
+          "artifacts": 51,
+          "items": "f6654bae9397c97f",
+          "n_items": 47,
+          "render": "e9b6ef1d96812ca9",
+          "world": "b013c9415770a569"
+        },
+        "stale": {
+          "artifacts": 18,
+          "items": "4d335a77811e4b10",
+          "n_items": 34,
+          "render": "7f109488a9478edf",
+          "world": "7076164a52572a16"
+        }
+      },
+      "scenario_id": "b2b-northwind-01-s0"
+    },
+    "cs-atlas-01": {
+      "operators": {
+        "clean": {
+          "artifacts": 13,
+          "items": "222a96f4c6d6f89f",
+          "n_items": 24,
+          "render": "1ce229074766e4ea",
+          "world": "a31c104eea01d765"
+        },
+        "contradict_cross": {
+          "artifacts": 15,
+          "items": "4f93a8a06f9808d5",
+          "n_items": 22,
+          "render": "d4e1af0732e82aa9",
+          "world": "6dc2a4ca18374037"
+        },
+        "contradict_low": {
+          "artifacts": 13,
+          "items": "f94910a7e5503771",
+          "n_items": 25,
+          "render": "e24a70599d1fa79d",
+          "world": "d0405432de0d16f9"
+        },
+        "incomplete": {
+          "artifacts": 13,
+          "items": "5473be1daa79f44c",
+          "n_items": 24,
+          "render": "dbb4a4edd7a448e0",
+          "world": "587ea8f479cb9f4e"
+        },
+        "late": {
+          "artifacts": 13,
+          "items": "2bb100ffbcd3e714",
+          "n_items": 24,
+          "render": "0c401d9723767c65",
+          "world": "a31c104eea01d765"
+        },
+        "noisy": {
+          "artifacts": 25,
+          "items": "210010597fdcbb85",
+          "n_items": 24,
+          "render": "e32e88a1cd68aa0f",
+          "world": "a31c104eea01d765"
+        },
+        "stale": {
+          "artifacts": 7,
+          "items": "fad891739db73775",
+          "n_items": 15,
+          "render": "763724c31bba345c",
+          "world": "f72d933d4981e812"
+        }
+      },
+      "scenario_id": "cs-atlas-01-s0"
+    },
+    "incident-payments-01": {
+      "operators": {
+        "clean": {
+          "artifacts": 13,
+          "items": "c75fd47ec264fce2",
+          "n_items": 27,
+          "render": "c08fa4d832c9ea64",
+          "world": "3857edb17204af9c"
+        },
+        "contradict_cross": {
+          "artifacts": 15,
+          "items": "3ae801a132ed998e",
+          "n_items": 26,
+          "render": "e19e4cc3ea18e5f1",
+          "world": "4e8ad357f4f3bb3e"
+        },
+        "contradict_low": {
+          "artifacts": 15,
+          "items": "47dd2088ec741ce5",
+          "n_items": 29,
+          "render": "5da81f44318ffc7f",
+          "world": "ede2f87510f318aa"
+        },
+        "incomplete": {
+          "artifacts": 12,
+          "items": "fe8ad601700e5d1e",
+          "n_items": 22,
+          "render": "1d1801aa73302e30",
+          "world": "417f6a97315ad66e"
+        },
+        "late": {
+          "artifacts": 13,
+          "items": "a4e781ea52c5c942",
+          "n_items": 27,
+          "render": "d17ce712b6080fd3",
+          "world": "3857edb17204af9c"
+        },
+        "noisy": {
+          "artifacts": 25,
+          "items": "0d19c6c50fb57d0c",
+          "n_items": 27,
+          "render": "b1c919595e1d5e5e",
+          "world": "3857edb17204af9c"
+        },
+        "stale": {
+          "artifacts": 9,
+          "items": "0fa6522fd5476243",
+          "n_items": 22,
+          "render": "62034d6bbabde44c",
+          "world": "77831002af7426b7"
+        }
+      },
+      "scenario_id": "incident-payments-01-s0"
+    },
+    "paper-a1": {
+      "operators": {
+        "clean": {
+          "artifacts": 6,
+          "items": "ebd57868784c3cb2",
+          "n_items": 15,
+          "render": "ad88d696fbeaa519",
+          "world": "8a0541b8d24abc0e"
+        },
+        "contradict_cross": {
+          "artifacts": 7,
+          "items": "818a162f6fc17168",
+          "n_items": 14,
+          "render": "3d778a9264053944",
+          "world": "9166010467a5e0e4"
+        },
+        "contradict_low": {
+          "artifacts": 7,
+          "items": "3334304ed3ae5b68",
+          "n_items": 16,
+          "render": "ee46c54939ed7d64",
+          "world": "e6bb14b23ba1c568"
+        },
+        "incomplete": {
+          "artifacts": 5,
+          "items": "9ad92a9e9760ac96",
+          "n_items": 10,
+          "render": "ca174de26144f468",
+          "world": "d61fe61f856af091"
+        },
+        "late": {
+          "artifacts": 6,
+          "items": "7a2d15791509cea3",
+          "n_items": 15,
+          "render": "6770e5a894d97eed",
+          "world": "8a0541b8d24abc0e"
+        },
+        "noisy": {
+          "artifacts": 11,
+          "items": "5f5377ebbbabd39f",
+          "n_items": 15,
+          "render": "e52c72d228589974",
+          "world": "8a0541b8d24abc0e"
+        },
+        "stale": {
+          "artifacts": 4,
+          "items": "7c54cd7a4e235518",
+          "n_items": 11,
+          "render": "f5f1feab91bde957",
+          "world": "68087f1c533c3ff3"
+        }
+      },
+      "scenario_id": "paper-a1-s0"
+    },
+    "paper-a2": {
+      "operators": {
+        "clean": {
+          "artifacts": 8,
+          "items": "1298fe0c5a7d66bf",
+          "n_items": 16,
+          "render": "ffc58bc7b74a978e",
+          "world": "6c0d262f7b31d388"
+        },
+        "contradict_cross": {
+          "artifacts": 10,
+          "items": "cb2f1cfb3bd574b4",
+          "n_items": 17,
+          "render": "5ae4263bd51e6ca6",
+          "world": "c4e7084ec05dcf7d"
+        },
+        "contradict_low": {
+          "artifacts": 10,
+          "items": "138326ac6f2ce6b5",
+          "n_items": 18,
+          "render": "2c940732c545623b",
+          "world": "26eacfcf0abe089e"
+        },
+        "incomplete": {
+          "artifacts": 7,
+          "items": "ee2e57b070fc785b",
+          "n_items": 11,
+          "render": "78d29e91ac8d9b4b",
+          "world": "cd75d282c4ce118c"
+        },
+        "late": {
+          "artifacts": 8,
+          "items": "cee614d66417689e",
+          "n_items": 16,
+          "render": "c0d79a654994a881",
+          "world": "6c0d262f7b31d388"
+        },
+        "noisy": {
+          "artifacts": 15,
+          "items": "8c554538ceec3ff3",
+          "n_items": 16,
+          "render": "fe7640e9b465f6a3",
+          "world": "6c0d262f7b31d388"
+        },
+        "stale": {
+          "artifacts": 5,
+          "items": "33e451531ac0e5d5",
+          "n_items": 13,
+          "render": "ad57a6a1d140a223",
+          "world": "c91a644c6d26d63d"
+        }
+      },
+      "scenario_id": "paper-a2-s0"
+    }
+  }
+}

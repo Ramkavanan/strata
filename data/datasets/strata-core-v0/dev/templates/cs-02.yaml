@@ -1,0 +1,542 @@
+id: cs-02
+archetype: customer_success_team
+generator:
+  version: '1'
+  attempt: 0
+query_time: 2026-10-19
+people:
+  csm_1: Elena Petrova
+  csm_2: Jonas Weber
+  csm_3: Grace Kim
+  account_manager_1: Ben Carter
+  cs_head_1: Sam Okoye
+  cro_1: Emma Lund
+  legal_counsel_1: Diego Ramos
+  support_lead_1: Priya Nair
+  solutions_engineer_1: Marco Bianchi
+  customer_1: Tom Becker
+  customer_2: Leila Farah
+  customer_3: Caleb Stone
+roles:
+  csm_1: csm
+  csm_2: csm
+  csm_3: csm
+  account_manager_1: account_manager
+  cs_head_1: cs_head
+  cro_1: cro
+  legal_counsel_1: legal_counsel
+  support_lead_1: support_lead
+  solutions_engineer_1: solutions_engineer
+  customer_1: customer
+  customer_2: customer
+  customer_3: customer
+domains:
+  account_terms:
+    label: account terms
+    authority:
+      account_manager: 1
+      cs_head: 2
+      cro: 3
+  renewal:
+    label: renewal strategy
+    authority:
+      csm: 1
+      account_manager: 2
+      cro: 3
+  legal_review:
+    label: legal review
+    authority:
+      account_manager: 1
+      legal_counsel: 2
+  requirements:
+    label: requirements
+    authority:
+      customer: 1
+      csm: 2
+      cs_head: 3
+variables:
+  e1.term:
+    label: Atlas account renewal term
+    governed_by:
+    - renewal
+    - account_terms
+  e1.sponsor:
+    label: Atlas account executive sponsor
+    governed_by:
+    - renewal
+  e1.sla:
+    label: Atlas account support level
+    governed_by:
+    - account_terms
+  e1.integration:
+    label: Atlas account integration requirement
+    governed_by:
+    - requirements
+  e1.onboarding:
+    label: Atlas account onboarding requirement
+    governed_by:
+    - requirements
+  e2.plan:
+    label: Delphi account success plan
+    governed_by:
+    - account_terms
+  e2.discount:
+    label: Delphi account renewal discount
+    governed_by:
+    - account_terms
+  e2.sponsor:
+    label: Delphi account executive sponsor
+    governed_by:
+    - renewal
+  e2.reporting:
+    label: Delphi account reporting requirement
+    governed_by:
+    - requirements
+  e2.integration:
+    label: Delphi account integration requirement
+    governed_by:
+    - requirements
+  e3.term:
+    label: Indigo account renewal term
+    governed_by:
+    - renewal
+    - account_terms
+  e3.discount:
+    label: Indigo account renewal discount
+    governed_by:
+    - account_terms
+  e3.dpa:
+    label: Indigo account data processing addendum
+    governed_by:
+    - legal_review
+  e3.reporting:
+    label: Indigo account reporting requirement
+    governed_by:
+    - requirements
+entities:
+- Atlas account
+- Delphi account
+- Indigo account
+unanswerable:
+- Atlas account multi-year renewal signature
+- Indigo account expansion order approval
+- Delphi account reference call approval
+planted_drift:
+- e2.reporting
+planted_contested:
+- e1.term
+- e3.term
+planted_low_authority: []
+planted_open:
+- a033
+- a034
+- a036
+- a038
+- a040
+assertions:
+- id: a017
+  t: 2026-03-08
+  speaker: legal_counsel_1
+  domain: legal_review
+  kind: decide
+  var: e3.dpa
+  value: standard addendum version 3
+- id: a012
+  t: 2026-03-16
+  speaker: cro_1
+  domain: renewal
+  kind: decide
+  var: e2.sponsor
+  value: the chief executive
+- id: a028
+  t: 2026-03-19
+  speaker: customer_1
+  domain: requirements
+  kind: request
+  var: e2.integration
+  value: connect the CRM and the helpdesk
+- id: a001
+  t: 2026-03-21
+  speaker: account_manager_1
+  domain: renewal
+  kind: decide
+  var: e1.term
+  value: 12 months
+- id: a029
+  t: 2026-03-24
+  speaker: cs_head_1
+  domain: requirements
+  kind: decide
+  var: e2.integration
+  value: connect the CRM and the helpdesk
+  ref:
+  - a028
+- id: a034
+  t: 2026-03-27
+  speaker: cro_1
+  domain: account_terms
+  kind: ask
+  var: e3.discount
+  value: does this apply to enterprise plans
+- id: a035
+  t: 2026-03-30
+  speaker: csm_3
+  domain: account_terms
+  kind: answer
+  var: e3.discount
+  value: it depends on the vendor review
+  ref:
+  - a034
+  complete: false
+- id: a013
+  t: 2026-03-31
+  speaker: account_manager_1
+  domain: renewal
+  kind: decide
+  var: e3.term
+  value: month to month
+- id: a002
+  t: 2026-04-02
+  speaker: cro_1
+  domain: account_terms
+  kind: decide
+  var: e1.term
+  value: 36 months
+- id: a014
+  t: 2026-04-08
+  speaker: cro_1
+  domain: account_terms
+  kind: decide
+  var: e3.term
+  value: 12 months
+- id: a030
+  t: 2026-04-08
+  speaker: solutions_engineer_1
+  domain: null
+  kind: implement
+  var: e2.integration
+  value: connect the CRM and the helpdesk
+  ref:
+  - a029
+- id: a007
+  t: 2026-04-29
+  speaker: cs_head_1
+  domain: account_terms
+  kind: decide
+  var: e2.plan
+  value: self-serve only
+- id: a008
+  t: 2026-05-09
+  speaker: cro_1
+  domain: account_terms
+  kind: decide
+  var: e2.plan
+  value: quarterly business reviews
+  discussion:
+  - a007
+- id: a046
+  t: 2026-05-09
+  speaker: cro_1
+  domain: renewal
+  kind: ask
+  var: e2.sponsor
+  value: what is the fallback if this slips
+- id: a047
+  t: 2026-05-14
+  speaker: customer_2
+  domain: renewal
+  kind: answer
+  var: e2.sponsor
+  value: the regional lead is the contact
+  ref:
+  - a046
+  complete: true
+- id: a038
+  t: 2026-05-20
+  speaker: csm_3
+  domain: account_terms
+  kind: ask
+  var: e2.plan
+  value: does this change the contract
+- id: a015
+  t: 2026-05-22
+  speaker: cs_head_1
+  domain: account_terms
+  kind: decide
+  var: e3.discount
+  value: 15 percent
+- id: a039
+  t: 2026-05-25
+  speaker: csm_1
+  domain: account_terms
+  kind: answer
+  var: e2.plan
+  value: will confirm next week
+  ref:
+  - a038
+  complete: false
+- id: a044
+  t: 2026-06-01
+  speaker: customer_2
+  domain: requirements
+  kind: ask
+  var: e2.integration
+  value: who signs off on this
+- id: a016
+  t: 2026-06-06
+  speaker: cro_1
+  domain: account_terms
+  kind: decide
+  var: e3.discount
+  value: 10 percent
+  discussion:
+  - a015
+- id: a045
+  t: 2026-06-09
+  speaker: support_lead_1
+  domain: requirements
+  kind: answer
+  var: e2.integration
+  value: the contract is unchanged
+  ref:
+  - a044
+  complete: true
+- id: a009
+  t: 2026-06-16
+  speaker: cs_head_1
+  domain: account_terms
+  kind: decide
+  var: e2.discount
+  value: 15 percent
+- id: a033
+  t: 2026-06-18
+  speaker: csm_2
+  domain: account_terms
+  kind: ask
+  var: e2.plan
+  value: does this change the contract
+- id: a018
+  t: 2026-06-21
+  speaker: customer_3
+  domain: requirements
+  kind: request
+  var: e1.integration
+  value: connect the CRM and the helpdesk
+- id: a010
+  t: 2026-07-02
+  speaker: cs_head_1
+  domain: account_terms
+  kind: decide
+  var: e2.discount
+  value: 10 percent
+- id: a031
+  t: 2026-07-10
+  speaker: customer_1
+  domain: requirements
+  kind: request
+  var: e3.reporting
+  value: weekly usage report
+- id: a036
+  t: 2026-07-10
+  speaker: solutions_engineer_1
+  domain: account_terms
+  kind: ask
+  var: e3.discount
+  value: is legal aware of this
+- id: a003
+  t: 2026-07-11
+  speaker: cro_1
+  domain: renewal
+  kind: decide
+  var: e1.sponsor
+  value: the account manager
+- id: a019
+  t: 2026-07-13
+  speaker: cs_head_1
+  domain: requirements
+  kind: decide
+  var: e1.integration
+  value: connect the CRM only
+  ref:
+  - a018
+- id: a037
+  t: 2026-07-15
+  speaker: solutions_engineer_1
+  domain: account_terms
+  kind: answer
+  var: e3.discount
+  value: still checking with the team
+  ref:
+  - a036
+  complete: false
+- id: a011
+  t: 2026-07-20
+  speaker: cs_head_1
+  domain: account_terms
+  kind: decide
+  var: e2.discount
+  value: 15 percent
+- id: a004
+  t: 2026-07-29
+  speaker: csm_1
+  domain: renewal
+  kind: report
+  var: e1.sponsor
+  value: a customer escalation
+- id: a032
+  t: 2026-07-31
+  speaker: cs_head_1
+  domain: requirements
+  kind: decide
+  var: e3.reporting
+  value: monthly usage report
+  ref:
+  - a031
+- id: a020
+  t: 2026-08-01
+  speaker: solutions_engineer_1
+  domain: null
+  kind: implement
+  var: e1.integration
+  value: connect the CRM only
+  ref:
+  - a019
+- id: a005
+  t: 2026-08-05
+  speaker: cro_1
+  domain: renewal
+  kind: decide
+  var: e1.sponsor
+  value: the chief revenue officer
+  ref:
+  - a004
+  trigger:
+  - a004
+- id: a024
+  t: 2026-08-06
+  speaker: customer_1
+  domain: requirements
+  kind: request
+  var: e2.reporting
+  value: weekly usage report
+- id: a021
+  t: 2026-08-11
+  speaker: customer_3
+  domain: requirements
+  kind: request
+  var: e1.onboarding
+  value: train 50 users
+- id: a040
+  t: 2026-08-13
+  speaker: customer_2
+  domain: requirements
+  kind: ask
+  var: e3.reporting
+  value: does this apply to enterprise plans
+- id: a042
+  t: 2026-08-14
+  speaker: customer_2
+  domain: renewal
+  kind: ask
+  var: e2.sponsor
+  value: who signs off on this
+- id: a043
+  t: 2026-08-18
+  speaker: csm_3
+  domain: renewal
+  kind: answer
+  var: e2.sponsor
+  value: the platform migration is the only dependency
+  ref:
+  - a042
+  complete: true
+- id: a041
+  t: 2026-08-19
+  speaker: legal_counsel_1
+  domain: requirements
+  kind: answer
+  var: e3.reporting
+  value: still checking with the team
+  ref:
+  - a040
+  complete: false
+- id: a025
+  t: 2026-08-20
+  speaker: cs_head_1
+  domain: requirements
+  kind: decide
+  var: e2.reporting
+  value: monthly usage report
+  ref:
+  - a024
+- id: a026
+  t: 2026-08-28
+  speaker: solutions_engineer_1
+  domain: null
+  kind: implement
+  var: e2.reporting
+  value: monthly usage report
+  ref:
+  - a025
+- id: a006
+  t: 2026-08-31
+  speaker: cs_head_1
+  domain: account_terms
+  kind: decide
+  var: e1.sla
+  value: 4 hour response
+- id: a022
+  t: 2026-09-04
+  speaker: cs_head_1
+  domain: requirements
+  kind: decide
+  var: e1.onboarding
+  value: train 50 users
+  ref:
+  - a021
+- id: a023
+  t: 2026-09-11
+  speaker: solutions_engineer_1
+  domain: null
+  kind: implement
+  var: e1.onboarding
+  value: train 50 users
+  ref:
+  - a022
+- id: a027
+  t: 2026-09-17
+  speaker: cs_head_1
+  domain: requirements
+  kind: decide
+  var: e2.reporting
+  value: quarterly usage report
+  ref:
+  - a025
+- id: a048
+  t: 2026-09-29
+  speaker: solutions_engineer_1
+  domain: account_terms
+  kind: ask
+  var: e2.discount
+  value: what does this depend on
+- id: a049
+  t: 2026-10-07
+  speaker: customer_3
+  domain: account_terms
+  kind: answer
+  var: e2.discount
+  value: yes it was confirmed in the review
+  ref:
+  - a048
+  complete: true
+- id: a050
+  t: 2026-10-17
+  speaker: csm_3
+  domain: renewal
+  kind: report
+  var: e2.sponsor
+  value: new usage data
+render:
+  chatter: 10
+  filler_sessions: 25
+panel_size: 30

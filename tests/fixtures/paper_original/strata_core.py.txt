@@ -1,0 +1,254 @@
+"""
+STRATA reference implementation: organizational world-model semantics.
+
+Implements Section 3 of the paper (valid state, supersession, establishing
+sets, lineage status, drift, open questions) and the perturbation operators
+of Section 5 (stale, contradict-low, contradict-cross, incomplete).
+
+Pure Python, no dependencies. Run `python strata_core.py` to reproduce the
+derivations in Appendix A. The tests at the bottom assert the paper's
+expected answers.
+"""
+from __future__ import annotations
+from dataclasses import dataclass, field, replace
+from datetime import date
+from typing import Dict, List, Optional, Set, Tuple
+
+BOTTOM = None  # authority ⊥
+
+
+@dataclass(frozen=True)
+class Assertion:
+    id: str
+    t: date
+    speaker: str
+    domain: Optional[str]
+    kind: str            # decide | revoke | report | request | implement | ask | answer
+    var: str
+    value: object = None
+    ref: Tuple[str, ...] = ()
+    complete: bool = True  # for 'answer' assertions
+
+
+@dataclass
+class WorldModel:
+    roles: Dict[str, str]                      # person -> role
+    authority: Dict[str, Dict[str, int]]       # domain -> role -> level
+    governance: Dict[str, Set[str]]            # variable -> governing domains
+    assertions: List[Assertion] = field(default_factory=list)
+
+    # ---------- authority and supersession (Section 3.2) ----------
+    def auth(self, s: Assertion) -> Optional[int]:
+        """Authority of a decide/revoke/request assertion on its own variable."""
+        if s.domain is None or s.domain not in self.governance.get(s.var, set()):
+            return BOTTOM
+        role = self.roles.get(s.speaker)
+        return self.authority.get(s.domain, {}).get(role, BOTTOM)
+
+    def comparable(self, a: Assertion, b: Assertion) -> bool:
+        return a.domain == b.domain
+
+    def supersedes(self, s2: Assertion, s1: Assertion) -> bool:
+        """s2 ▷ s1 : same variable, same domain, higher authority, or equal authority and later."""
+        if s1.var != s2.var or not self.comparable(s1, s2):
+            return False
+        a1, a2 = self.auth(s1), self.auth(s2)
+        if a1 is BOTTOM or a2 is BOTTOM:
+            return False
+        return a2 > a1 or (a2 == a1 and s2.t > s1.t)
+
+    def _state_setting(self, var: str, t: date) -> List[Assertion]:
+        """decide (and request, for requirement variables) assertions on var at or before t,
+        with authority, not removed by a valid revocation at or before t."""
+        cands = [s for s in self.assertions
+                 if s.var == var and s.kind in ("decide", "request") and s.t <= t
+                 and self.auth(s) is not BOTTOM]
+        revokes = [r for r in self.assertions if r.kind == "revoke" and r.t <= t]
+        alive = []
+        for s in cands:
+            removed = any(s.id in r.ref and self.comparable(r, s)
+                          and self.auth(replace(r, var=s.var)) is not BOTTOM
+                          and self.auth(replace(r, var=s.var)) >= self.auth(s)
+                          for r in revokes)
+            if not removed:
+                alive.append(s)
+        return alive
+
+    def undominated(self, var: str, t: date) -> List[Assertion]:
+        S = self._state_setting(var, t)
+        return [s for s in S if not any(self.supersedes(s2, s) for s2 in S if s2 is not s)]
+
+    def valid_state(self, var: str, t: date) -> dict:
+        """Returns status (valid|contested|undetermined), values, since, establishing set."""
+        U = self.undominated(var, t)
+        if not U:
+            ever = any(s.var == var and s.kind in ("decide", "request") and s.t <= t
+                       for s in self.assertions)
+            return {"status": "undetermined", "values": [], "since": None,
+                    "establishing": [], "reason": "revoked" if ever else "never_decided"}
+        values = sorted({str(s.value) for s in U})
+        reasons = [r for s in U for r in s.ref if self._by_id(r) is not None]
+        est = sorted({s.id for s in U} | set(reasons))
+        status = "valid" if len(values) == 1 else "contested"
+        return {"status": status, "values": values if status == "contested" else values[0],
+                "since": max(s.t for s in U), "establishing": est}
+
+    def _by_id(self, aid: str) -> Optional[Assertion]:
+        return next((s for s in self.assertions if s.id == aid), None)
+
+    # ---------- lineage, drift, open questions (Section 3.3) ----------
+    def decision_status(self, decision_id: str, t: date, actions: Set[str] = frozenset()) -> str:
+        d = self._by_id(decision_id)
+        if d is None or d.t > t:
+            return "absent"
+        if d not in self._state_setting(d.var, t):
+            return "revoked"
+        if any(self.supersedes(s2, d) for s2 in self._state_setting(d.var, t)):
+            return "superseded"
+        followed = any(a.kind != "revoke" and decision_id in a.ref and a.t <= t and a.id in actions
+                       for a in self.assertions)
+        return "in_force" if followed or not actions else "unactioned"
+
+    def drifted(self, spec_var: str, t: date) -> Optional[bool]:
+        spec = self.valid_state(spec_var, t)
+        impls = [s for s in self.assertions if s.kind == "implement" and s.var == spec_var and s.t <= t]
+        if spec["status"] != "valid" or not impls:
+            return None
+        latest = max(impls, key=lambda s: s.t)
+        return str(latest.value) != str(spec["values"])
+
+    def open_questions(self, t: date) -> List[str]:
+        asks = [s for s in self.assertions if s.kind == "ask" and s.t <= t]
+        out = []
+        for q in asks:
+            resolved = any(a.kind == "answer" and q.id in a.ref and a.complete and a.t <= t
+                           for a in self.assertions)
+            if not resolved:
+                out.append(q.id)
+        return out
+
+
+# ---------- perturbation operators (Section 5.1) ----------
+def stale(w: WorldModel, tau: date) -> WorldModel:
+    return replace(w, assertions=[s for s in w.assertions if s.t <= tau])
+
+
+def contradict_low(w: WorldModel, injected: List[Assertion]) -> WorldModel:
+    """Inject later decide assertions in the same domain by lower-authority roles."""
+    for s in injected:
+        assert s.kind == "decide"
+    return replace(w, assertions=w.assertions + injected)
+
+
+def contradict_cross(w: WorldModel, var: str, new_domain: str, injected: List[Assertion]) -> WorldModel:
+    gov = {k: set(v) for k, v in w.governance.items()}
+    gov[var] = gov.get(var, set()) | {new_domain}
+    return replace(w, governance=gov, assertions=w.assertions + injected)
+
+
+def incomplete(w: WorldModel, remove_ids: Set[str], keep_indirect: List[Assertion] = ()) -> WorldModel:
+    kept = [s for s in w.assertions if s.id not in remove_ids]
+    return replace(w, assertions=kept + list(keep_indirect))
+
+
+# ====================== Appendix A, Example 1 ======================
+def example_1() -> WorldModel:
+    D = date
+    return WorldModel(
+        roles={"pm": "pm", "eng": "eng", "cto": "cto", "sales_head": "sales_head"},
+        authority={"product_scope": {"eng": 1, "pm": 2, "cto": 3},
+                   "commercial": {"sales_head": 2},
+                   "architecture": {"eng": 1}},
+        governance={"sf.target": {"product_scope"},
+                    "sf.priority": {"product_scope", "commercial"},
+                    "sf_api.limit": {"architecture"}},
+        assertions=[
+            Assertion("a1", D(2026, 1, 12), "pm", "product_scope", "decide", "sf.target", "Q3"),
+            Assertion("a2", D(2026, 2, 3), "eng", "architecture", "report", "sf_api.limit", "rate_limited"),
+            Assertion("a3", D(2026, 3, 18), "pm", "product_scope", "decide", "sf.target", "Q4", ("a2",)),
+            Assertion("a4", D(2026, 4, 22), "cto", "product_scope", "decide", "sf.priority", "below_hubspot"),
+            Assertion("a5", D(2026, 5, 30), "sales_head", "commercial", "decide", "sf.priority", "committed_customer_x"),
+        ])
+
+
+# ====================== Appendix A, Example 2 ======================
+def example_2() -> WorldModel:
+    D = date
+    return WorldModel(
+        roles={"customer_y": "customer", "tech_lead": "tech_lead", "principal": "principal",
+               "engineer": "engineer", "support_lead": "support_lead", "release": "release"},
+        authority={"architecture": {"engineer": 1, "tech_lead": 2, "principal": 3},
+                   "requirements": {"customer": 1, "support_lead": 2, "tech_lead": 3}},
+        governance={"export.spec": {"requirements"}, "export.arch_rule": {"architecture"}},
+        assertions=[
+            Assertion("b1", D(2026, 2, 4), "customer_y", "requirements", "request", "export.spec",
+                      "bulk export of all records, CSV"),
+            Assertion("b2", D(2026, 2, 11), "tech_lead", "requirements", "decide", "export.spec",
+                      "bulk export, CSV, max 50k rows per job", ("b1",)),
+            Assertion("b3", D(2026, 3, 2), "principal", "architecture", "decide", "export.arch_rule",
+                      "exports run only through the async job service", ("incident-17",)),
+            Assertion("b4", D(2026, 3, 20), "engineer", "architecture", "decide", "export.arch_rule",
+                      "synchronous export is fine for small jobs"),
+            Assertion("b5", D(2026, 4, 8), "release", None, "implement", "export.spec",
+                      "bulk export, CSV, max 50k rows per job"),
+            Assertion("b6", D(2026, 5, 14), "support_lead", "requirements", "ask", "export.spec",
+                      "does the 50k cap apply to customer Y's enterprise plan?"),
+        ])
+
+
+def show(label: str, st: dict) -> None:
+    print(f"  {label:<22} status={st['status']:<12} values={st['values']!s:<45} "
+          f"since={st['since']} establishing={st['establishing']}")
+
+
+if __name__ == "__main__":
+    now = date(2026, 7, 31)
+
+    print("Example 1 (clean)")
+    w = example_1()
+    tgt, pri = w.valid_state("sf.target", now), w.valid_state("sf.priority", now)
+    show("sf.target", tgt); show("sf.priority", pri)
+    assert tgt["status"] == "valid" and tgt["values"] == "Q4" and tgt["establishing"] == ["a2", "a3"]
+    assert pri["status"] == "contested" and pri["establishing"] == ["a4", "a5"]
+
+    print("Example 1, stale(tau=2026-04-01)")
+    ws = stale(w, date(2026, 4, 1))
+    show("sf.priority", ws.valid_state("sf.priority", now))
+    assert ws.valid_state("sf.priority", now)["status"] == "undetermined"
+    assert ws.valid_state("sf.target", now)["values"] == "Q4"
+
+    print("Example 1, contradict-low: eng says 'drop Salesforce' in June")
+    wl = contradict_low(w, [Assertion("inj1", date(2026, 6, 10), "eng", "product_scope", "decide",
+                                      "sf.priority", "dropped")])
+    show("sf.priority", wl.valid_state("sf.priority", now))
+    assert wl.valid_state("sf.priority", now)["establishing"] == ["a4", "a5"]  # injection ignored
+
+    print("Example 1, contradict-cross on sf.target: commercial sets Q3")
+    wc = contradict_cross(w, "sf.target", "commercial",
+                          [Assertion("inj2", date(2026, 6, 10), "sales_head", "commercial", "decide",
+                                     "sf.target", "Q3")])
+    show("sf.target", wc.valid_state("sf.target", now))
+    assert wc.valid_state("sf.target", now)["status"] == "contested"
+
+    print("Example 1, incomplete: a4 and a5 removed, indirect mention kept")
+    wi = incomplete(w, {"a4", "a5"},
+                    [Assertion("ind1", date(2026, 6, 2), "pm", "product_scope", "report", "sf.priority",
+                               "per the priority call last month", ("a4",))])
+    show("sf.priority", wi.valid_state("sf.priority", now))
+    assert wi.valid_state("sf.priority", now)["status"] == "undetermined"
+
+    print("Example 2 (clean), query 2026-06-30")
+    now2 = date(2026, 6, 30)
+    w2 = example_2()
+    spec, rule = w2.valid_state("export.spec", now2), w2.valid_state("export.arch_rule", now2)
+    show("export.spec", spec); show("export.arch_rule", rule)
+    assert spec["status"] == "valid" and spec["establishing"] == ["b1", "b2"]
+    assert rule["status"] == "valid" and rule["values"].startswith("exports run only")
+    assert w2.decision_status("b4", now2) == "superseded"      # engineer never gains force
+    assert w2.decision_status("b1", now2) == "superseded"      # request narrowed by tech lead
+    assert w2.drifted("export.spec", now2) is False            # content matches; arch violation is separate
+    assert w2.open_questions(now2) == ["b6"]
+    print(f"  drift(export.spec)={w2.drifted('export.spec', now2)}  open_questions={w2.open_questions(now2)}  "
+          f"status(b4)={w2.decision_status('b4', now2)}")
+
+    print("\nAll Appendix A derivations reproduced.")

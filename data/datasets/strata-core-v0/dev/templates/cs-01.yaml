@@ -1,0 +1,637 @@
+id: cs-01
+archetype: customer_success_team
+generator:
+  version: '1'
+  attempt: 5
+query_time: 2026-08-11
+people:
+  csm_1: Felix Braun
+  csm_2: Stefan Kovac
+  account_manager_1: Yuki Sato
+  cs_head_1: Omar Haddad
+  cro_1: Lucas Martin
+  legal_counsel_1: Grace Kim
+  support_lead_1: Nadia Rahman
+  solutions_engineer_1: Aisha Khan
+  customer_1: Amara Obi
+  customer_2: Marco Bianchi
+roles:
+  csm_1: csm
+  csm_2: csm
+  account_manager_1: account_manager
+  cs_head_1: cs_head
+  cro_1: cro
+  legal_counsel_1: legal_counsel
+  support_lead_1: support_lead
+  solutions_engineer_1: solutions_engineer
+  customer_1: customer
+  customer_2: customer
+domains:
+  account_terms:
+    label: account terms
+    authority:
+      account_manager: 1
+      cs_head: 2
+      cro: 3
+  renewal:
+    label: renewal strategy
+    authority:
+      csm: 1
+      account_manager: 2
+      cro: 3
+  legal_review:
+    label: legal review
+    authority:
+      account_manager: 1
+      legal_counsel: 2
+  requirements:
+    label: requirements
+    authority:
+      customer: 1
+      csm: 2
+      cs_head: 3
+variables:
+  e1.sponsor:
+    label: Fjord account executive sponsor
+    governed_by:
+    - renewal
+  e1.term:
+    label: Fjord account renewal term
+    governed_by:
+    - renewal
+    - account_terms
+  e1.integration:
+    label: Fjord account integration requirement
+    governed_by:
+    - requirements
+  e2.discount:
+    label: Borealis account renewal discount
+    governed_by:
+    - account_terms
+  e2.term:
+    label: Borealis account renewal term
+    governed_by:
+    - renewal
+  e2.dpa:
+    label: Borealis account data processing addendum
+    governed_by:
+    - legal_review
+  e2.reporting:
+    label: Borealis account reporting requirement
+    governed_by:
+    - requirements
+  e3.sla:
+    label: Juniper account support level
+    governed_by:
+    - account_terms
+  e3.term:
+    label: Juniper account renewal term
+    governed_by:
+    - renewal
+  e3.integration:
+    label: Juniper account integration requirement
+    governed_by:
+    - requirements
+  e3.reporting:
+    label: Juniper account reporting requirement
+    governed_by:
+    - requirements
+  e4.plan:
+    label: Garnet account success plan
+    governed_by:
+    - account_terms
+  e4.dpa:
+    label: Garnet account data processing addendum
+    governed_by:
+    - legal_review
+  e4.term:
+    label: Garnet account renewal term
+    governed_by:
+    - renewal
+  e4.reporting:
+    label: Garnet account reporting requirement
+    governed_by:
+    - requirements
+  e4.integration:
+    label: Garnet account integration requirement
+    governed_by:
+    - requirements
+  e5.discount:
+    label: Cobalt account renewal discount
+    governed_by:
+    - account_terms
+  e5.sponsor:
+    label: Cobalt account executive sponsor
+    governed_by:
+    - renewal
+  e5.term:
+    label: Cobalt account renewal term
+    governed_by:
+    - renewal
+    - account_terms
+  e5.integration:
+    label: Cobalt account integration requirement
+    governed_by:
+    - requirements
+entities:
+- Fjord account
+- Borealis account
+- Juniper account
+- Garnet account
+- Cobalt account
+unanswerable:
+- Cobalt account security questionnaire approval
+- Garnet account reference call approval
+- Fjord account multi-year renewal signature
+planted_drift:
+- e2.reporting
+planted_contested:
+- e1.term
+- e5.term
+planted_low_authority:
+- e4.dpa
+planted_open:
+- a047
+- a048
+- a049
+- a050
+- a051
+assertions:
+- id: a047
+  t: 2026-01-24
+  speaker: support_lead_1
+  domain: account_terms
+  kind: ask
+  var: e2.discount
+  value: who signs off on this
+- id: a048
+  t: 2026-01-25
+  speaker: legal_counsel_1
+  domain: renewal
+  kind: ask
+  var: e4.term
+  value: is legal aware of this
+- id: a039
+  t: 2026-02-02
+  speaker: customer_1
+  domain: requirements
+  kind: request
+  var: e4.reporting
+  value: weekly usage report
+- id: a006
+  t: 2026-02-06
+  speaker: cs_head_1
+  domain: account_terms
+  kind: decide
+  var: e2.discount
+  value: 20 percent
+- id: a026
+  t: 2026-02-21
+  speaker: customer_2
+  domain: requirements
+  kind: request
+  var: e1.integration
+  value: connect the CRM and the helpdesk
+- id: a040
+  t: 2026-02-23
+  speaker: cs_head_1
+  domain: requirements
+  kind: decide
+  var: e4.reporting
+  value: monthly usage report
+  ref:
+  - a039
+- id: a052
+  t: 2026-02-27
+  speaker: account_manager_1
+  domain: legal_review
+  kind: ask
+  var: e4.dpa
+  value: what does this depend on
+- id: a012
+  t: 2026-03-02
+  speaker: account_manager_1
+  domain: renewal
+  kind: decide
+  var: e3.term
+  value: month to month
+- id: a027
+  t: 2026-03-04
+  speaker: cs_head_1
+  domain: requirements
+  kind: decide
+  var: e1.integration
+  value: connect the CRM and the helpdesk
+  ref:
+  - a026
+- id: a041
+  t: 2026-03-08
+  speaker: solutions_engineer_1
+  domain: null
+  kind: implement
+  var: e4.reporting
+  value: monthly usage report
+  ref:
+  - a040
+- id: a053
+  t: 2026-03-11
+  speaker: csm_2
+  domain: legal_review
+  kind: answer
+  var: e4.dpa
+  value: finance approved it last week
+  ref:
+  - a052
+  complete: true
+- id: a042
+  t: 2026-03-12
+  speaker: customer_1
+  domain: requirements
+  kind: request
+  var: e4.integration
+  value: connect the CRM and the helpdesk
+- id: a007
+  t: 2026-03-14
+  speaker: cro_1
+  domain: renewal
+  kind: decide
+  var: e2.term
+  value: 24 months
+- id: a013
+  t: 2026-03-14
+  speaker: cro_1
+  domain: renewal
+  kind: revoke
+  var: e3.term
+  ref:
+  - a012
+- id: a004
+  t: 2026-03-24
+  speaker: account_manager_1
+  domain: renewal
+  kind: decide
+  var: e1.term
+  value: month to month
+- id: a028
+  t: 2026-03-25
+  speaker: solutions_engineer_1
+  domain: null
+  kind: implement
+  var: e1.integration
+  value: connect the CRM and the helpdesk
+  ref:
+  - a027
+- id: a043
+  t: 2026-03-25
+  speaker: cs_head_1
+  domain: requirements
+  kind: decide
+  var: e4.integration
+  value: connect the CRM and the helpdesk
+  ref:
+  - a042
+- id: a044
+  t: 2026-03-31
+  speaker: solutions_engineer_1
+  domain: null
+  kind: implement
+  var: e4.integration
+  value: connect the CRM and the helpdesk
+  ref:
+  - a043
+- id: a056
+  t: 2026-04-02
+  speaker: support_lead_1
+  domain: account_terms
+  kind: ask
+  var: e2.discount
+  value: is legal aware of this
+- id: a049
+  t: 2026-04-03
+  speaker: cro_1
+  domain: renewal
+  kind: ask
+  var: e2.term
+  value: which customers are affected
+- id: a045
+  t: 2026-04-11
+  speaker: customer_1
+  domain: requirements
+  kind: request
+  var: e5.integration
+  value: connect the CRM and the helpdesk
+- id: a057
+  t: 2026-04-14
+  speaker: support_lead_1
+  domain: account_terms
+  kind: answer
+  var: e2.discount
+  value: finance approved it last week
+  ref:
+  - a056
+  complete: true
+- id: a005
+  t: 2026-04-17
+  speaker: cro_1
+  domain: account_terms
+  kind: decide
+  var: e1.term
+  value: 36 months
+- id: a029
+  t: 2026-04-18
+  speaker: customer_2
+  domain: requirements
+  kind: request
+  var: e2.reporting
+  value: weekly usage report
+- id: a046
+  t: 2026-04-18
+  speaker: cs_head_1
+  domain: requirements
+  kind: decide
+  var: e5.integration
+  value: connect the CRM only
+  ref:
+  - a045
+- id: a050
+  t: 2026-04-24
+  speaker: csm_1
+  domain: account_terms
+  kind: ask
+  var: e3.sla
+  value: is legal aware of this
+- id: a051
+  t: 2026-04-25
+  speaker: cro_1
+  domain: requirements
+  kind: ask
+  var: e3.reporting
+  value: which customers are affected
+- id: a030
+  t: 2026-05-03
+  speaker: cs_head_1
+  domain: requirements
+  kind: decide
+  var: e2.reporting
+  value: monthly usage report
+  ref:
+  - a029
+- id: a009
+  t: 2026-05-13
+  speaker: cs_head_1
+  domain: account_terms
+  kind: decide
+  var: e3.sla
+  value: 2 hour response
+- id: a001
+  t: 2026-05-19
+  speaker: account_manager_1
+  domain: renewal
+  kind: decide
+  var: e1.sponsor
+  value: the head of customer success
+- id: a008
+  t: 2026-05-22
+  speaker: legal_counsel_1
+  domain: legal_review
+  kind: decide
+  var: e2.dpa
+  value: standard addendum version 4
+- id: a054
+  t: 2026-05-22
+  speaker: customer_1
+  domain: requirements
+  kind: ask
+  var: e2.reporting
+  value: does this change the contract
+- id: a031
+  t: 2026-05-26
+  speaker: solutions_engineer_1
+  domain: null
+  kind: implement
+  var: e2.reporting
+  value: monthly usage report
+  ref:
+  - a030
+- id: a010
+  t: 2026-05-28
+  speaker: account_manager_1
+  domain: account_terms
+  kind: report
+  var: e3.sla
+  value: new usage data
+- id: a017
+  t: 2026-05-30
+  speaker: account_manager_1
+  domain: renewal
+  kind: decide
+  var: e4.term
+  value: month to month
+- id: a019
+  t: 2026-05-30
+  speaker: cs_head_1
+  domain: account_terms
+  kind: decide
+  var: e5.discount
+  value: 15 percent
+- id: a022
+  t: 2026-05-30
+  speaker: account_manager_1
+  domain: renewal
+  kind: decide
+  var: e5.sponsor
+  value: the chief executive
+- id: a033
+  t: 2026-05-30
+  speaker: customer_2
+  domain: requirements
+  kind: request
+  var: e3.integration
+  value: connect the CRM and the helpdesk
+- id: a014
+  t: 2026-05-31
+  speaker: cs_head_1
+  domain: account_terms
+  kind: decide
+  var: e4.plan
+  value: dedicated workshops
+- id: a055
+  t: 2026-05-31
+  speaker: solutions_engineer_1
+  domain: requirements
+  kind: answer
+  var: e2.reporting
+  value: the regional lead is the contact
+  ref:
+  - a054
+  complete: true
+- id: a002
+  t: 2026-06-06
+  speaker: csm_2
+  domain: renewal
+  kind: report
+  var: e1.sponsor
+  value: capacity constraints
+- id: a020
+  t: 2026-06-09
+  speaker: account_manager_1
+  domain: account_terms
+  kind: report
+  var: e5.discount
+  value: a partner request
+- id: a018
+  t: 2026-06-10
+  speaker: support_lead_1
+  domain: renewal
+  kind: decide
+  var: e4.term
+  value: 24 months
+- id: a032
+  t: 2026-06-12
+  speaker: cs_head_1
+  domain: requirements
+  kind: decide
+  var: e2.reporting
+  value: quarterly usage report
+  ref:
+  - a030
+- id: a034
+  t: 2026-06-18
+  speaker: cs_head_1
+  domain: requirements
+  kind: decide
+  var: e3.integration
+  value: connect the CRM only
+  ref:
+  - a033
+- id: a036
+  t: 2026-06-19
+  speaker: customer_2
+  domain: requirements
+  kind: request
+  var: e3.reporting
+  value: weekly usage report
+- id: a015
+  t: 2026-06-20
+  speaker: legal_counsel_1
+  domain: legal_review
+  kind: decide
+  var: e4.dpa
+  value: standard addendum version 4
+- id: a058
+  t: 2026-06-22
+  speaker: csm_2
+  domain: account_terms
+  kind: ask
+  var: e4.plan
+  value: is legal aware of this
+- id: a023
+  t: 2026-06-24
+  speaker: cro_1
+  domain: renewal
+  kind: revoke
+  var: e5.sponsor
+  ref:
+  - a022
+- id: a003
+  t: 2026-06-25
+  speaker: account_manager_1
+  domain: renewal
+  kind: decide
+  var: e1.sponsor
+  value: the chief revenue officer
+  ref:
+  - a002
+  trigger:
+  - a002
+- id: a011
+  t: 2026-06-26
+  speaker: cs_head_1
+  domain: account_terms
+  kind: decide
+  var: e3.sla
+  value: 4 hour response
+  ref:
+  - a010
+  trigger:
+  - a010
+- id: a059
+  t: 2026-07-01
+  speaker: customer_1
+  domain: account_terms
+  kind: answer
+  var: e4.plan
+  value: the regional lead is the contact
+  ref:
+  - a058
+  complete: true
+- id: a037
+  t: 2026-07-02
+  speaker: cs_head_1
+  domain: requirements
+  kind: decide
+  var: e3.reporting
+  value: monthly usage report
+  ref:
+  - a036
+- id: a021
+  t: 2026-07-03
+  speaker: cs_head_1
+  domain: account_terms
+  kind: decide
+  var: e5.discount
+  value: 10 percent
+  ref:
+  - a020
+  trigger:
+  - a020
+- id: a038
+  t: 2026-07-09
+  speaker: solutions_engineer_1
+  domain: null
+  kind: implement
+  var: e3.reporting
+  value: monthly usage report
+  ref:
+  - a037
+- id: a035
+  t: 2026-07-12
+  speaker: solutions_engineer_1
+  domain: null
+  kind: implement
+  var: e3.integration
+  value: connect the CRM only
+  ref:
+  - a034
+- id: a016
+  t: 2026-07-15
+  speaker: account_manager_1
+  domain: legal_review
+  kind: decide
+  var: e4.dpa
+  value: no addendum required
+- id: a024
+  t: 2026-07-15
+  speaker: cro_1
+  domain: renewal
+  kind: decide
+  var: e5.term
+  value: month to month
+- id: a025
+  t: 2026-07-21
+  speaker: cro_1
+  domain: account_terms
+  kind: decide
+  var: e5.term
+  value: 36 months
+- id: a060
+  t: 2026-08-04
+  speaker: account_manager_1
+  domain: requirements
+  kind: report
+  var: e4.reporting
+  value: legal feedback
+render:
+  chatter: 10
+  filler_sessions: 25
+panel_size: 30

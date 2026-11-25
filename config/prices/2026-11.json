@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-25",
+  "note": "USD per million tokens. These are REFERENCE rates for comparing token footprints across architectures, not vendor prices. Replace them with the dated price table of a release before quoting any cost figure.",
+  "models": {
+    "reader-reference": {
+      "input": 3.0,
+      "output": 15.0
+    },
+    "embedding-reference": {
+      "input": 0.1,
+      "output": 0.0
+    },
+    "reader-default": {
+      "input": 0.0,
+      "output": 0.0
+    }
+  },
+  "self_hosted_usd_per_accelerator_hour": 0.0
+}

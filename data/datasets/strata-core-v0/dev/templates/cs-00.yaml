@@ -1,0 +1,596 @@
+id: cs-00
+archetype: customer_success_team
+generator:
+  version: '1'
+  attempt: 6
+query_time: 2026-09-16
+people:
+  csm_1: Leila Farah
+  csm_2: Ana Costa
+  account_manager_1: Noor Ali
+  account_manager_2: Kofi Mensah
+  cs_head_1: Mateo Silva
+  cro_1: Lena Fischer
+  legal_counsel_1: Emma Lund
+  support_lead_1: Anya Sokolova
+  solutions_engineer_1: Elena Petrova
+  solutions_engineer_2: Sam Okoye
+  customer_1: Marco Bianchi
+  customer_2: Oscar Nilsson
+roles:
+  csm_1: csm
+  csm_2: csm
+  account_manager_1: account_manager
+  account_manager_2: account_manager
+  cs_head_1: cs_head
+  cro_1: cro
+  legal_counsel_1: legal_counsel
+  support_lead_1: support_lead
+  solutions_engineer_1: solutions_engineer
+  solutions_engineer_2: solutions_engineer
+  customer_1: customer
+  customer_2: customer
+domains:
+  account_terms:
+    label: account terms
+    authority:
+      account_manager: 1
+      cs_head: 2
+      cro: 3
+  renewal:
+    label: renewal strategy
+    authority:
+      csm: 1
+      account_manager: 2
+      cro: 3
+  legal_review:
+    label: legal review
+    authority:
+      account_manager: 1
+      legal_counsel: 2
+  requirements:
+    label: requirements
+    authority:
+      customer: 1
+      csm: 2
+      cs_head: 3
+variables:
+  e1.discount:
+    label: Borealis account renewal discount
+    governed_by:
+    - account_terms
+    - renewal
+  e1.sla:
+    label: Borealis account support level
+    governed_by:
+    - account_terms
+  e1.term:
+    label: Borealis account renewal term
+    governed_by:
+    - renewal
+  e1.reporting:
+    label: Borealis account reporting requirement
+    governed_by:
+    - requirements
+  e1.onboarding:
+    label: Borealis account onboarding requirement
+    governed_by:
+    - requirements
+  e2.sponsor:
+    label: Indigo account executive sponsor
+    governed_by:
+    - renewal
+  e2.discount:
+    label: Indigo account renewal discount
+    governed_by:
+    - account_terms
+  e2.sla:
+    label: Indigo account support level
+    governed_by:
+    - account_terms
+  e2.onboarding:
+    label: Indigo account onboarding requirement
+    governed_by:
+    - requirements
+  e2.integration:
+    label: Indigo account integration requirement
+    governed_by:
+    - requirements
+  e3.plan:
+    label: Garnet account success plan
+    governed_by:
+    - account_terms
+  e3.sla:
+    label: Garnet account support level
+    governed_by:
+    - account_terms
+  e3.dpa:
+    label: Garnet account data processing addendum
+    governed_by:
+    - legal_review
+  e3.reporting:
+    label: Garnet account reporting requirement
+    governed_by:
+    - requirements
+  e3.integration:
+    label: Garnet account integration requirement
+    governed_by:
+    - requirements
+  e4.dpa:
+    label: Delphi account data processing addendum
+    governed_by:
+    - legal_review
+  e4.sla:
+    label: Delphi account support level
+    governed_by:
+    - account_terms
+  e4.plan:
+    label: Delphi account success plan
+    governed_by:
+    - account_terms
+  e4.onboarding:
+    label: Delphi account onboarding requirement
+    governed_by:
+    - requirements
+entities:
+- Borealis account
+- Indigo account
+- Garnet account
+- Delphi account
+unanswerable:
+- Garnet account expansion order approval
+- Delphi account multi-year renewal signature
+- Delphi account security questionnaire approval
+planted_drift:
+- e2.onboarding
+- e3.integration
+- e4.onboarding
+planted_contested:
+- e1.discount
+planted_low_authority:
+- e4.dpa
+- e4.plan
+planted_open:
+- a046
+- a047
+- a048
+assertions:
+- id: a020
+  t: 2026-02-25
+  speaker: cs_head_1
+  domain: account_terms
+  kind: decide
+  var: e4.sla
+  value: next business day response
+- id: a051
+  t: 2026-03-19
+  speaker: csm_2
+  domain: legal_review
+  kind: ask
+  var: e3.dpa
+  value: who signs off on this
+- id: a021
+  t: 2026-03-26
+  speaker: cro_1
+  domain: account_terms
+  kind: revoke
+  var: e4.sla
+  ref:
+  - a020
+- id: a052
+  t: 2026-03-29
+  speaker: legal_counsel_1
+  domain: legal_review
+  kind: answer
+  var: e3.dpa
+  value: the regional lead is the contact
+  ref:
+  - a051
+  complete: true
+- id: a042
+  t: 2026-04-08
+  speaker: customer_1
+  domain: requirements
+  kind: request
+  var: e4.onboarding
+  value: train 50 users
+- id: a048
+  t: 2026-04-12
+  speaker: csm_2
+  domain: account_terms
+  kind: ask
+  var: e4.sla
+  value: what is the fallback if this slips
+- id: a016
+  t: 2026-04-15
+  speaker: legal_counsel_1
+  domain: legal_review
+  kind: decide
+  var: e3.dpa
+  value: customer paper with edits
+- id: a011
+  t: 2026-04-16
+  speaker: cs_head_1
+  domain: account_terms
+  kind: decide
+  var: e3.plan
+  value: dedicated workshops
+- id: a043
+  t: 2026-04-17
+  speaker: cs_head_1
+  domain: requirements
+  kind: decide
+  var: e4.onboarding
+  value: train 20 users
+  ref:
+  - a042
+- id: a018
+  t: 2026-04-19
+  speaker: legal_counsel_1
+  domain: legal_review
+  kind: decide
+  var: e4.dpa
+  value: customer paper with edits
+- id: a030
+  t: 2026-04-19
+  speaker: customer_1
+  domain: requirements
+  kind: request
+  var: e2.onboarding
+  value: train 50 users
+- id: a001
+  t: 2026-04-23
+  speaker: cs_head_1
+  domain: account_terms
+  kind: decide
+  var: e1.discount
+  value: 20 percent
+- id: a044
+  t: 2026-05-05
+  speaker: solutions_engineer_2
+  domain: null
+  kind: implement
+  var: e4.onboarding
+  value: train 20 users
+  ref:
+  - a043
+- id: a019
+  t: 2026-05-06
+  speaker: account_manager_2
+  domain: legal_review
+  kind: decide
+  var: e4.dpa
+  value: no addendum required
+- id: a022
+  t: 2026-05-06
+  speaker: cro_1
+  domain: account_terms
+  kind: decide
+  var: e4.plan
+  value: dedicated workshops
+- id: a012
+  t: 2026-05-11
+  speaker: account_manager_1
+  domain: account_terms
+  kind: report
+  var: e3.plan
+  value: a customer escalation
+- id: a031
+  t: 2026-05-11
+  speaker: cs_head_1
+  domain: requirements
+  kind: decide
+  var: e2.onboarding
+  value: train 20 users
+  ref:
+  - a030
+- id: a017
+  t: 2026-05-13
+  speaker: legal_counsel_1
+  domain: legal_review
+  kind: revoke
+  var: e3.dpa
+  ref:
+  - a016
+- id: a045
+  t: 2026-05-17
+  speaker: cs_head_1
+  domain: requirements
+  kind: decide
+  var: e4.onboarding
+  value: train 100 users
+  ref:
+  - a043
+- id: a024
+  t: 2026-05-19
+  speaker: customer_2
+  domain: requirements
+  kind: request
+  var: e1.reporting
+  value: weekly usage report
+- id: a032
+  t: 2026-05-20
+  speaker: solutions_engineer_1
+  domain: null
+  kind: implement
+  var: e2.onboarding
+  value: train 10 users
+  ref:
+  - a031
+- id: a002
+  t: 2026-05-21
+  speaker: cro_1
+  domain: renewal
+  kind: decide
+  var: e1.discount
+  value: no discount
+- id: a023
+  t: 2026-05-21
+  speaker: cs_head_1
+  domain: account_terms
+  kind: decide
+  var: e4.plan
+  value: quarterly business reviews
+- id: a053
+  t: 2026-05-22
+  speaker: legal_counsel_1
+  domain: account_terms
+  kind: ask
+  var: e2.sla
+  value: is legal aware of this
+- id: a049
+  t: 2026-05-26
+  speaker: account_manager_2
+  domain: account_terms
+  kind: ask
+  var: e1.discount
+  value: is legal aware of this
+- id: a054
+  t: 2026-05-28
+  speaker: cro_1
+  domain: account_terms
+  kind: answer
+  var: e2.sla
+  value: yes it was confirmed in the review
+  ref:
+  - a053
+  complete: true
+- id: a013
+  t: 2026-05-29
+  speaker: cs_head_1
+  domain: account_terms
+  kind: decide
+  var: e3.plan
+  value: quarterly business reviews
+  ref:
+  - a012
+  trigger:
+  - a012
+- id: a025
+  t: 2026-05-29
+  speaker: cs_head_1
+  domain: requirements
+  kind: decide
+  var: e1.reporting
+  value: weekly usage report
+  ref:
+  - a024
+- id: a026
+  t: 2026-06-04
+  speaker: solutions_engineer_2
+  domain: null
+  kind: implement
+  var: e1.reporting
+  value: weekly usage report
+  ref:
+  - a025
+- id: a014
+  t: 2026-06-09
+  speaker: account_manager_2
+  domain: account_terms
+  kind: decide
+  var: e3.sla
+  value: next business day response
+- id: a050
+  t: 2026-06-09
+  speaker: legal_counsel_1
+  domain: account_terms
+  kind: answer
+  var: e1.discount
+  value: yes it was confirmed in the review
+  ref:
+  - a049
+  complete: true
+- id: a009
+  t: 2026-06-19
+  speaker: cs_head_1
+  domain: account_terms
+  kind: decide
+  var: e2.sla
+  value: next business day response
+- id: a003
+  t: 2026-06-20
+  speaker: cs_head_1
+  domain: account_terms
+  kind: decide
+  var: e1.sla
+  value: 1 hour response
+- id: a015
+  t: 2026-06-24
+  speaker: cro_1
+  domain: account_terms
+  kind: decide
+  var: e3.sla
+  value: 4 hour response
+  discussion:
+  - a014
+- id: a007
+  t: 2026-06-26
+  speaker: cs_head_1
+  domain: account_terms
+  kind: decide
+  var: e2.discount
+  value: 20 percent
+- id: a033
+  t: 2026-07-03
+  speaker: customer_2
+  domain: requirements
+  kind: request
+  var: e2.integration
+  value: connect the CRM and the helpdesk
+- id: a004
+  t: 2026-07-04
+  speaker: cro_1
+  domain: renewal
+  kind: decide
+  var: e1.term
+  value: 12 months
+- id: a005
+  t: 2026-07-05
+  speaker: account_manager_1
+  domain: renewal
+  kind: decide
+  var: e2.sponsor
+  value: the chief executive
+- id: a046
+  t: 2026-07-06
+  speaker: customer_2
+  domain: account_terms
+  kind: ask
+  var: e2.discount
+  value: who signs off on this
+- id: a034
+  t: 2026-07-08
+  speaker: cs_head_1
+  domain: requirements
+  kind: decide
+  var: e2.integration
+  value: connect the CRM only
+  ref:
+  - a033
+- id: a038
+  t: 2026-07-09
+  speaker: customer_2
+  domain: requirements
+  kind: request
+  var: e3.integration
+  value: connect the CRM and the helpdesk
+- id: a008
+  t: 2026-07-12
+  speaker: support_lead_1
+  domain: account_terms
+  kind: decide
+  var: e2.discount
+  value: 15 percent
+- id: a006
+  t: 2026-07-13
+  speaker: cro_1
+  domain: renewal
+  kind: decide
+  var: e2.sponsor
+  value: the chief revenue officer
+  discussion:
+  - a005
+- id: a036
+  t: 2026-07-14
+  speaker: customer_2
+  domain: requirements
+  kind: request
+  var: e3.reporting
+  value: weekly usage report
+- id: a010
+  t: 2026-07-15
+  speaker: cro_1
+  domain: account_terms
+  kind: revoke
+  var: e2.sla
+  ref:
+  - a009
+- id: a047
+  t: 2026-07-17
+  speaker: solutions_engineer_2
+  domain: account_terms
+  kind: ask
+  var: e1.sla
+  value: which customers are affected
+- id: a039
+  t: 2026-07-20
+  speaker: cs_head_1
+  domain: requirements
+  kind: decide
+  var: e3.integration
+  value: connect the CRM only
+  ref:
+  - a038
+- id: a035
+  t: 2026-07-22
+  speaker: solutions_engineer_1
+  domain: null
+  kind: implement
+  var: e2.integration
+  value: connect the CRM only
+  ref:
+  - a034
+- id: a037
+  t: 2026-07-22
+  speaker: cs_head_1
+  domain: requirements
+  kind: decide
+  var: e3.reporting
+  value: monthly usage report
+  ref:
+  - a036
+- id: a027
+  t: 2026-07-27
+  speaker: customer_1
+  domain: requirements
+  kind: request
+  var: e1.onboarding
+  value: train 50 users
+- id: a040
+  t: 2026-08-05
+  speaker: solutions_engineer_2
+  domain: null
+  kind: implement
+  var: e3.integration
+  value: connect the CRM only
+  ref:
+  - a039
+- id: a028
+  t: 2026-08-14
+  speaker: cs_head_1
+  domain: requirements
+  kind: decide
+  var: e1.onboarding
+  value: train 20 users
+  ref:
+  - a027
+- id: a041
+  t: 2026-08-19
+  speaker: cs_head_1
+  domain: requirements
+  kind: decide
+  var: e3.integration
+  value: connect the helpdesk only
+  ref:
+  - a039
+- id: a029
+  t: 2026-08-28
+  speaker: solutions_engineer_2
+  domain: null
+  kind: implement
+  var: e1.onboarding
+  value: train 20 users
+  ref:
+  - a028
+- id: a055
+  t: 2026-09-13
+  speaker: cs_head_1
+  domain: requirements
+  kind: report
+  var: e3.integration
+  value: a partner request
+render:
+  chatter: 10
+  filler_sessions: 25
+panel_size: 30

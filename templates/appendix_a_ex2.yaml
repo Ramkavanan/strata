@@ -1,0 +1,22 @@
+# Appendix A, Example 2: the incident / export scenario (query time moved to 2026-06-12 for the staleness floor).
+id: paper-a2
+archetype: engineering_incident
+query_time: 2026-06-12
+people: {customer_y: Omar Haddad, tech_lead: Lena Fischer, principal: Ravi Menon, engineer: Tom Becker, support_lead: Ana Costa, release: Release Bot}
+roles: {customer_y: customer, tech_lead: tech_lead, principal: principal, engineer: engineer, support_lead: support_lead, release: release}
+domains:
+  architecture: {label: architecture, authority: {engineer: 1, tech_lead: 2, principal: 3}}
+  requirements: {label: requirements, authority: {customer: 1, support_lead: 2, tech_lead: 3}}
+variables:
+  export.spec: {label: bulk export specification, governed_by: [requirements]}
+  export.arch_rule: {label: export architecture rule, governed_by: [architecture]}
+external_refs: [incident-17]
+planted_open: [b6]
+unanswerable: [bulk export GA approval]
+assertions:
+  - {id: b1, t: 2026-02-04, speaker: customer_y, domain: requirements, kind: request, var: export.spec, value: "bulk export of all records, CSV"}
+  - {id: b2, t: 2026-02-11, speaker: tech_lead, domain: requirements, kind: decide, var: export.spec, value: "bulk export, CSV, max 50k rows per job", ref: [b1], explicit: explicit}
+  - {id: b3, t: 2026-03-02, speaker: principal, domain: architecture, kind: decide, var: export.arch_rule, value: "exports run only through the async job service", ref: [incident-17], explicit: explicit}
+  - {id: b4, t: 2026-03-20, speaker: engineer, domain: architecture, kind: decide, var: export.arch_rule, value: "synchronous export is fine for small jobs", explicit: hedged}
+  - {id: b5, t: 2026-04-08, speaker: release, domain: null, kind: implement, var: export.spec, value: "bulk export, CSV, max 50k rows per job", ref: [b2]}
+  - {id: b6, t: 2026-05-14, speaker: support_lead, domain: requirements, kind: ask, var: export.spec, value: "does the 50k cap apply to customer Y's enterprise plan"}

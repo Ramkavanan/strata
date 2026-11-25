@@ -1,0 +1,289 @@
+{
+ "affected_vars": [],
+ "archetype": "b2b_product_team",
+ "artifacts": [
+  {
+   "event_date": "2026-01-12",
+   "id": "art-fd49971f",
+   "ingest_date": "2026-01-12",
+   "spans": [
+    {
+     "id": "sp-71119ca76b",
+     "text": "Team member Dev Rao: role cto."
+    },
+    {
+     "id": "sp-a346833f52",
+     "text": "Team member Arjun Mehta: role eng."
+    },
+    {
+     "id": "sp-8c89ed782f",
+     "text": "Team member Priya Nair: role pm."
+    },
+    {
+     "id": "sp-03eb8175c5",
+     "text": "Team member Maya Iyer: role sales_head."
+    },
+    {
+     "id": "sp-5f997b39ee",
+     "text": "Authority in architecture: eng=1."
+    },
+    {
+     "id": "sp-2b3eb363fc",
+     "text": "Authority in commercial terms: sales_head=2."
+    },
+    {
+     "id": "sp-2f8b207e16",
+     "text": "Authority in product scope: cto=3; eng=1; pm=2."
+    },
+    {
+     "id": "sp-827ecc55aa",
+     "text": "Governance: \"Salesforce integration priority\" is governed by commercial terms, product scope."
+    },
+    {
+     "id": "sp-5da505ca96",
+     "text": "Governance: \"Salesforce integration release target\" is governed by product scope."
+    },
+    {
+     "id": "sp-035a0a65fc",
+     "text": "Governance: \"Salesforce API rate limit\" is governed by architecture."
+    }
+   ],
+   "status": "success",
+   "title": "Organization chart and governance",
+   "type": "org_chart"
+  },
+  {
+   "event_date": "2026-01-12",
+   "id": "art-c086fe41",
+   "ingest_date": "2026-01-12",
+   "spans": [
+    {
+     "id": "sp-7751136e45",
+     "text": "On 2026-01-12, Priya Nair (pm) decided in product scope: \"Salesforce integration release target: Q3.\""
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-01-12",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-02-03",
+   "id": "art-f8139056",
+   "ingest_date": "2026-02-03",
+   "spans": [
+    {
+     "id": "sp-fc920ede20",
+     "text": "On 2026-02-03, Arjun Mehta (eng) reported in architecture: \"Salesforce API rate limit: rate_limited.\""
+    }
+   ],
+   "status": "success",
+   "title": "Meeting 2026-02-03",
+   "type": "meeting"
+  },
+  {
+   "event_date": "2026-03-18",
+   "id": "art-4d6ee058",
+   "ingest_date": "2026-03-18",
+   "spans": [
+    {
+     "id": "sp-aab1c2d815",
+     "text": "On 2026-03-18, Priya Nair (pm) said in product scope: \"I think we should probably go with Salesforce integration release target: Q4, at this point.\" [see 2026-02-03 \"Salesforce API rate limit\" by Arjun Mehta]"
+    }
+   ],
+   "status": "success",
+   "title": "Ticket 2026-03-18",
+   "type": "ticket"
+  },
+  {
+   "event_date": "2026-04-22",
+   "id": "art-df43cffb",
+   "ingest_date": "2026-04-22",
+   "spans": [
+    {
+     "id": "sp-fee3ae9d8d",
+     "text": "On 2026-04-22, Dev Rao (cto) decided in product scope: \"Salesforce integration priority: below_hubspot.\""
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-04-22",
+   "type": "chat"
+  },
+  {
+   "event_date": "2026-05-30",
+   "id": "art-2016a8f8",
+   "ingest_date": "2026-05-30",
+   "spans": [
+    {
+     "id": "sp-270cbe0e3b",
+     "text": "On 2026-05-30, Maya Iyer (sales_head) noted in commercial terms: \"Plan updated, Salesforce integration priority now reads committed_customer_x.\""
+    }
+   ],
+   "status": "success",
+   "title": "Chat 2026-05-30",
+   "type": "chat"
+  }
+ ],
+ "checkpoints": [
+  "2026-01-12",
+  "2026-02-03",
+  "2026-03-18",
+  "2026-04-22",
+  "2026-05-30"
+ ],
+ "domain_labels": {
+  "architecture": "architecture",
+  "commercial": "commercial terms",
+  "product_scope": "product scope"
+ },
+ "explicitness": {
+  "a1": "explicit",
+  "a2": "explicit",
+  "a3": "hedged",
+  "a4": "explicit",
+  "a5": "diffuse"
+ },
+ "labels": {
+  "sf.priority": "Salesforce integration priority",
+  "sf.target": "Salesforce integration release target",
+  "sf_api.limit": "Salesforce API rate limit"
+ },
+ "operator": {
+  "name": "clean"
+ },
+ "panel": null,
+ "people": {
+  "cto": "Dev Rao",
+  "eng": "Arjun Mehta",
+  "pm": "Priya Nair",
+  "sales_head": "Maya Iyer"
+ },
+ "query_time": "2026-06-15",
+ "renderer": {
+  "name": "template"
+ },
+ "scenario_id": "paper-a1-s0",
+ "seed": 0,
+ "span_map": {
+  "sp-035a0a65fc": null,
+  "sp-03eb8175c5": null,
+  "sp-270cbe0e3b": "a5",
+  "sp-2b3eb363fc": null,
+  "sp-2f8b207e16": null,
+  "sp-5da505ca96": null,
+  "sp-5f997b39ee": null,
+  "sp-71119ca76b": null,
+  "sp-7751136e45": "a1",
+  "sp-827ecc55aa": null,
+  "sp-8c89ed782f": null,
+  "sp-a346833f52": null,
+  "sp-aab1c2d815": "a3",
+  "sp-fc920ede20": "a2",
+  "sp-fee3ae9d8d": "a4"
+ },
+ "template_id": "paper-a1",
+ "unanswerable": [
+  "Salesforce GA release approval"
+ ],
+ "world": {
+  "assertions": [
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "product_scope",
+    "id": "a1",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "pm",
+    "t": "2026-01-12",
+    "trigger": [],
+    "value": "Q3",
+    "var": "sf.target"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "architecture",
+    "id": "a2",
+    "kind": "report",
+    "ref": [],
+    "speaker": "eng",
+    "t": "2026-02-03",
+    "trigger": [],
+    "value": "rate_limited",
+    "var": "sf_api.limit"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "product_scope",
+    "id": "a3",
+    "kind": "decide",
+    "ref": [
+     "a2"
+    ],
+    "speaker": "pm",
+    "t": "2026-03-18",
+    "trigger": [],
+    "value": "Q4",
+    "var": "sf.target"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "product_scope",
+    "id": "a4",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "cto",
+    "t": "2026-04-22",
+    "trigger": [],
+    "value": "below_hubspot",
+    "var": "sf.priority"
+   },
+   {
+    "complete": true,
+    "discussion": [],
+    "domain": "commercial",
+    "id": "a5",
+    "kind": "decide",
+    "ref": [],
+    "speaker": "sales_head",
+    "t": "2026-05-30",
+    "trigger": [],
+    "value": "committed_customer_x",
+    "var": "sf.priority"
+   }
+  ],
+  "authority": {
+   "architecture": {
+    "eng": 1
+   },
+   "commercial": {
+    "sales_head": 2
+   },
+   "product_scope": {
+    "cto": 3,
+    "eng": 1,
+    "pm": 2
+   }
+  },
+  "governance": {
+   "sf.priority": [
+    "commercial",
+    "product_scope"
+   ],
+   "sf.target": [
+    "product_scope"
+   ],
+   "sf_api.limit": [
+    "architecture"
+   ]
+  },
+  "roles": {
+   "cto": "cto",
+   "eng": "eng",
+   "pm": "pm",
+   "sales_head": "sales_head"
+  }
+ }
+}

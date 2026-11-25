@@ -1,0 +1,525 @@
+id: inc-03
+archetype: engineering_incident
+generator:
+  version: '1'
+  attempt: 0
+query_time: 2026-09-07
+people:
+  sre_1: Aisha Khan
+  sre_2: Arjun Mehta
+  incident_lead_1: Ingrid Olsen
+  vp_engineering_1: Lucas Martin
+  engineer_1: Marco Bianchi
+  tech_lead_1: Pedro Alves
+  tech_lead_2: Rina Kapoor
+  principal_engineer_1: Stefan Kovac
+  support_lead_1: Ravi Menon
+  customer_1: Leila Farah
+  customer_2: Oscar Nilsson
+roles:
+  sre_1: sre
+  sre_2: sre
+  incident_lead_1: incident_lead
+  vp_engineering_1: vp_engineering
+  engineer_1: engineer
+  tech_lead_1: tech_lead
+  tech_lead_2: tech_lead
+  principal_engineer_1: principal_engineer
+  support_lead_1: support_lead
+  customer_1: customer
+  customer_2: customer
+domains:
+  operations:
+    label: operations
+    authority:
+      sre: 1
+      incident_lead: 2
+      vp_engineering: 3
+  architecture:
+    label: architecture
+    authority:
+      engineer: 1
+      tech_lead: 2
+      principal_engineer: 3
+  customer_comms:
+    label: customer communications
+    authority:
+      incident_lead: 1
+      support_lead: 2
+      vp_engineering: 3
+  requirements:
+    label: requirements
+    authority:
+      customer: 1
+      support_lead: 2
+      tech_lead: 3
+variables:
+  e1.retry:
+    label: checkout API retry policy
+    governed_by:
+    - architecture
+  e1.freeze:
+    label: checkout API deploy freeze
+    governed_by:
+    - operations
+  e1.credit:
+    label: checkout API customer credit requirement
+    governed_by:
+    - requirements
+  e1.rto:
+    label: checkout API recovery time requirement
+    governed_by:
+    - requirements
+  e2.freeze:
+    label: payments service deploy freeze
+    governed_by:
+    - operations
+  e2.retry:
+    label: payments service retry policy
+    governed_by:
+    - architecture
+  e2.status:
+    label: payments service status page wording
+    governed_by:
+    - customer_comms
+  e2.rto:
+    label: payments service recovery time requirement
+    governed_by:
+    - requirements
+  e3.retry:
+    label: session store retry policy
+    governed_by:
+    - architecture
+  e3.rollback:
+    label: session store rollback plan
+    governed_by:
+    - operations
+  e3.postmortem:
+    label: session store postmortem deadline
+    governed_by:
+    - operations
+  e3.remediation:
+    label: session store remediation requirement
+    governed_by:
+    - requirements
+  e4.status:
+    label: image CDN status page wording
+    governed_by:
+    - customer_comms
+    - operations
+  e4.retry:
+    label: image CDN retry policy
+    governed_by:
+    - architecture
+  e4.credit:
+    label: image CDN customer credit requirement
+    governed_by:
+    - requirements
+entities:
+- checkout API
+- payments service
+- session store
+- image CDN
+unanswerable:
+- image CDN vendor penalty approval
+- payments service root cause sign-off
+- checkout API insurance claim approval
+planted_drift:
+- e1.rto
+- e2.rto
+- e4.credit
+planted_contested:
+- e4.status
+planted_low_authority:
+- e2.retry
+- e2.status
+- e3.retry
+planted_open:
+- a038
+- a040
+- a041
+assertions:
+- id: a038
+  t: 2026-02-15
+  speaker: principal_engineer_1
+  domain: requirements
+  kind: ask
+  var: e4.credit
+  value: who signs off on this
+- id: a035
+  t: 2026-02-23
+  speaker: customer_2
+  domain: requirements
+  kind: request
+  var: e4.credit
+  value: credit for all affected customers
+- id: a039
+  t: 2026-02-25
+  speaker: sre_1
+  domain: requirements
+  kind: answer
+  var: e4.credit
+  value: will confirm next week
+  ref:
+  - a038
+  complete: false
+- id: a041
+  t: 2026-03-03
+  speaker: customer_2
+  domain: architecture
+  kind: ask
+  var: e4.retry
+  value: is legal aware of this
+- id: a036
+  t: 2026-03-15
+  speaker: tech_lead_2
+  domain: requirements
+  kind: decide
+  var: e4.credit
+  value: credit for enterprise customers only
+  ref:
+  - a035
+- id: a005
+  t: 2026-03-29
+  speaker: vp_engineering_1
+  domain: operations
+  kind: decide
+  var: e2.freeze
+  value: freeze for two weeks
+- id: a037
+  t: 2026-03-29
+  speaker: engineer_1
+  domain: null
+  kind: implement
+  var: e4.credit
+  value: no credit
+  ref:
+  - a036
+- id: a046
+  t: 2026-04-01
+  speaker: incident_lead_1
+  domain: customer_comms
+  kind: ask
+  var: e2.status
+  value: does this apply to enterprise plans
+- id: a016
+  t: 2026-04-08
+  speaker: incident_lead_1
+  domain: operations
+  kind: decide
+  var: e3.postmortem
+  value: before the next release
+- id: a047
+  t: 2026-04-13
+  speaker: tech_lead_2
+  domain: customer_comms
+  kind: answer
+  var: e2.status
+  value: finance approved it last week
+  ref:
+  - a046
+  complete: true
+- id: a040
+  t: 2026-04-18
+  speaker: principal_engineer_1
+  domain: requirements
+  kind: ask
+  var: e1.rto
+  value: who is the escalation contact
+- id: a006
+  t: 2026-04-20
+  speaker: sre_1
+  domain: operations
+  kind: report
+  var: e2.freeze
+  value: the budget review
+- id: a032
+  t: 2026-04-25
+  speaker: customer_2
+  domain: requirements
+  kind: request
+  var: e3.remediation
+  value: alert within 5 minutes
+- id: a017
+  t: 2026-05-05
+  speaker: incident_lead_1
+  domain: operations
+  kind: decide
+  var: e3.postmortem
+  value: within 5 working days
+- id: a003
+  t: 2026-05-11
+  speaker: incident_lead_1
+  domain: operations
+  kind: decide
+  var: e1.freeze
+  value: no freeze
+- id: a018
+  t: 2026-05-11
+  speaker: incident_lead_1
+  domain: operations
+  kind: decide
+  var: e3.postmortem
+  value: before the next release
+- id: a007
+  t: 2026-05-12
+  speaker: vp_engineering_1
+  domain: operations
+  kind: decide
+  var: e2.freeze
+  value: freeze lifted for hotfixes only
+  ref:
+  - a006
+  trigger:
+  - a006
+- id: a029
+  t: 2026-05-12
+  speaker: customer_1
+  domain: requirements
+  kind: request
+  var: e2.rto
+  value: recover within 4 hours
+- id: a010
+  t: 2026-05-13
+  speaker: vp_engineering_1
+  domain: customer_comms
+  kind: decide
+  var: e2.status
+  value: resolved
+- id: a014
+  t: 2026-05-15
+  speaker: incident_lead_1
+  domain: operations
+  kind: decide
+  var: e3.rollback
+  value: disable the feature flag
+- id: a033
+  t: 2026-05-16
+  speaker: tech_lead_2
+  domain: requirements
+  kind: decide
+  var: e3.remediation
+  value: alert within 5 minutes
+  ref:
+  - a032
+- id: a019
+  t: 2026-05-17
+  speaker: vp_engineering_1
+  domain: customer_comms
+  kind: decide
+  var: e4.status
+  value: resolved
+- id: a011
+  t: 2026-05-20
+  speaker: incident_lead_1
+  domain: customer_comms
+  kind: decide
+  var: e2.status
+  value: monitoring
+- id: a015
+  t: 2026-05-22
+  speaker: vp_engineering_1
+  domain: operations
+  kind: decide
+  var: e3.rollback
+  value: roll forward with a hotfix
+  discussion:
+  - a014
+- id: a042
+  t: 2026-05-31
+  speaker: vp_engineering_1
+  domain: requirements
+  kind: ask
+  var: e1.rto
+  value: what does this depend on
+- id: a004
+  t: 2026-06-01
+  speaker: incident_lead_1
+  domain: operations
+  kind: decide
+  var: e1.freeze
+  value: freeze for one week
+  ref:
+  - a003
+- id: a020
+  t: 2026-06-01
+  speaker: vp_engineering_1
+  domain: operations
+  kind: decide
+  var: e4.status
+  value: investigating
+- id: a030
+  t: 2026-06-02
+  speaker: tech_lead_1
+  domain: requirements
+  kind: decide
+  var: e2.rto
+  value: recover within 1 hour
+  ref:
+  - a029
+- id: a034
+  t: 2026-06-09
+  speaker: engineer_1
+  domain: null
+  kind: implement
+  var: e3.remediation
+  value: alert within 5 minutes
+  ref:
+  - a033
+- id: a021
+  t: 2026-06-11
+  speaker: tech_lead_1
+  domain: architecture
+  kind: decide
+  var: e4.retry
+  value: circuit breaker after 2 failures
+- id: a043
+  t: 2026-06-11
+  speaker: engineer_1
+  domain: requirements
+  kind: answer
+  var: e1.rto
+  value: the regional lead is the contact
+  ref:
+  - a042
+  complete: true
+- id: a008
+  t: 2026-06-15
+  speaker: principal_engineer_1
+  domain: architecture
+  kind: decide
+  var: e2.retry
+  value: no automatic retry
+- id: a024
+  t: 2026-06-18
+  speaker: customer_1
+  domain: requirements
+  kind: request
+  var: e1.credit
+  value: credit for all affected customers
+- id: a031
+  t: 2026-06-21
+  speaker: engineer_1
+  domain: null
+  kind: implement
+  var: e2.rto
+  value: recover within 8 hours
+  ref:
+  - a030
+- id: a025
+  t: 2026-06-23
+  speaker: tech_lead_1
+  domain: requirements
+  kind: decide
+  var: e1.credit
+  value: credit for enterprise customers only
+  ref:
+  - a024
+- id: a044
+  t: 2026-07-05
+  speaker: engineer_1
+  domain: requirements
+  kind: ask
+  var: e1.rto
+  value: which customers are affected
+- id: a022
+  t: 2026-07-06
+  speaker: engineer_1
+  domain: architecture
+  kind: report
+  var: e4.retry
+  value: a slipped dependency
+- id: a009
+  t: 2026-07-16
+  speaker: tech_lead_2
+  domain: architecture
+  kind: decide
+  var: e2.retry
+  value: linear retry with 5 retries
+- id: a012
+  t: 2026-07-16
+  speaker: principal_engineer_1
+  domain: architecture
+  kind: decide
+  var: e3.retry
+  value: linear retry with 5 retries
+- id: a045
+  t: 2026-07-19
+  speaker: tech_lead_1
+  domain: requirements
+  kind: answer
+  var: e1.rto
+  value: finance approved it last week
+  ref:
+  - a044
+  complete: true
+- id: a023
+  t: 2026-07-21
+  speaker: tech_lead_1
+  domain: architecture
+  kind: decide
+  var: e4.retry
+  value: no automatic retry
+  ref:
+  - a022
+  trigger:
+  - a022
+- id: a001
+  t: 2026-07-23
+  speaker: engineer_1
+  domain: architecture
+  kind: decide
+  var: e1.retry
+  value: exponential backoff with 3 retries
+- id: a026
+  t: 2026-07-24
+  speaker: customer_1
+  domain: requirements
+  kind: request
+  var: e1.rto
+  value: recover within 4 hours
+- id: a013
+  t: 2026-07-27
+  speaker: tech_lead_1
+  domain: architecture
+  kind: decide
+  var: e3.retry
+  value: exponential backoff with 3 retries
+- id: a027
+  t: 2026-08-02
+  speaker: tech_lead_2
+  domain: requirements
+  kind: decide
+  var: e1.rto
+  value: recover within 1 hour
+  ref:
+  - a026
+- id: a002
+  t: 2026-08-13
+  speaker: principal_engineer_1
+  domain: architecture
+  kind: decide
+  var: e1.retry
+  value: linear retry with 5 retries
+  discussion:
+  - a001
+- id: a028
+  t: 2026-08-13
+  speaker: engineer_1
+  domain: null
+  kind: implement
+  var: e1.rto
+  value: recover within 8 hours
+  ref:
+  - a027
+- id: a048
+  t: 2026-08-28
+  speaker: principal_engineer_1
+  domain: architecture
+  kind: report
+  var: e4.retry
+  value: new usage data
+render:
+  chatter: 10
+  filler_sessions: 25
+panel_size: 30

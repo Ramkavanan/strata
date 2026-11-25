@@ -1,0 +1,616 @@
+id: b2b-03
+archetype: b2b_product_team
+generator:
+  version: '1'
+  attempt: 0
+query_time: 2026-09-14
+people:
+  engineer_1: Ingrid Olsen
+  engineer_2: Noor Ali
+  product_manager_1: Victor Hugo Lima
+  product_manager_2: Aisha Khan
+  cto_1: Dev Rao
+  sales_head_1: Sofia Lindqvist
+  tech_lead_1: Sam Okoye
+  tech_lead_2: Marco Bianchi
+  principal_engineer_1: Diego Ramos
+  support_lead_1: Ben Carter
+  customer_1: Ravi Menon
+  customer_2: Mateo Silva
+  customer_3: Hugo Laurent
+roles:
+  engineer_1: engineer
+  engineer_2: engineer
+  product_manager_1: product_manager
+  product_manager_2: product_manager
+  cto_1: cto
+  sales_head_1: sales_head
+  tech_lead_1: tech_lead
+  tech_lead_2: tech_lead
+  principal_engineer_1: principal_engineer
+  support_lead_1: support_lead
+  customer_1: customer
+  customer_2: customer
+  customer_3: customer
+domains:
+  product_scope:
+    label: product scope
+    authority:
+      engineer: 1
+      product_manager: 2
+      cto: 3
+  commercial:
+    label: commercial terms
+    authority:
+      support_lead: 1
+      sales_head: 2
+  architecture:
+    label: architecture
+    authority:
+      engineer: 1
+      tech_lead: 2
+      principal_engineer: 3
+  requirements:
+    label: requirements
+    authority:
+      customer: 1
+      support_lead: 2
+      product_manager: 3
+variables:
+  e1.tier:
+    label: audit log pricing tier
+    governed_by:
+    - commercial
+  e1.arch:
+    label: audit log architecture rule
+    governed_by:
+    - architecture
+  e1.owner:
+    label: audit log owning team
+    governed_by:
+    - product_scope
+  e1.sla:
+    label: audit log service level requirement
+    governed_by:
+    - requirements
+  e2.target:
+    label: data residency option release target
+    governed_by:
+    - product_scope
+  e2.rollout:
+    label: data residency option rollout plan
+    governed_by:
+    - product_scope
+  e2.sla:
+    label: data residency option service level requirement
+    governed_by:
+    - requirements
+  e3.arch:
+    label: API gateway architecture rule
+    governed_by:
+    - architecture
+  e3.rollout:
+    label: API gateway rollout plan
+    governed_by:
+    - product_scope
+  e3.tier:
+    label: API gateway pricing tier
+    governed_by:
+    - commercial
+    - product_scope
+  e3.retention:
+    label: API gateway data retention requirement
+    governed_by:
+    - requirements
+  e4.owner:
+    label: single sign-on owning team
+    governed_by:
+    - product_scope
+  e4.target:
+    label: single sign-on release target
+    governed_by:
+    - product_scope
+  e4.priority:
+    label: single sign-on priority
+    governed_by:
+    - product_scope
+    - commercial
+  e4.sla:
+    label: single sign-on service level requirement
+    governed_by:
+    - requirements
+  e5.arch:
+    label: bulk export architecture rule
+    governed_by:
+    - architecture
+  e5.target:
+    label: bulk export release target
+    governed_by:
+    - product_scope
+  e5.sla:
+    label: bulk export service level requirement
+    governed_by:
+    - requirements
+  e5.spec:
+    label: bulk export specification
+    governed_by:
+    - requirements
+entities:
+- audit log
+- data residency option
+- API gateway
+- single sign-on
+- bulk export
+unanswerable:
+- single sign-on security audit sign-off
+- bulk export legal clearance
+- audit log pricing committee approval
+planted_drift:
+- e2.sla
+- e4.sla
+- e5.sla
+planted_contested:
+- e3.tier
+- e4.priority
+planted_low_authority: []
+planted_open:
+- a045
+- a046
+- a047
+assertions:
+- id: a001
+  t: 2026-01-17
+  speaker: sales_head_1
+  domain: commercial
+  kind: decide
+  var: e1.tier
+  value: free during beta
+- id: a042
+  t: 2026-01-24
+  speaker: customer_2
+  domain: requirements
+  kind: request
+  var: e5.spec
+  value: all records as CSV
+- id: a002
+  t: 2026-01-25
+  speaker: cto_1
+  domain: commercial
+  kind: decide
+  var: e1.tier
+  value: enterprise only
+- id: a023
+  t: 2026-01-27
+  speaker: product_manager_1
+  domain: product_scope
+  kind: decide
+  var: e5.target
+  value: Q2
+- id: a055
+  t: 2026-01-29
+  speaker: tech_lead_2
+  domain: requirements
+  kind: ask
+  var: e2.sla
+  value: what does this depend on
+- id: a020
+  t: 2026-02-04
+  speaker: product_manager_2
+  domain: product_scope
+  kind: decide
+  var: e4.priority
+  value: P0
+- id: a043
+  t: 2026-02-08
+  speaker: product_manager_1
+  domain: requirements
+  kind: decide
+  var: e5.spec
+  value: CSV with a 50k row cap
+  ref:
+  - a042
+- id: a056
+  t: 2026-02-11
+  speaker: engineer_2
+  domain: requirements
+  kind: answer
+  var: e2.sla
+  value: yes it was confirmed in the review
+  ref:
+  - a055
+  complete: true
+- id: a044
+  t: 2026-02-13
+  speaker: engineer_1
+  domain: null
+  kind: implement
+  var: e5.spec
+  value: CSV with a 50k row cap
+  ref:
+  - a043
+- id: a046
+  t: 2026-02-15
+  speaker: engineer_1
+  domain: product_scope
+  kind: ask
+  var: e4.owner
+  value: which customers are affected
+- id: a038
+  t: 2026-02-18
+  speaker: customer_1
+  domain: requirements
+  kind: request
+  var: e5.sla
+  value: 99.9 percent uptime
+- id: a039
+  t: 2026-03-01
+  speaker: product_manager_1
+  domain: requirements
+  kind: decide
+  var: e5.sla
+  value: 99.5 percent uptime
+  ref:
+  - a038
+- id: a011
+  t: 2026-03-02
+  speaker: cto_1
+  domain: product_scope
+  kind: decide
+  var: e2.rollout
+  value: general availability
+- id: a008
+  t: 2026-03-05
+  speaker: product_manager_2
+  domain: product_scope
+  kind: decide
+  var: e2.target
+  value: Q4
+- id: a021
+  t: 2026-03-07
+  speaker: sales_head_1
+  domain: commercial
+  kind: decide
+  var: e4.priority
+  value: P1
+- id: a009
+  t: 2026-03-11
+  speaker: engineer_1
+  domain: product_scope
+  kind: report
+  var: e2.target
+  value: incident follow-up
+- id: a022
+  t: 2026-03-12
+  speaker: principal_engineer_1
+  domain: architecture
+  kind: decide
+  var: e5.arch
+  value: direct database access forbidden
+- id: a040
+  t: 2026-03-12
+  speaker: engineer_2
+  domain: null
+  kind: implement
+  var: e5.sla
+  value: 99.5 percent uptime
+  ref:
+  - a039
+- id: a027
+  t: 2026-03-18
+  speaker: customer_2
+  domain: requirements
+  kind: request
+  var: e2.sla
+  value: 99.9 percent uptime
+- id: a051
+  t: 2026-03-29
+  speaker: sales_head_1
+  domain: architecture
+  kind: ask
+  var: e5.arch
+  value: what does this depend on
+- id: a041
+  t: 2026-03-30
+  speaker: product_manager_2
+  domain: requirements
+  kind: decide
+  var: e5.sla
+  value: 99.9 percent uptime in business hours
+  ref:
+  - a039
+- id: a010
+  t: 2026-04-08
+  speaker: product_manager_2
+  domain: product_scope
+  kind: decide
+  var: e2.target
+  value: Q1
+  ref:
+  - a009
+  trigger:
+  - a009
+- id: a028
+  t: 2026-04-08
+  speaker: product_manager_1
+  domain: requirements
+  kind: decide
+  var: e2.sla
+  value: 99.5 percent uptime
+  ref:
+  - a027
+- id: a052
+  t: 2026-04-11
+  speaker: customer_1
+  domain: architecture
+  kind: answer
+  var: e5.arch
+  value: the regional lead is the contact
+  ref:
+  - a051
+  complete: true
+- id: a045
+  t: 2026-04-21
+  speaker: customer_3
+  domain: product_scope
+  kind: ask
+  var: e2.rollout
+  value: who signs off on this
+- id: a029
+  t: 2026-04-24
+  speaker: engineer_1
+  domain: null
+  kind: implement
+  var: e2.sla
+  value: 99.5 percent uptime
+  ref:
+  - a028
+- id: a014
+  t: 2026-04-27
+  speaker: sales_head_1
+  domain: commercial
+  kind: decide
+  var: e3.tier
+  value: paid add-on
+- id: a013
+  t: 2026-04-28
+  speaker: product_manager_1
+  domain: product_scope
+  kind: decide
+  var: e3.rollout
+  value: beta customers first
+- id: a015
+  t: 2026-05-04
+  speaker: cto_1
+  domain: product_scope
+  kind: decide
+  var: e3.tier
+  value: included in all plans
+- id: a034
+  t: 2026-05-12
+  speaker: customer_3
+  domain: requirements
+  kind: request
+  var: e4.sla
+  value: 99.9 percent uptime
+- id: a030
+  t: 2026-05-14
+  speaker: product_manager_2
+  domain: requirements
+  kind: decide
+  var: e2.sla
+  value: 99.9 percent uptime in business hours
+  ref:
+  - a028
+- id: a003
+  t: 2026-05-20
+  speaker: engineer_2
+  domain: architecture
+  kind: decide
+  var: e1.arch
+  value: direct database access forbidden
+- id: a035
+  t: 2026-05-24
+  speaker: product_manager_2
+  domain: requirements
+  kind: decide
+  var: e4.sla
+  value: 99.5 percent uptime
+  ref:
+  - a034
+- id: a004
+  t: 2026-06-07
+  speaker: principal_engineer_1
+  domain: architecture
+  kind: decide
+  var: e1.arch
+  value: async job service only
+  discussion:
+  - a003
+- id: a047
+  t: 2026-06-07
+  speaker: engineer_2
+  domain: requirements
+  kind: ask
+  var: e1.sla
+  value: what is the fallback if this slips
+- id: a036
+  t: 2026-06-11
+  speaker: engineer_2
+  domain: null
+  kind: implement
+  var: e4.sla
+  value: 99.5 percent uptime
+  ref:
+  - a035
+- id: a048
+  t: 2026-06-13
+  speaker: principal_engineer_1
+  domain: requirements
+  kind: answer
+  var: e1.sla
+  value: still checking with the team
+  ref:
+  - a047
+  complete: false
+- id: a037
+  t: 2026-06-25
+  speaker: product_manager_1
+  domain: requirements
+  kind: decide
+  var: e4.sla
+  value: 99.9 percent uptime in business hours
+  ref:
+  - a035
+- id: a049
+  t: 2026-07-17
+  speaker: customer_1
+  domain: requirements
+  kind: ask
+  var: e4.sla
+  value: who is the escalation contact
+- id: a012
+  t: 2026-07-20
+  speaker: tech_lead_1
+  domain: architecture
+  kind: decide
+  var: e3.arch
+  value: event bus only
+- id: a053
+  t: 2026-07-23
+  speaker: product_manager_1
+  domain: product_scope
+  kind: ask
+  var: e4.priority
+  value: what does this depend on
+- id: a050
+  t: 2026-07-24
+  speaker: customer_1
+  domain: requirements
+  kind: answer
+  var: e4.sla
+  value: the contract is unchanged
+  ref:
+  - a049
+  complete: true
+- id: a005
+  t: 2026-07-29
+  speaker: product_manager_2
+  domain: product_scope
+  kind: decide
+  var: e1.owner
+  value: core team
+- id: a016
+  t: 2026-07-30
+  speaker: cto_1
+  domain: product_scope
+  kind: decide
+  var: e4.owner
+  value: growth team
+- id: a024
+  t: 2026-07-31
+  speaker: customer_3
+  domain: requirements
+  kind: request
+  var: e1.sla
+  value: 99.9 percent uptime
+- id: a031
+  t: 2026-08-01
+  speaker: customer_1
+  domain: requirements
+  kind: request
+  var: e3.retention
+  value: keep 24 months
+- id: a006
+  t: 2026-08-04
+  speaker: product_manager_2
+  domain: product_scope
+  kind: decide
+  var: e1.owner
+  value: growth team
+- id: a017
+  t: 2026-08-06
+  speaker: cto_1
+  domain: product_scope
+  kind: decide
+  var: e4.owner
+  value: core team
+  ref:
+  - a016
+- id: a054
+  t: 2026-08-06
+  speaker: engineer_2
+  domain: product_scope
+  kind: answer
+  var: e4.priority
+  value: the contract is unchanged
+  ref:
+  - a053
+  complete: true
+- id: a025
+  t: 2026-08-09
+  speaker: product_manager_2
+  domain: requirements
+  kind: decide
+  var: e1.sla
+  value: 99.5 percent uptime
+  ref:
+  - a024
+- id: a032
+  t: 2026-08-12
+  speaker: product_manager_1
+  domain: requirements
+  kind: decide
+  var: e3.retention
+  value: keep 24 months
+  ref:
+  - a031
+- id: a007
+  t: 2026-08-22
+  speaker: product_manager_2
+  domain: product_scope
+  kind: decide
+  var: e1.owner
+  value: core team
+- id: a018
+  t: 2026-08-22
+  speaker: product_manager_2
+  domain: product_scope
+  kind: decide
+  var: e4.target
+  value: Q3
+- id: a026
+  t: 2026-08-23
+  speaker: engineer_1
+  domain: null
+  kind: implement
+  var: e1.sla
+  value: 99.5 percent uptime
+  ref:
+  - a025
+- id: a019
+  t: 2026-08-31
+  speaker: sales_head_1
+  domain: product_scope
+  kind: decide
+  var: e4.target
+  value: Q1
+- id: a033
+  t: 2026-08-31
+  speaker: engineer_2
+  domain: null
+  kind: implement
+  var: e3.retention
+  value: keep 24 months
+  ref:
+  - a032
+- id: a057
+  t: 2026-09-03
+  speaker: customer_2
+  domain: architecture
+  kind: report
+  var: e1.arch
+  value: a security review finding
+render:
+  chatter: 10
+  filler_sessions: 25
+panel_size: 30

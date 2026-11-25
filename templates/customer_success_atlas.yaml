@@ -1,0 +1,30 @@
+id: cs-atlas-01
+archetype: customer_success_team
+query_time: 2026-07-25
+people: {csm: Noor Ali, am: Ben Carter, cs_head: Mei Tanaka, cro: Pedro Alves, ae: Sam Okoye, legal: Iris Novak}
+roles: {csm: csm, am: account_manager, cs_head: cs_head, cro: cro, ae: ae, legal: legal}
+domains:
+  account_terms: {label: account terms, authority: {account_manager: 2, cs_head: 3, cro: 4}}
+  renewal: {label: renewal strategy, authority: {csm: 1, account_manager: 2, cro: 3}}
+  legal_review: {label: legal review, authority: {legal: 3}}
+variables:
+  atlas.discount: {label: Atlas renewal discount, governed_by: [account_terms, renewal]}
+  atlas.sla: {label: Atlas support SLA, governed_by: [account_terms]}
+  atlas.owner: {label: Atlas executive sponsor, governed_by: [renewal]}
+  atlas.dpa: {label: Atlas data processing addendum, governed_by: [legal_review]}
+unanswerable: [Atlas multi-year renewal signature]
+planted_contested: [atlas.discount]
+planted_open: [q1]
+assertions:
+  - {id: c1, t: 2026-05-04, speaker: am, domain: account_terms, kind: decide, var: atlas.sla, value: 4 hour response, explicit: explicit}
+  - {id: c2, t: 2026-05-20, speaker: csm, domain: account_terms, kind: decide, var: atlas.sla, value: 2 hour response, explicit: hedged}
+  - {id: c3, t: 2026-06-02, speaker: cs_head, domain: account_terms, kind: decide, var: atlas.sla, value: 4 hour response with weekend cover, discussion: [c1], explicit: explicit}
+  - {id: c4, t: 2026-06-05, speaker: am, domain: account_terms, kind: decide, var: atlas.discount, value: 10 percent, explicit: explicit}
+  - {id: c5, t: 2026-06-18, speaker: cro, domain: renewal, kind: decide, var: atlas.discount, value: 15 percent, ref: [c4], explicit: explicit}
+  - {id: c6, t: 2026-06-20, speaker: cs_head, domain: account_terms, kind: decide, var: atlas.discount, value: 12 percent, explicit: diffuse}
+  - {id: c7, t: 2026-05-10, speaker: csm, domain: renewal, kind: decide, var: atlas.owner, value: Ben Carter, explicit: explicit}
+  - {id: c8, t: 2026-06-25, speaker: cro, domain: renewal, kind: decide, var: atlas.owner, value: Mei Tanaka, ref: [c7], explicit: explicit}
+  - {id: c9, t: 2026-06-27, speaker: cro, domain: renewal, kind: revoke, var: atlas.owner, ref: [c8]}
+  - {id: c10, t: 2026-06-10, speaker: legal, domain: legal_review, kind: decide, var: atlas.dpa, value: standard DPA v3, explicit: explicit}
+  - {id: q1, t: 2026-07-01, speaker: ae, domain: renewal, kind: ask, var: atlas.dpa, value: "can Atlas use their own DPA template"}
+  - {id: c11, t: 2026-07-18, speaker: csm, domain: renewal, kind: report, var: atlas.discount, value: customer_asked_for_20_percent}

@@ -1,0 +1,30 @@
+id: incident-payments-01
+archetype: engineering_incident
+query_time: 2026-09-20
+people: {sre: Kofi Mensah, lead: Hannah Ward, principal: Ravi Menon, vp: Elena Petrova, pm: Priya Nair, support: Ana Costa}
+roles: {sre: sre, lead: tech_lead, principal: principal, vp: vp_eng, pm: pm, support: support_lead}
+domains:
+  architecture: {label: architecture, authority: {sre: 1, tech_lead: 2, principal: 3}}
+  operations: {label: operations, authority: {sre: 2, tech_lead: 2, vp_eng: 3}}
+  customer_comms: {label: customer communications, authority: {support_lead: 2, pm: 2, vp_eng: 3}}
+variables:
+  rollback.plan: {label: payments rollback plan, governed_by: [operations]}
+  retry.policy: {label: payment retry policy, governed_by: [architecture]}
+  status.page: {label: status page wording, governed_by: [customer_comms]}
+  freeze: {label: deploy freeze, governed_by: [operations, customer_comms]}
+unanswerable: [incident root cause sign-off]
+planted_contested: [freeze]
+planted_open: [q1]
+assertions:
+  - {id: i1, t: 2026-08-18, speaker: sre, domain: operations, kind: report, var: rollback.plan, value: elevated_error_rate}
+  - {id: i2, t: 2026-08-18, speaker: lead, domain: operations, kind: decide, var: rollback.plan, value: roll back release 41, trigger: [i1], explicit: explicit}
+  - {id: i3, t: 2026-08-19, speaker: vp, domain: operations, kind: decide, var: rollback.plan, value: roll forward with hotfix, discussion: [i2], explicit: explicit}
+  - {id: i4, t: 2026-08-19, speaker: sre, domain: operations, kind: decide, var: rollback.plan, value: roll back release 41, explicit: hedged}
+  - {id: i5, t: 2026-08-22, speaker: principal, domain: architecture, kind: decide, var: retry.policy, value: "exponential backoff, max 3 retries", ref: [i1], explicit: explicit}
+  - {id: i6, t: 2026-08-25, speaker: lead, domain: architecture, kind: decide, var: retry.policy, value: "linear retry, max 5 retries", explicit: hedged}
+  - {id: i7, t: 2026-08-26, speaker: support, domain: customer_comms, kind: decide, var: status.page, value: investigating, explicit: explicit}
+  - {id: i8, t: 2026-08-30, speaker: vp, domain: customer_comms, kind: decide, var: status.page, value: resolved, explicit: explicit}
+  - {id: i9, t: 2026-09-02, speaker: vp, domain: operations, kind: decide, var: freeze, value: freeze until 2026-09-30, explicit: explicit}
+  - {id: i10, t: 2026-09-04, speaker: pm, domain: customer_comms, kind: decide, var: freeze, value: lift freeze for launch, explicit: diffuse}
+  - {id: q1, t: 2026-09-08, speaker: support, domain: customer_comms, kind: ask, var: status.page, value: "do affected customers get credits"}
+  - {id: i11, t: 2026-09-15, speaker: sre, domain: operations, kind: report, var: rollback.plan, value: error_rate_normal}
